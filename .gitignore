@@ -5,6 +5,7 @@ proposal/*.fdb_latexmk
 proposal/*.fls
 proposal/*.log
 proposal/*.out
+proposal/pg-*.png
 proposal/*.synctex.gz
 *.pyc
 __pycache__/
