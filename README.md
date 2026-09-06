@@ -43,6 +43,36 @@ python run_baseline.py --capsule capsule-4180912 --tier hard
 
 Results are written to `results/baseline_<tier>_<split>.json`.
 
+## Measured baseline results
+
+Two Python capsules (`capsule-9052293`, `capsule-6003668`), `claude-sonnet-5`:
+
+| Tier | Task accuracy | Per-question | $/task | s/task | Failure stage |
+|---|---|---|---|---|---|
+| easy | **2/2 = 100%** | 2/2 | $0.0034 | 3.0 | — |
+| hard | **0/2 = 0%** | 0/2 | $0.0049 | 9.7 | execution (2/2) |
+
+Every hard-tier failure is at the execution stage — none at planning or answer
+extraction. That is the actionable finding: the iterative loop should target
+dependency and invocation repair first.
+
+### The failure that motivates the project
+
+For `capsule-9052293` the single planning call proposed
+`pip install openpyxl pandas && python code/script.py`. It failed, and with no
+retry the pipeline reported `null`. The capsule *is* reproducible — but only
+through three sequential fixes, each discoverable **only by observing the
+previous failure**:
+
+1. `ModuleNotFoundError: xlrd` → install `xlrd`
+2. `FileNotFoundError` → the script uses paths relative to `code/`, so `cd code` first
+3. `XLRDError: Excel xlsx file; not supported` → `xlrd` 2.x **dropped** `.xlsx`
+   support, so pin `xlrd==1.2.0` — an *older* version of what was just installed
+
+With all three, the capsule reproduces `0.844703753651819` exactly. No amount of
+up-front planning from a README gets to step 3; you have to run it and read the
+traceback. That is the gap the capstone system closes.
+
 ## Requirements
 
 | Requirement | Needed for | Notes |
