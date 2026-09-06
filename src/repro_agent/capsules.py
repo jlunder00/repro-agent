@@ -1,8 +1,8 @@
 """Downloading and preparing CORE-bench capsules.
 
-Capsules are code-ocean-style tarballs, anywhere from ~0.1 MB to a couple of
-GB. We stream them to disk rather than buffering in memory, and we extract
-defensively since the archives come from a third party.
+Capsules are Code Ocean-style tarballs from ~0.1 MB to a few GB. Downloads
+are streamed to disk; extraction rejects members that would land outside
+the destination.
 """
 
 from __future__ import annotations
@@ -55,12 +55,11 @@ def _is_within_directory(directory: Path, target: Path) -> bool:
 
 
 def _safe_extract(tar: tarfile.TarFile, dest_dir: Path) -> None:
-    """Extract `tar` into `dest_dir`, refusing any member that would land
-    outside it (path traversal via '..' or an absolute/symlink member).
+    """Extract `tar` into `dest_dir`, skipping members (including link
+    targets) that would resolve outside it.
 
-    `tarfile.extractall(filter="data")` (Python 3.12+) does this natively,
-    but the target runtime here is 3.10, so we replicate the essential
-    check by hand.
+    Equivalent to `tarfile.extractall(filter="data")`, which needs 3.12+;
+    the target runtime is 3.10.
     """
     safe_members = []
     for member in tar.getmembers():
@@ -79,10 +78,12 @@ def _safe_extract(tar: tarfile.TarFile, dest_dir: Path) -> None:
 
 
 def download_capsule(capsule_id: str, dest_dir: Path, *, force: bool = False) -> Path:
-    """Download + extract to dest_dir/capsule_id/. Returns that path.
-    Skips download if already extracted unless force. Streams to disk (never
-    load into memory). Show progress to stderr. Clean up the tarball after
-    extraction. Raise CapsuleError on failure."""
+    """Download and extract to dest_dir/capsule_id/; return that path.
+
+    Skips download if already extracted unless `force`. Streams to disk,
+    prints progress to stderr, and removes the tarball after extraction.
+    Raises CapsuleError on failure.
+    """
     dest_dir = Path(dest_dir)
     capsule_dir = dest_dir / capsule_id
 
@@ -142,12 +143,11 @@ def download_capsule(capsule_id: str, dest_dir: Path, *, force: bool = False) ->
 
 
 def _flatten_single_wrapper_dir(capsule_dir: Path) -> None:
-    """CORE-bench tarballs commonly wrap their entire contents in one
-    top-level directory (often named after the capsule id itself), so a
-    naive extract leaves `code/`, `results/`, etc. one level deeper than
-    callers (notably prepare_tier) expect. If extraction produced exactly
-    one top-level directory and nothing else, hoist its contents up into
-    capsule_dir and remove the now-empty wrapper.
+    """If extraction produced exactly one top-level directory, hoist its
+    contents into capsule_dir and remove the wrapper.
+
+    CORE-bench tarballs usually wrap `code/`, `results/`, etc. in a single
+    directory named after the capsule id.
     """
     entries = list(capsule_dir.iterdir())
     if len(entries) != 1 or not entries[0].is_dir():
@@ -160,27 +160,17 @@ def _flatten_single_wrapper_dir(capsule_dir: Path) -> None:
 
 
 def prepare_tier(capsule_dir: Path, tier: str, work_dir: Path) -> Path:
-    """Materialise the agent-visible view of a capsule for a given tier.
+    """Copy a capsule into work_dir and apply the tier's cuts.
 
-    Mirrors the official CORE-bench harness (benchmark/benchmark.py,
-    ~lines 218-233), which applies two independent cuts:
+    Must match the official harness (benchmark/benchmark.py, ~lines 218-233):
 
-        if tier != "easy":
-            empty (not delete) results/
-        if tier != "medium":
-            remove REPRODUCING.md, environment/, code/run(.sh)
+        if tier != "easy":   empty (not delete) results/
+        if tier != "medium": remove REPRODUCING.md, environment/, code/run(.sh)
 
-    Read together:
-      easy:   results/ stays populated; REPRODUCING.md, environment/, and
-              code/run(.sh) are stripped. A pure information-extraction
-              task with the reproduction scaffolding removed -- NOT
-              "medium plus answers".
-      medium: results/ is emptied (kept as an empty dir, not deleted);
-              REPRODUCING.md, environment/, and the run scripts are kept.
-      hard:   results/ is emptied (kept as an empty dir); REPRODUCING.md,
-              environment/, and the run scripts are all stripped.
+    So the easy tier keeps results/ but strips the reproduction scaffolding,
+    and medium/hard keep results/ as an empty directory.
 
-    Returns the prepared directory. Raise ValueError on unknown tier.
+    Returns the prepared directory. Raises ValueError on unknown tier.
     """
     if tier not in ("easy", "medium", "hard"):
         raise ValueError(f"Unknown tier {tier!r}; expected 'easy', 'medium', or 'hard'")

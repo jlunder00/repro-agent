@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""CLI entry point for the strict single-pass reproducibility baseline.
+"""CLI entry point for the single-pass reproducibility baseline.
 
 Examples
 --------
-    python run_baseline.py --capsule capsule-4180912 --tier easy
+    python run_baseline.py --capsule capsule-9052293 --tier easy
     python run_baseline.py --subset small --tier hard --limit 5
     python run_baseline.py --list
 """

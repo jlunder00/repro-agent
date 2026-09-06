@@ -1,8 +1,7 @@
 # Module contracts
 
-These signatures are **fixed**. Implement to them exactly; do not change a
-signature without saying so, because other modules are being written against
-them concurrently.
+These signatures are fixed. Do not change a signature without saying so;
+other modules are written against them.
 
 Python 3.10. Package root is `src/repro_agent/`. Run via `PYTHONPATH=src`.
 
@@ -56,17 +55,20 @@ def capsule_size_bytes(capsule_id: str, timeout: int = 30) -> int | None:
 
 def download_capsule(capsule_id: str, dest_dir: Path, *, force: bool = False) -> Path:
     """Download + extract to dest_dir/capsule_id/. Returns that path.
-    Skips download if already extracted unless force. Streams to disk (never
-    load into memory). Show progress to stderr. Clean up the tarball after
-    extraction. Raise CapsuleError on failure."""
+    Skips download if already extracted unless force. Streams to disk.
+    Shows progress on stderr. Removes the tarball after extraction.
+    Raises CapsuleError on failure."""
 
 def prepare_tier(capsule_dir: Path, tier: str, work_dir: Path) -> Path:
-    """Materialise the agent-visible view of a capsule for a given tier.
+    """Copy a capsule into work_dir and apply the tier's cuts, matching
+    benchmark/benchmark.py in the official harness.
 
-    tier="easy":  copy capsule INCLUDING its populated `results/` dir.
-    tier="hard":  copy capsule but DELETE the `results/` dir, so the agent
-                  cannot read the answers it is supposed to compute.
-    Returns the prepared directory. Raise ValueError on unknown tier.
+    easy:   results/ kept populated; REPRODUCING.md, environment/ and
+            code/run(.sh) removed.
+    medium: results/ emptied (kept as an empty dir); the rest kept.
+    hard:   results/ emptied; REPRODUCING.md, environment/ and run scripts
+            removed.
+    Returns the prepared directory. Raises ValueError on unknown tier.
     """
 
 class CapsuleError(RuntimeError): ...
@@ -93,10 +95,10 @@ class LLMResponse:
     cost_usd: float | None
 
 def complete(prompt: str, *, system: str | None = None, model: str | None = None,
-             max_tokens: int = 2048, temperature: float = 0.0) -> LLMResponse:
-    """One completion via litellm. NO retry logic beyond transport-level
-    errors -- the strict single-pass baseline must not smuggle in retries.
-    Populate cost_usd from litellm.completion_cost when available, else None."""
+             max_tokens: int = 2048, temperature: float | None = None) -> LLMResponse:
+    """One completion via litellm. No retry logic. cost_usd comes from
+    litellm.completion_cost when available, else None. temperature is omitted
+    from the request when None; newer Anthropic models reject the parameter."""
 
 def extract_json(text: str) -> dict:
     """Pull the first JSON object out of a model response, tolerating ```json
@@ -121,10 +123,10 @@ class ExecResult:
 def run_in_container(command: str, work_dir: Path, *, image: str = DEFAULT_IMAGE,
                      timeout_s: int = 900, network: bool = True) -> ExecResult:
     """Run `command` with bash -lc inside `image`, with work_dir bind-mounted
-    at /workspace and cwd=/workspace. Capture stdout/stderr (truncate each to
-    the last 20000 chars, noting truncation). Always remove the container
-    (--rm). On timeout set timed_out=True and kill the container. Never raise
-    on a non-zero exit code -- that is data, not an error."""
+    at /workspace and cwd=/workspace. Capture stdout/stderr, truncated to the
+    last 20000 chars. Always remove the container (--rm). On timeout set
+    timed_out=True and kill the container. Never raise on a non-zero exit
+    code."""
 
 def docker_available() -> bool: ...
 ```
@@ -135,9 +137,8 @@ def docker_available() -> bool: ...
 
 - No `print` for logging; use `logging.getLogger(__name__)`. CLI output is
   the exception.
-- Type-annotate public functions. Docstrings say *why*, not *what*.
+- Type-annotate public functions.
 - No network or Docker calls at import time.
 - Every module must import cleanly with no API key and no Docker present.
-- Do not add retry/self-healing behaviour anywhere. The baseline is an
-  intentionally strict single-pass control; a hidden retry would invalidate
-  the experiment it exists to support.
+- Do not add retry/self-healing behaviour anywhere. The baseline is a
+  single-pass control; a retry would invalidate the comparison.

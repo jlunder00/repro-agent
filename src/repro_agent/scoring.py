@@ -1,24 +1,17 @@
 """Answer scoring, ported from the official CORE-Bench harness.
 
-The grading semantics here are deliberately identical to
-``benchmark/evaluations.py`` in https://github.com/siegelz/core-bench
-(MIT, Copyright (c) 2024 Zachary Siegel).  See ``third_party/NOTICE``.
+Grading semantics are identical to ``benchmark/evaluations.py`` in
+https://github.com/siegelz/core-bench (MIT, Copyright (c) 2024 Zachary
+Siegel); see ``third_party/NOTICE``. Do not change them: scores must remain
+comparable to those published in arXiv:2409.11363.
 
-Keeping these semantics byte-for-faithful is the whole point: it is what
-lets a score produced by this repository be compared against the numbers
-published in arXiv:2409.11363 rather than against a metric we invented.
-
-The one substantive rule worth stating plainly, because it is easy to get
-wrong: a *numeric* answer is counted correct when it falls inside a 95%
-prediction interval built from the three ground-truth runs of the original
-paper's code,
+A numeric answer is correct when it falls inside the 95% prediction interval
+built from the ground-truth runs of the original code,
 
     mean +/- t(0.975, n-1) * s * sqrt(1 + 1/n)
 
-which tolerates the genuine run-to-run stochasticity of scientific code
-(random seeds, GPU nondeterminism) while still rejecting wrong answers.
-Where the three runs agreed exactly the interval collapses to a point and
-exact equality is required.
+Where the runs agree exactly, the interval is a point and exact equality is
+required.
 """
 
 from __future__ import annotations
@@ -31,11 +24,9 @@ from scipy.stats import t as student_t
 
 
 def _coerce_number(value: Any) -> Any:
-    """Best-effort numeric coercion of a reported answer.
+    """Coerce ``"96.1%"`` / ``"96.1"`` to a float, as upstream does.
 
-    Mirrors the upstream leniency: a model that answers ``"96.1%"`` or
-    ``"96.1"`` is not punished for formatting.  Anything that will not
-    parse is left untouched so it can still match as a string.
+    Unparseable values are returned unchanged so they can match as strings.
     """
     if isinstance(value, str):
         stripped = value.replace("%", "") if "%" in value else value
@@ -47,11 +38,10 @@ def _coerce_number(value: Any) -> Any:
 
 
 def _prediction_interval(samples: List[float]) -> tuple[float, float]:
-    """95% prediction interval for a new observation given `samples`.
+    """95% prediction interval (not confidence interval) for a new observation.
 
-    Note this is a *prediction* interval, not a confidence interval on the
-    mean -- the extra ``1 +`` under the radical accounts for the variance of
-    the new observation itself, which is what we are actually grading.
+    The ``1 +`` under the radical accounts for the variance of the new
+    observation itself.
     """
     n = len(samples)
     mean = float(np.mean(samples))
@@ -75,9 +65,8 @@ def eval_result_json(
         reported_result: the agent's ``report.json``, question -> answer.
 
     Returns counts of correct/total, split into "written" and "vision"
-    questions.  Upstream treats any question whose key contains ``fig`` as a
-    vision question; this project scopes vision questions out, but the split
-    is preserved so totals stay comparable.
+    questions. Upstream treats any key containing ``fig`` as a vision
+    question; the split is preserved here so totals stay comparable.
     """
     correct_written = 0
     correct_vision = 0
@@ -126,11 +115,7 @@ def eval_result_json(
 
 
 def task_is_correct(counts: Dict[str, int]) -> bool:
-    """A task scores only if *every* one of its questions was answered correctly.
-
-    This all-or-nothing rule is upstream's, and it is strict on purpose:
-    partially reproducing a paper's results is not reproducing them.
-    """
+    """A task is correct only if every one of its questions is correct (upstream rule)."""
     return (
         counts["correct_written_answers"] == counts["total_written_questions"]
         and counts["correct_vision_answers"] == counts["total_vision_questions"]

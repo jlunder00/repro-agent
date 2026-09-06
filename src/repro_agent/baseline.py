@@ -1,18 +1,12 @@
-"""The strict single-pass baseline.
+"""The single-pass baseline.
 
-This module is a *scientific control*, not an attempt at a good agent.  It
-walks each capsule through the pipeline exactly once and never looks back:
+Each capsule goes through the pipeline exactly once:
 
     prepare -> plan -> execute -> extract -> score
 
-There is deliberately no retry, no reflection, and no re-planning after
-observing a failure.  That restraint is the entire point.  The capstone
-system will add an iterative execute-observe-diagnose-replan loop, and the
-only way to attribute the resulting gain to *that loop* -- rather than to
-simply having had more attempts -- is for the control to get exactly one.
-
-Any future edit that adds a retry here breaks the experiment this file
-exists to support.
+There is no retry, reflection, or re-planning. This module is the control
+for the capstone's iterative execute-observe-diagnose-replan loop; adding
+retry logic here invalidates that comparison.
 """
 
 from __future__ import annotations
@@ -30,18 +24,16 @@ from .sandbox import ExecResult, run_in_container
 
 logger = logging.getLogger(__name__)
 
-# Ordered pipeline stages. Recording the stage a run died at is what lets
-# Section 6's failure-mode breakdown say *where* reproduction broke down,
-# which is far more actionable than a single pass/fail bit.
+# Ordered pipeline stages. Each run records the stage it failed at, which
+# feeds the failure-mode breakdown.
 STAGES = ("prepare", "plan", "execute", "extract", "score")
 
 MAX_README_CHARS = 8000
 MAX_TREE_ENTRIES = 200
 MAX_RESULT_CHARS = 12000
 
-# Extensions never worth spending context budget on. Figures are the big one:
-# a capsule's results/ is often mostly PNGs, and this project scopes figure
-# questions out anyway.
+# Extensions excluded from the model's context. Figure questions are out of
+# scope, so image files are never needed.
 _BINARY_SUFFIXES = {
     ".png", ".jpg", ".jpeg", ".gif", ".bmp", ".tif", ".tiff", ".pdf", ".eps",
     ".svg", ".pkl", ".pickle", ".npy", ".npz", ".h5", ".hdf5", ".pt", ".pth",
@@ -50,11 +42,10 @@ _BINARY_SUFFIXES = {
 
 
 def _looks_binary(text: str) -> bool:
-    """Catch extensionless binaries that the suffix filter would let through.
+    """Content sniff for extensionless files (e.g. ``results/output``).
 
-    A capsule's ``results/output`` is a common shape and is usually text, so
-    we sniff content rather than trusting the name: a NUL byte, or a high
-    proportion of replacement characters from a failed decode, means binary.
+    A NUL byte, or >5% replacement characters from a failed decode, means
+    binary.
     """
     head = text[:4096]
     if "\x00" in head:
@@ -87,7 +78,7 @@ class StageRecord:
 
 @dataclass
 class RunResult:
-    """Everything one capsule-run produced, including how it failed."""
+    """Output of one capsule-run, including the stage at which it failed."""
 
     capsule_id: str
     tier: str
@@ -133,16 +124,11 @@ def _file_tree(root: Path, limit: int = MAX_TREE_ENTRIES) -> str:
 
 
 def _read_readme(root: Path) -> str:
-    """Collect the capsule's human-facing instructions.
+    """Collect README and REPRODUCING files from the root and ``code/``.
 
     Capsules keep their README under ``code/`` at least as often as at the
-    top level (``code/README.txt`` is the common shape), so searching only
-    the root would silently hand the planner an empty brief on the hard
-    tier -- where the README is the *only* guidance it gets.
-
-    ``REPRODUCING.md`` is included when present, but note the official tier
-    preparation deletes it for every tier except medium, so on easy and hard
-    this will normally find only the README.
+    top level. ``REPRODUCING.md`` is deleted by tier preparation for every
+    tier except medium, so on easy and hard only the README is found.
     """
     chunks: list[str] = []
     budget = MAX_README_CHARS
@@ -162,29 +148,11 @@ def _read_readme(root: Path) -> str:
 
 def select_result_files(results_dir: Path, questions: list[str],
                         char_budget: int = MAX_RESULT_CHARS) -> str:
-    """Choose which files from a capsule's ``results/`` dir to show the model.
+    """Concatenate text files under ``results/`` in sorted path order until
+    ``char_budget`` is exhausted, skipping binary and unreadable files.
 
-    TODO(jason): this is a real design decision and it materially changes how
-    strong the easy-tier baseline looks, so it is worth making deliberately
-    rather than defaulting.
-
-    The tension: a capsule's ``results/`` directory can hold dozens of files --
-    logs, CSVs, figures, serialized models -- and they will not all fit in a
-    context window. Three defensible policies:
-
-      1. Naive: concatenate every text-like file until the budget runs out,
-         in directory order. Simple and unbiased, but a large log file early
-         in the listing can crowd out the one CSV that holds the answer.
-      2. Size-first: prefer small files, on the theory that summary metrics
-         live in small files while bulk data does not. Cheap heuristic, but
-         it will miss answers buried at the end of a long training log.
-      3. Question-guided: score each file by lexical overlap between its name
-         (or head) and the question text, and take the best-matching ones.
-         Most likely to find the answer, but it leaks a little of the question
-         into retrieval, which you should disclose when describing the method.
-
-    Whichever you choose, keep the total under ``char_budget`` and skip binary
-    files (figures, .pkl, .npz). Implement it here and delete this TODO.
+    Files not shown are listed at the end. ``questions`` is not used for
+    selection.
     """
     if not results_dir.is_dir():
         return "(no results directory)"
@@ -251,7 +219,7 @@ def _extract_answers(questions: list[str], evidence: str) -> tuple[dict, llm.LLM
 
 def run_task(task: Task, tier: str, *, capsule_root: Path, work_root: Path,
              timeout_s: int = 900) -> RunResult:
-    """Execute the single-pass pipeline for one capsule at one tier."""
+    """Run the single-pass pipeline for one capsule at one tier."""
     started = time.time()
     result = RunResult(capsule_id=task.capsule_id, tier=tier)
 
@@ -262,9 +230,8 @@ def run_task(task: Task, tier: str, *, capsule_root: Path, work_root: Path,
     t0 = time.time()
     try:
         downloaded = capsules.download_capsule(task.capsule_id, capsule_root)
-        # prepare_tier wipes and rebuilds its destination, so give every
-        # (capsule, tier) pair its own directory. Passing a shared root would
-        # make each run destroy the previous one's working copy.
+        # prepare_tier wipes its destination, so each (capsule, tier) pair
+        # gets its own directory.
         prepared = capsules.prepare_tier(
             downloaded, tier, work_root / f"{task.capsule_id}__{tier}"
         )
@@ -278,8 +245,7 @@ def run_task(task: Task, tier: str, *, capsule_root: Path, work_root: Path,
     evidence = ""
 
     if tier == "easy":
-        # The easy tier forbids execution: the answers are already on disk and
-        # the task is purely one of locating and reading them.
+        # Easy tier: no execution; answers are read from results/.
         t0 = time.time()
         try:
             evidence = select_result_files(prepared / "results", task.questions)
@@ -303,7 +269,7 @@ def run_task(task: Task, tier: str, *, capsule_root: Path, work_root: Path,
             result.duration_s = time.time() - started
             return result
 
-        # -- execute (exactly once; a non-zero exit is not retried) -------
+        # -- execute (once; a non-zero exit is not retried) ---------------
         t0 = time.time()
         exec_result: ExecResult = run_in_container(command, prepared, timeout_s=timeout_s)
         record("execute", exec_result.exit_code == 0,

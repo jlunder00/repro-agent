@@ -1,10 +1,8 @@
 """Docker-backed sandbox for running an untrusted capsule command.
 
-Shells out to the `docker` CLI via subprocess rather than depending on the
-docker SDK. Each run gets a deterministic, uuid4-based container name so
-that a timeout can reliably clean up: `--rm` alone is not sufficient once
-the client process itself may be killed or time out before the container
-exits on its own.
+Shells out to the `docker` CLI rather than the docker SDK. Each run gets a
+uuid4-based container name so a timeout can force-remove it; `--rm` alone
+does not clean up when the client times out first.
 """
 
 from __future__ import annotations
@@ -33,8 +31,7 @@ class ExecResult:
 
 
 def _truncate(text: str, limit: int = _MAX_OUTPUT_CHARS) -> str:
-    """Keep the LAST `limit` characters -- the tail is what matters for
-    diagnosing failures -- and note how much was dropped."""
+    """Keep the last `limit` characters and note how many were dropped."""
     if len(text) <= limit:
         return text
     dropped = len(text) - limit
@@ -45,10 +42,11 @@ def _truncate(text: str, limit: int = _MAX_OUTPUT_CHARS) -> str:
 def run_in_container(command: str, work_dir: Path, *, image: str = DEFAULT_IMAGE,
                      timeout_s: int = 900, network: bool = True) -> ExecResult:
     """Run `command` with bash -lc inside `image`, with work_dir bind-mounted
-    at /workspace and cwd=/workspace. Capture stdout/stderr (truncate each to
-    the last 20000 chars, noting truncation). Always remove the container
-    (--rm). On timeout set timed_out=True and kill the container. Never raise
-    on a non-zero exit code -- that is data, not an error.
+    at /workspace and cwd=/workspace.
+
+    stdout/stderr are truncated to the last 20000 chars. The container is
+    always removed. On timeout, timed_out=True and the container is killed.
+    A non-zero exit code does not raise.
     """
     container_name = f"repro-agent-{uuid.uuid4().hex}"
     argv = [
@@ -94,10 +92,7 @@ def run_in_container(command: str, work_dir: Path, *, image: str = DEFAULT_IMAGE
 
 
 def _force_remove(container_name: str) -> None:
-    """Best-effort cleanup for a container left behind by a timeout.
-    `--rm` only removes the container once it exits on its own; a killed
-    client process can leave it running, so force-remove explicitly.
-    """
+    """Force-remove a container left running after a timeout. Never raises."""
     try:
         subprocess.run(
             ["docker", "rm", "-f", container_name],

@@ -1,7 +1,7 @@
 """Loading and filtering of the CORE-bench task set.
 
-Tasks are vendored as flat JSON lists under ``examples/`` -- no network
-access is needed (or performed) to load them.
+Tasks are vendored as flat JSON lists under ``examples/``; loading performs
+no network access.
 """
 
 from __future__ import annotations
@@ -31,11 +31,7 @@ class Task:
 
     @property
     def questions(self) -> list[str]:
-        """Question strings, taken from the first ground-truth run.
-
-        Every entry in ``results`` is a repeated run of the same underlying
-        code, so they share the same set (and order) of question keys.
-        """
+        """Question strings from the first ground-truth run; all runs share the same keys."""
         return list(self.results[0].keys())
 
     @property
@@ -103,8 +99,7 @@ def select_subset(
 
 
 def summarize(tasks: list[Task]) -> dict:
-    """Quick counts by language, field, and total question count. Not part
-    of the fixed contract -- just a convenience for eyeballing a subset."""
+    """Counts by language, field, and total questions. Not part of the fixed contract."""
     by_language: dict[str, int] = {}
     by_field: dict[str, int] = {}
     n_questions = 0

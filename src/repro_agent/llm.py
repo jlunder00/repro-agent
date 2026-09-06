@@ -1,15 +1,9 @@
 """Provider-agnostic LLM completion via litellm.
 
-This module is the only place the baseline talks to a language model. Two
-things are non-negotiable here (see CONTRACTS.md):
-
-1. No application-level retries. `complete()` makes exactly one call.  The
-   baseline this feeds is a strict single-pass scientific control -- a
-   hidden retry here would quietly turn it into a multi-pass system and
-   invalidate the comparison it exists to support.
-2. No network calls at import time, and the module must import cleanly with
-   no API key set. Model/provider resolution only happens when a caller
-   actually asks for it.
+Constraints (see CONTRACTS.md): `complete()` makes exactly one call with no
+application-level retries, since a retry here would invalidate the
+single-pass baseline; and the module performs no network access at import
+time and imports cleanly with no API key set.
 """
 
 from __future__ import annotations
@@ -24,8 +18,7 @@ import litellm
 
 logger = logging.getLogger(__name__)
 
-# First env var found (in this order) wins, mapped to the model litellm
-# should use for that provider.
+# First env var found (in this order) wins.
 DEFAULT_MODELS = {
     "ANTHROPIC_API_KEY": "anthropic/claude-sonnet-5",
     "OPENAI_API_KEY": "openai/gpt-4o",
@@ -33,16 +26,13 @@ DEFAULT_MODELS = {
 
 
 class LLMError(RuntimeError):
-    """Raised for model resolution failures, transport errors, and
-    unparseable responses. Never raised to implement a retry."""
+    """Raised for model resolution failures, transport errors, and unparseable responses."""
 
 
 def resolve_model() -> str:
     """Return REPRO_AGENT_MODEL if set, else pick by which API key is present.
 
-    Raises LLMError naming the env vars it looked for so the failure is
-    immediately actionable, rather than surfacing as an opaque litellm
-    provider error later.
+    Raises LLMError naming the env vars checked if none is set.
     """
     override = os.environ.get("REPRO_AGENT_MODEL")
     if override:
@@ -71,16 +61,12 @@ class LLMResponse:
 
 def complete(prompt: str, *, system: str | None = None, model: str | None = None,
              max_tokens: int = 2048, temperature: float | None = None) -> LLMResponse:
-    """One completion via litellm. NO retry logic beyond transport-level
-    errors -- the strict single-pass baseline must not smuggle in retries.
-    Populate cost_usd from litellm.completion_cost when available, else None.
+    """One completion via litellm, with no retry logic. cost_usd comes from
+    litellm.completion_cost when available, else None.
 
-    ``temperature`` defaults to None and is omitted from the request entirely
-    when unset. This is not merely tidiness: newer Anthropic models reject the
-    parameter outright ("`temperature` is deprecated for this model"), so
-    sending a default 0.0 turns every call into a 400. Callers that genuinely
-    need to pin sampling can still pass a value, accepting that it will fail
-    on models which have dropped support.
+    ``temperature`` is omitted from the request when None: newer Anthropic
+    models reject the parameter ("`temperature` is deprecated for this
+    model"), so a default of 0.0 would make every call a 400.
     """
     resolved_model = model or resolve_model()
 
@@ -127,9 +113,7 @@ _FENCE_RE = re.compile(r"```(?:json)?\s*(.*?)```", re.DOTALL | re.IGNORECASE)
 
 
 def _find_balanced_object(text: str) -> str | None:
-    """Scan for the first balanced {...} span, respecting string literals
-    and escapes so braces inside JSON string values don't confuse the count.
-    """
+    """Return the first balanced {...} span, ignoring braces inside string literals."""
     start = text.find("{")
     while start != -1:
         depth = 0
@@ -158,12 +142,10 @@ def _find_balanced_object(text: str) -> str | None:
 
 
 def extract_json(text: str) -> dict:
-    """Pull the first JSON object out of a model response, tolerating
-    ```json fences and surrounding prose.
+    """Return the first JSON object in a model response.
 
-    Strategy, in order: whole-string parse; fenced ```json blocks; the
-    first balanced {...} span found by brace-counting. Raises LLMError if
-    nothing parses.
+    Tries, in order: the whole string; fenced ```json blocks; the first
+    balanced {...} span. Raises LLMError if nothing parses.
     """
     candidates: list[str] = [text]
     candidates.extend(m.group(1).strip() for m in _FENCE_RE.finditer(text))
