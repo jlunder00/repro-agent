@@ -1,0 +1,12 @@
+This project vendors the answer-scoring logic from CORE-Bench.
+
+    CORE-Bench: Fostering the Credibility of Published Research Through a
+    Computational Reproducibility Agent Benchmark
+    Zachary S. Siegel, Sayash Kapoor, Nitya Nadgir, Benedikt Stroebl,
+    Arvind Narayanan.  arXiv:2409.11363
+    https://github.com/siegelz/core-bench
+
+CORE-Bench is distributed under the MIT License, Copyright (c) 2024 Zachary Siegel.
+The vendored scoring function lives in src/repro_agent/scoring.py and preserves
+the original interval-based grading semantics so that scores reported by this
+project remain directly comparable to the published CORE-Bench leaderboard.

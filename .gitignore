@@ -1,0 +1,14 @@
+capsules/
+.env
+proposal/*.aux
+proposal/*.fdb_latexmk
+proposal/*.fls
+proposal/*.log
+proposal/*.out
+proposal/*.synctex.gz
+*.pyc
+__pycache__/
+!results/.gitkeep
+results/*.json
+.venv/
+work/

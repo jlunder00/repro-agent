@@ -1,0 +1,119 @@
+\documentclass[10pt]{article}
+
+\usepackage[margin=0.9in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{listings}
+\usepackage[hidelinks]{hyperref}
+\usepackage{natbib}
+
+\setlist{noitemsep, topsep=2pt, partopsep=0pt, parsep=0pt, leftmargin=1.4em}
+
+\titlespacing*{\section}{0pt}{6pt plus 1pt minus 1pt}{3pt}
+\titlespacing*{\subsection}{0pt}{4pt plus 1pt minus 1pt}{2pt}
+\titleformat{\section}{\normalfont\large\bfseries}{\thesection}{0.6em}{}
+\titleformat{\subsection}{\normalfont\bfseries}{\thesubsection}{0.6em}{}
+
+\setlength{\parskip}{1.5pt}
+\setlength{\parindent}{0pt}
+
+\lstset{
+  basicstyle=\ttfamily\scriptsize,
+  breaklines=true,
+  columns=fullflexible,
+  frame=single,
+  framesep=2pt,
+  xleftmargin=2pt,
+  xrightmargin=2pt,
+  aboveskip=2pt,
+  belowskip=2pt
+}
+
+% Greppable placeholder for any not-yet-measured value.
+\newcommand{\TODO}[1]{\textcolor{red}{\textbf{[TODO: #1]}}}
+
+\pagestyle{empty}
+
+\begin{document}
+
+{\LARGE \bfseries Agentic Computational Reproducibility for Published Research}\\[2pt]
+{\large CSE598 (Agentic AI) --- Capstone Project Proposal}
+
+\vspace{2pt}
+\renewcommand{\arraystretch}{1.0}
+\begin{tabular}{@{}p{0.30\linewidth}p{0.66\linewidth}@{}}
+\toprule
+\textbf{Student name} & Jason Lunder \\
+\textbf{Project title} & Agentic Computational Reproducibility of Published Research on CORE-Bench \\
+\textbf{Repository / notebook link} & \TODO{GitHub repository URL} \\
+\textbf{Configuration location} & \texttt{examples/} and \texttt{.env.example} \\
+\bottomrule
+\end{tabular}
+
+\section{Problem Definition}
+Published computational research is often not reproducible: code capsules accompanying a paper fail to run months or years later because of dependency rot, undocumented environments, or ambiguous run instructions. Manually verifying a paper's numerical claims requires a human to install the right toolchain, execute the code, and cross-check outputs against the text --- a slow process that does not scale to the volume of published work. This project builds an \emph{agentic system} that automates that verification: given a paper's code capsule (source code plus a README and/or Dockerfile), the agent must autonomously install dependencies, execute the code, and extract the paper's reported numerical results in machine-checkable form.
+
+\section{Motivation and Project Scope}
+We target CORE-Bench \citep{siegel2024corebench,corebenchgithub}: 270 tasks from 90 published papers in computer science, social science, and medicine (Python and R), split 45 train / 45 test papers, each evaluated at three difficulty tiers (135 tasks per split). Per the benchmark's harness prompts: \emph{Easy} gives the agent the complete code output from a successful run and forbids execution, requiring only information extraction; \emph{Medium} gives the Dockerfile plus a README and requires running the provided Docker command; \emph{Hard} gives only the README with no Dockerfile, requiring the agent to install dependencies and determine the run commands itself. On the 135-task \emph{test} split, the best published agent (CORE-Agent, GPT-4o) reaches only 21.48\% task accuracy on the hard tier \citep{siegel2024corebench} --- ``showing the vast scope for improvement in automating routine scientific tasks.'' The capstone goal is an iterative pipeline that improves on that number; this proposal covers the \emph{baseline} against which it will be measured.
+\textbf{Scope IN:} Python capsules, CPU-only, small capsules (roughly two-thirds of the test split is under 26\,MB).
+\textbf{Scope OUT (deferred):} R capsules, GPU tasks, vision/figure questions, multi-gigabyte capsules, Azure parallel execution.
+
+\section{Runnable Baseline}
+The baseline is a deliberately \emph{strict, single-pass, no-retry} pipeline: (1) fetch the capsule, (2) read the README, (3) issue \emph{one} LLM call proposing install and run commands, (4) execute those commands \emph{once} in Docker, (5) issue \emph{one} LLM call to extract answers from the captured stdout, (6) write \texttt{report.json}, and (7) score it with the vendored official scorer. No retries, self-correction, or re-planning are permitted at any stage.
+
+This design is intentional and is the intellectual core of the project: the baseline is a \emph{scientific control}. The capstone system will add an iterative loop --- observing failures and retrying, revising commands, or re-reading documentation. Without a strict single-pass floor, any accuracy gain from that loop would be confounded with gains from simply using a better model or more prompt engineering. Holding the model, prompts, and one-shot budget fixed and varying only ``iterate or not'' isolates the marginal value the loop contributes. The single-pass design also attributes every failure to exactly one pipeline stage (install, execution, or extraction) --- a useful diagnostic for where the adaptive system needs to invest effort. LLM access is provider-agnostic via \texttt{litellm}, so the pipeline runs unmodified with either an Anthropic or an OpenAI API key.
+
+\section{Test Case and Baseline Output}
+As a running example we use capsule \texttt{capsule-4180912} (easy tier), where the agent is given a populated \texttt{results/} directory and must answer the task's questions by reading it alone, with code execution explicitly forbidden. The baseline writes a \texttt{report.json} per task containing the extracted answers, the raw stdout/stderr captured from the container (medium/hard tiers), and pipeline timing; the vendored scorer then compares each answer to its ground-truth 95\% prediction interval (or does an exact/case-insensitive string or list match) and marks the task correct only if \emph{every} question in it is correct.
+
+\TODO{insert baseline\_output screenshot and observed answers for capsule-4180912}
+% \begin{figure}[h]
+%   \centering
+%   \includegraphics[width=0.85\linewidth]{figures/baseline_output.png}
+%   \caption{Baseline console output / report.json excerpt for capsule-4180912 (easy tier).}
+% \end{figure}
+
+\section{Reproducibility and Run Instructions}
+The repository pins dependencies in \texttt{requirements.txt} and reads provider credentials from \texttt{.env.example} (copy to \texttt{.env} and set exactly one of \texttt{ANTHROPIC\_API\_KEY} or \texttt{OPENAI\_API\_KEY}). Capsule metadata and prompt templates live under \texttt{examples/}. A single task is run with:
+\begin{lstlisting}
+python run_baseline.py --capsule capsule-4180912 --tier easy
+\end{lstlisting}
+which fetches the capsule, runs the single-pass pipeline described in Section 3, and writes results under \texttt{results/}. Batches over a subset/tier/split are supported via \texttt{--subset}, \texttt{--tier}, and \texttt{--limit} flags (see \texttt{run\_baseline.py --help}).
+
+\section{Initial Evaluation Plan}
+We will compare the future iterative agentic system against this single-pass baseline on: (i) official task accuracy (all-or-nothing per task), (ii) per-question accuracy, (iii) wall-clock latency, (iv) dollar cost per task, and (v) a failure-stage breakdown (install vs.\ execution vs.\ extraction) to show \emph{where} iteration recovers failures the baseline cannot. Cost is informative: successful CORE-Agent (GPT-4o) tasks cost \$0.54 on average versus \$2.59 for failed tasks --- failure is more expensive than success, motivating early failure detection. The published numbers below (test split, 45 tasks/tier) are our external reference point; the benchmark reports no human/expert baseline.
+
+\begin{center}
+\small
+\begin{tabular}{@{}llccc@{}}
+\toprule
+Agent & Model & Easy & Medium & Hard \\
+\midrule
+CORE-Agent & GPT-4o      & 60.00\% & 57.78\% & 21.48\% \\
+CORE-Agent & GPT-4o-mini & 44.44\% & 32.59\% & 16.30\% \\
+AutoGPT    & GPT-4o      & 35.56\% & 37.78\% & 6.67\%  \\
+AutoGPT    & GPT-4o-mini & 8.89\%  & 2.22\%  & 2.22\%  \\
+\bottomrule
+\end{tabular}
+\end{center}
+\vspace{-2pt}
+{\scriptsize Source: \citet{siegel2024corebench}, Table 5 (pass@1, test split, 45 papers/tier).}
+
+Our own single-pass baseline numbers on the same metrics are pending measurement: \TODO{easy-tier task accuracy}, \TODO{medium-tier task accuracy}, \TODO{hard-tier task accuracy}, \TODO{per-question accuracy}, \TODO{mean wall-clock latency}, \TODO{mean \$ cost per task}, \TODO{failure-stage breakdown}.
+
+\section{Limitations and Next Steps}
+Several risks are known up front. \emph{Dependency rot}: years-old research code often depends on unpinned or deprecated packages, so installation may fail for reasons unrelated to agent competence. \emph{Resource scope}: capsules needing GPUs or multi-gigabyte data are out of scope for this phase, undercounting the true task pool. \emph{Language coverage}: R capsules (roughly half of CORE-Bench) are deferred, so results here characterize only the Python subset. \emph{Stochastic scoring risk}: grading uses a 95\% prediction interval from three ground-truth runs, so even a correct, faithfully reproduced run can fall outside it by chance --- a perfect agent would not score 100\%. Next steps: run the baseline across the full small/Python/CPU test subset, use the Section 6 failure-stage breakdown to prioritize what the iterative loop targets first, then extend to R capsules and larger resource budgets.
+
+{\small
+\setlength{\bibsep}{0pt}
+\bibliographystyle{plainnat}
+\bibliography{references}
+}
+
+\end{document}

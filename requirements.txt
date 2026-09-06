@@ -1,0 +1,7 @@
+# litellm is upper-bounded deliberately. Releases from ~1.60 onward import
+# `typing.NotRequired`, which does not exist before Python 3.11, so an
+# unpinned install breaks `import litellm` outright on Python 3.10.
+litellm>=1.40.0,<1.60
+requests>=2.31.0
+numpy>=1.24.0
+scipy>=1.10.0
