@@ -1,4 +1,4 @@
-# repro-agent — a computational reproducibility baseline
+# repro-agent: a computational reproducibility baseline
 
 An agentic system for computationally reproducing published research: given a
 paper's code capsule, install its dependencies, run it, and report the numbers
@@ -96,24 +96,20 @@ export REPRO_AGENT_MODEL=openai/gpt-4o-mini
 
 ## The three difficulty tiers
 
-CORE-Bench presents each capsule at three tiers. This baseline implements two;
-`medium` is out of scope because it requires Docker-in-Docker.
+CORE-Bench poses each capsule at three tiers. `prepare_tier()` copies the
+capsule and removes files according to the tier, matching the official
+`benchmark/benchmark.py`. `results/` here means the capsule's own output
+directory, the files the original authors shipped in the tarball.
 
-| Tier | `results/` | `REPRODUCING.md`, `environment/`, run scripts | Docker |
+| Tier | Capsule `results/` | `REPRODUCING.md`, `environment/`, run scripts | Docker |
 |---|---|---|---|
-| `easy` | **populated** — answers are on disk | removed | no |
-| `medium` | emptied | **kept** (this is where the Dockerfile lives) | yes (DinD) — *not implemented* |
-| `hard` | emptied | removed | yes |
+| `easy` | kept | removed | not used |
+| `medium` | emptied | kept (includes the Dockerfile) | Docker-in-Docker; not implemented |
+| `hard` | emptied | removed | required |
 
-`prepare_tier()` reproduces the rule from the official `benchmark/benchmark.py`
-exactly. Two details:
-
-- The easy tier is not "medium plus answers": it also strips the reproduction
-  scaffolding.
-- The `results/` directory is emptied, not deleted, for medium and hard.
-
-Handing a hard-tier run a Dockerfile and reproduction instructions would turn
-it into the medium tier and inflate the reported score.
+On the easy tier the answers are read from the kept `results/` without running
+anything. On the hard tier the agent must install dependencies and run the
+code with only the README to go on.
 
 ## How answers are graded
 
