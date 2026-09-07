@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-09-07T02:29:16.013656+00:00",
+  "generated_at": "2026-09-07T06:43:28.879280+00:00",
   "tier": "hard",
   "split": "test",
   "n_tasks": 45,
   "n_correct": 0,
   "task_accuracy": 0.0,
-  "total_cost_usd": 0.4837,
-  "total_duration_s": 724.2,
+  "total_cost_usd": 1.2691,
+  "total_duration_s": 12289.4,
   "stage_failures": {
     "prepare": 0,
     "plan": 0,
@@ -35,8 +35,8 @@
         "total_vision_questions": 0
       },
       "task_correct": false,
-      "cost_usd": 0.004428,
-      "duration_s": 13.39,
+      "cost_usd": 0.019122,
+      "duration_s": 88.04,
       "failed_stage": null,
       "error": null,
       "image": "python:3.11-slim",
@@ -46,25 +46,25 @@
           "name": "prepare",
           "ok": true,
           "detail": "/mnt/data-2/asu/CSE598/repro-agent/work/capsule-5507257__hard",
-          "duration_s": 6.44
+          "duration_s": 6.29
         },
         {
           "name": "plan",
           "ok": true,
-          "detail": "pip install tensorflow-gpu==2.4.1 keras==2.4.3 pandas numpy scikit-learn && cd code && python3 binary_detection_train.py && python3 binary_detection_test.py && python3 multiclass_state_analysis_train.py && python3 multiclass_state_analysis_testing.py",
-          "duration_s": 1.85
+          "detail": "pip install tensorflow keras scikit-learn pandas numpy && cd code && python3 binary_detection_train.py && python3 binary_detection_test.py && python3 multiclass_state_analysis_train.py && python3 multiclass_state_analysis_testing.py",
+          "duration_s": 1.87
         },
         {
           "name": "execute",
           "ok": false,
           "detail": "exit=1 timed_out=False",
-          "duration_s": 3.63
+          "duration_s": 78.32
         },
         {
           "name": "extract",
           "ok": true,
           "detail": "1 answers",
-          "duration_s": 1.47
+          "duration_s": 1.55
         },
         {
           "name": "score",
@@ -89,8 +89,8 @@
         "total_vision_questions": 1
       },
       "task_correct": false,
-      "cost_usd": 0.016334,
-      "duration_s": 13.76,
+      "cost_usd": 0.016174,
+      "duration_s": 14.25,
       "failed_stage": null,
       "error": null,
       "image": "python:3.11-slim",
@@ -100,25 +100,25 @@
           "name": "prepare",
           "ok": true,
           "detail": "/mnt/data-2/asu/CSE598/repro-agent/work/capsule-3449234__hard",
-          "duration_s": 1.04
+          "duration_s": 1.05
         },
         {
           "name": "plan",
           "ok": true,
           "detail": "cd code && pip install -r requirements.txt && python main.py && python OnlyLSTM_NEW.py && python OnlyLSTM_NEW_oneChannel.py && jupyter nbconvert --to notebook --execute --inplace visualize_results.ipynb",
-          "duration_s": 2.19
+          "duration_s": 2.04
         },
         {
           "name": "execute",
           "ok": false,
           "detail": "exit=1 timed_out=False",
-          "duration_s": 8.66
+          "duration_s": 9.29
         },
         {
           "name": "extract",
           "ok": true,
           "detail": "3 answers",
-          "duration_s": 1.88
+          "duration_s": 1.87
         },
         {
           "name": "score",
@@ -142,8 +142,8 @@
         "total_vision_questions": 2
       },
       "task_correct": false,
-      "cost_usd": 0.023084,
-      "duration_s": 37.33,
+      "cost_usd": 0.022874,
+      "duration_s": 35.26,
       "failed_stage": null,
       "error": null,
       "image": "python:3.11-slim",
@@ -153,7 +153,7 @@
           "name": "prepare",
           "ok": true,
           "detail": "/mnt/data-2/asu/CSE598/repro-agent/work/capsule-9670283__hard",
-          "duration_s": 29.45
+          "duration_s": 28.08
         },
         {
           "name": "plan",
@@ -165,13 +165,13 @@
           "name": "execute",
           "ok": false,
           "detail": "exit=1 timed_out=False",
-          "duration_s": 3.41
+          "duration_s": 3.02
         },
         {
           "name": "extract",
           "ok": true,
           "detail": "2 answers",
-          "duration_s": 1.9
+          "duration_s": 1.6
         },
         {
           "name": "score",
@@ -201,8 +201,8 @@
         "total_vision_questions": 0
       },
       "task_correct": false,
-      "cost_usd": 0.021326,
-      "duration_s": 43.59,
+      "cost_usd": 0.03971,
+      "duration_s": 79.32,
       "failed_stage": null,
       "error": null,
       "image": "python:3.11-slim",
@@ -212,25 +212,25 @@
           "name": "prepare",
           "ok": true,
           "detail": "/mnt/data-2/asu/CSE598/repro-agent/work/capsule-8536428__hard",
-          "duration_s": 1.23
+          "duration_s": 1.37
         },
         {
           "name": "plan",
           "ok": true,
-          "detail": "pip install -q numpy pandas scikit-learn keras tensorflow nltk empath && cd 'code/Traditional_ML_based_Methods/1_SVM_Lexical/1_liar__lexical' && python svm_train.py && python svm_test.py",
-          "duration_s": 2.06
+          "detail": "pip install numpy pandas scikit-learn keras tensorflow nltk empath && cd 'code/Traditional_ML_based_Methods/1_SVM_Lexical/1_liar__lexical' && python svm_train.py && python svm_test.py",
+          "duration_s": 1.93
         },
         {
           "name": "execute",
           "ok": false,
           "detail": "exit=1 timed_out=False",
-          "duration_s": 37.91
+          "duration_s": 73.58
         },
         {
           "name": "extract",
           "ok": true,
           "detail": "8 answers",
-          "duration_s": 2.39
+          "duration_s": 2.44
         },
         {
           "name": "score",
@@ -254,8 +254,8 @@
         "total_vision_questions": 2
       },
       "task_correct": false,
-      "cost_usd": 0.006022,
-      "duration_s": 8.21,
+      "cost_usd": 0.003848,
+      "duration_s": 5.14,
       "failed_stage": null,
       "error": null,
       "image": "python:3.11-slim",
@@ -270,20 +270,20 @@
         {
           "name": "plan",
           "ok": true,
-          "detail": "pip install -r requirements.txt 2>/dev/null; pip install network_diffusion jupyter nbconvert matplotlib numpy pandas networkx; cd code && python epidemic.py",
-          "duration_s": 1.89
+          "detail": "pip install -r requirements.txt && python code/epidemic.py",
+          "duration_s": 1.54
         },
         {
           "name": "execute",
           "ok": false,
           "detail": "exit=1 timed_out=False",
-          "duration_s": 4.34
+          "duration_s": 1.94
         },
         {
           "name": "extract",
           "ok": true,
           "detail": "2 answers",
-          "duration_s": 1.96
+          "duration_s": 1.64
         },
         {
           "name": "score",
@@ -308,8 +308,8 @@
         "total_vision_questions": 0
       },
       "task_correct": false,
-      "cost_usd": 0.006904,
-      "duration_s": 9.02,
+      "cost_usd": 0.007326,
+      "duration_s": 17.44,
       "failed_stage": null,
       "error": null,
       "image": "python:3.11-slim",
@@ -319,25 +319,25 @@
           "name": "prepare",
           "ok": true,
           "detail": "/mnt/data-2/asu/CSE598/repro-agent/work/capsule-6049678__hard",
-          "duration_s": 0.04
+          "duration_s": 0.03
         },
         {
           "name": "plan",
           "ok": true,
           "detail": "pip install numpy scipy scikit-learn && cd code && python Main.py",
-          "duration_s": 1.62
+          "duration_s": 1.51
         },
         {
           "name": "execute",
           "ok": false,
           "detail": "exit=1 timed_out=False",
-          "duration_s": 5.43
+          "duration_s": 14.15
         },
         {
           "name": "extract",
           "ok": true,
           "detail": "3 answers",
-          "duration_s": 1.93
+          "duration_s": 1.75
         },
         {
           "name": "score",
@@ -360,8 +360,8 @@
         "total_vision_questions": 1
       },
       "task_correct": false,
-      "cost_usd": 0.00616,
-      "duration_s": 4.28,
+      "cost_usd": 0.00624,
+      "duration_s": 4.37,
       "failed_stage": null,
       "error": null,
       "image": "python:3.11-slim",
@@ -371,25 +371,25 @@
           "name": "prepare",
           "ok": true,
           "detail": "/mnt/data-2/asu/CSE598/repro-agent/work/capsule-9641396__hard",
-          "duration_s": 0.17
+          "duration_s": 0.15
         },
         {
           "name": "plan",
           "ok": true,
-          "detail": "sudo apt-get update && sudo apt-get install -y python3 python3-pip llvm-dev berkeley-abc && pip3 install numpy numba matplotlib && cd code && for f in ../data/benchmarks/*.v; do python3 darwin.py \"$f\" -generations 30000 -verilog \"../results/$(basename \"$f\" .v)_out.v\"; done",
-          "duration_s": 2.13
+          "detail": "sudo apt-get update && sudo apt-get install -y python3 python3-pip llvm-dev berkeley-abc texlive-full && pip3 install numpy numba matplotlib && cd code && for f in ../data/benchmarks/*.v; do out=../results/$(basename \"${f%.v}\")_out.v; python3 darwin.py \"$f\" -generations 30000 -verilog \"$out\"; done",
+          "duration_s": 2.23
         },
         {
           "name": "execute",
           "ok": false,
           "detail": "exit=127 timed_out=False",
-          "duration_s": 0.24
+          "duration_s": 0.33
         },
         {
           "name": "extract",
           "ok": true,
           "detail": "1 answers",
-          "duration_s": 1.75
+          "duration_s": 1.66
         },
         {
           "name": "score",
@@ -412,8 +412,8 @@
         "total_vision_questions": 0
       },
       "task_correct": false,
-      "cost_usd": 0.004694,
-      "duration_s": 5.63,
+      "cost_usd": 0.004544,
+      "duration_s": 5.26,
       "failed_stage": null,
       "error": null,
       "image": "python:3.11-slim",
@@ -428,20 +428,20 @@
         {
           "name": "plan",
           "ok": true,
-          "detail": "pip install tensorflow==1.13.1 keras==2.2.4 numpy scipy matplotlib pillow && cd code && python split_mnist.py",
-          "duration_s": 2.03
+          "detail": "pip install tensorflow==1.13.1 keras==2.2.4 numpy scipy matplotlib pandas scikit-learn && cd code && python split_mnist.py",
+          "duration_s": 1.76
         },
         {
           "name": "execute",
           "ok": false,
           "detail": "exit=1 timed_out=False",
-          "duration_s": 1.94
+          "duration_s": 1.96
         },
         {
           "name": "extract",
           "ok": true,
           "detail": "1 answers",
-          "duration_s": 1.61
+          "duration_s": 1.49
         },
         {
           "name": "score",
@@ -466,7 +466,7 @@
       },
       "task_correct": false,
       "cost_usd": 0.015712,
-      "duration_s": 7.31,
+      "duration_s": 5.22,
       "failed_stage": null,
       "error": null,
       "image": "python:3.11-slim",
@@ -476,25 +476,25 @@
           "name": "prepare",
           "ok": true,
           "detail": "/mnt/data-2/asu/CSE598/repro-agent/work/capsule-8234136__hard",
-          "duration_s": 1.2
+          "duration_s": 1.21
         },
         {
           "name": "plan",
           "ok": true,
           "detail": "cd code && python3 install.py && python3 main.py --scheduler GOBI && python3 main.py --scheduler A3C && python3 grapher.py",
-          "duration_s": 1.78
+          "duration_s": 1.72
         },
         {
           "name": "execute",
           "ok": false,
           "detail": "exit=1 timed_out=False",
-          "duration_s": 0.85
+          "duration_s": 0.88
         },
         {
           "name": "extract",
           "ok": true,
           "detail": "2 answers",
-          "duration_s": 3.48
+          "duration_s": 1.41
         },
         {
           "name": "score",
@@ -517,8 +517,8 @@
         "total_vision_questions": 0
       },
       "task_correct": false,
-      "cost_usd": 0.0249,
-      "duration_s": 53.28,
+      "cost_usd": 0.04148,
+      "duration_s": 244.89,
       "failed_stage": null,
       "error": null,
       "image": "python:3.11-slim",
@@ -528,25 +528,25 @@
           "name": "prepare",
           "ok": true,
           "detail": "/mnt/data-2/asu/CSE598/repro-agent/work/capsule-9660931__hard",
-          "duration_s": 5.47
+          "duration_s": 5.28
         },
         {
           "name": "plan",
           "ok": true,
-          "detail": "pip install -q tensorflow seaborn scikit-learn jupyter nbconvert && cd code && jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=-1 HCR-Net.ipynb --output HCR-Net-executed.ipynb",
-          "duration_s": 2.29
+          "detail": "pip install -q tensorflow seaborn scikit-learn jupyter nbconvert && jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=-1 code/HCR-Net.ipynb --output HCR-Net-executed.ipynb",
+          "duration_s": 2.03
         },
         {
           "name": "execute",
           "ok": false,
           "detail": "exit=1 timed_out=False",
-          "duration_s": 43.79
+          "duration_s": 236.0
         },
         {
           "name": "extract",
           "ok": true,
           "detail": "1 answers",
-          "duration_s": 1.73
+          "duration_s": 1.58
         },
         {
           "name": "score",
@@ -569,8 +569,8 @@
         "total_vision_questions": 0
       },
       "task_correct": false,
-      "cost_usd": 0.005212,
-      "duration_s": 7.72,
+      "cost_usd": 0.005172,
+      "duration_s": 13.07,
       "failed_stage": null,
       "error": null,
       "image": "python:3.11-slim",
@@ -585,20 +585,20 @@
         {
           "name": "plan",
           "ok": true,
-          "detail": "pip install openpyxl pandas && cd code && python script.py",
-          "duration_s": 1.77
+          "detail": "pip install openpyxl pandas && python code/script.py",
+          "duration_s": 1.46
         },
         {
           "name": "execute",
           "ok": false,
           "detail": "exit=1 timed_out=False",
-          "duration_s": 4.17
+          "duration_s": 10.12
         },
         {
           "name": "extract",
           "ok": true,
           "detail": "1 answers",
-          "duration_s": 1.77
+          "duration_s": 1.48
         },
         {
           "name": "score",
@@ -622,8 +622,8 @@
         "total_vision_questions": 2
       },
       "task_correct": false,
-      "cost_usd": 0.008796,
-      "duration_s": 5.22,
+      "cost_usd": 0.043344,
+      "duration_s": 210.08,
       "failed_stage": null,
       "error": null,
       "image": "r-base:4.4.1",
@@ -639,19 +639,19 @@
           "name": "plan",
           "ok": true,
           "detail": "Rscript -e 'install.packages(c(\"mFLICA\",\"rmarkdown\"), repos=\"https://cloud.r-project.org\"); rmarkdown::render(\"code/ResultReproducibilityNotebook.Rmd\", output_dir=\"results\")'",
-          "duration_s": 2.11
+          "duration_s": 1.87
         },
         {
           "name": "execute",
           "ok": false,
           "detail": "exit=1 timed_out=False",
-          "duration_s": 0.47
+          "duration_s": 206.1
         },
         {
           "name": "extract",
           "ok": true,
           "detail": "2 answers",
-          "duration_s": 2.63
+          "duration_s": 2.1
         },
         {
           "name": "score",
@@ -675,8 +675,8 @@
         "total_vision_questions": 1
       },
       "task_correct": false,
-      "cost_usd": 0.017582,
-      "duration_s": 88.47,
+      "cost_usd": 0.017326,
+      "duration_s": 87.86,
       "failed_stage": null,
       "error": null,
       "image": "python:3.11-slim",
@@ -691,20 +691,20 @@
         {
           "name": "plan",
           "ok": true,
-          "detail": "pip3 install -r requirements.txt && cd code && python3 feature_selection.py && python3 model_fine_tuning.py && python3 performance_measurement.py",
-          "duration_s": 1.77
+          "detail": "pip3 install -r requirements.txt && python3 code/feature_selection.py && python3 code/model_fine_tuning.py && python3 code/performance_measurement.py",
+          "duration_s": 1.65
         },
         {
           "name": "execute",
           "ok": false,
           "detail": "exit=1 timed_out=False",
-          "duration_s": 84.59
+          "duration_s": 84.22
         },
         {
           "name": "extract",
           "ok": true,
           "detail": "2 answers",
-          "duration_s": 1.93
+          "duration_s": 1.82
         },
         {
           "name": "score",
@@ -727,8 +727,8 @@
         "total_vision_questions": 1
       },
       "task_correct": false,
-      "cost_usd": 0.00569,
-      "duration_s": 13.5,
+      "cost_usd": 0.011286,
+      "duration_s": 26.34,
       "failed_stage": null,
       "error": null,
       "image": "python:3.11-slim",
@@ -743,20 +743,20 @@
         {
           "name": "plan",
           "ok": true,
-          "detail": "pip install -q numpy pandas scipy matplotlib && cd code && python demo_density_models.py",
-          "duration_s": 1.83
+          "detail": "pip install numpy pandas scipy matplotlib && cd code && python demo_density_models.py",
+          "duration_s": 1.68
         },
         {
           "name": "execute",
           "ok": false,
           "detail": "exit=1 timed_out=False",
-          "duration_s": 8.96
+          "duration_s": 21.83
         },
         {
           "name": "extract",
           "ok": true,
           "detail": "1 answers",
-          "duration_s": 1.53
+          "duration_s": 1.64
         },
         {
           "name": "score",
@@ -780,8 +780,8 @@
         "total_vision_questions": 1
       },
       "task_correct": false,
-      "cost_usd": 0.004562,
-      "duration_s": 24.55,
+      "cost_usd": 0.02356,
+      "duration_s": 133.59,
       "failed_stage": null,
       "error": null,
       "image": "python:3.11-slim",
@@ -796,20 +796,20 @@
         {
           "name": "plan",
           "ok": true,
-          "detail": "pip install -q jupyter nbconvert scikit-learn mlxtend skrebate pandas numpy scipy matplotlib seaborn && for nb in code/*.ipynb; do jupyter nbconvert --to notebook --execute --inplace --ExecutePreprocessor.timeout=1200 \"$nb\"; done",
-          "duration_s": 2.13
+          "detail": "pip install -q numpy pandas scikit-learn matplotlib seaborn mlxtend skrebate jupyter nbconvert && for nb in code/*.ipynb; do jupyter nbconvert --to notebook --execute --inplace \"$nb\" --ExecutePreprocessor.timeout=1200; done",
+          "duration_s": 2.06
         },
         {
           "name": "execute",
           "ok": false,
           "detail": "exit=1 timed_out=False",
-          "duration_s": 20.72
+          "duration_s": 129.63
         },
         {
           "name": "extract",
           "ok": true,
           "detail": "2 answers",
-          "duration_s": 1.68
+          "duration_s": 1.89
         },
         {
           "name": "score",
@@ -833,8 +833,8 @@
         "total_vision_questions": 2
       },
       "task_correct": false,
-      "cost_usd": 0.009808,
-      "duration_s": 4.8,
+      "cost_usd": 0.046796,
+      "duration_s": 679.09,
       "failed_stage": null,
       "error": null,
       "image": "r-base:4.4.1",
@@ -849,20 +849,20 @@
         {
           "name": "plan",
           "ok": true,
-          "detail": "Rscript -e 'install.packages(c(\"tidyverse\",\"rmarkdown\",\"readxl\",\"knitr\",\"here\",\"irr\",\"janitor\",\"kableExtra\"), repos=\"https://cloud.r-project.org\"); source(\"code/master_script.R\")'",
-          "duration_s": 2.25
+          "detail": "Rscript -e 'install.packages(c(\"rmarkdown\",\"tidyverse\",\"knitr\",\"readxl\",\"irr\",\"here\",\"janitor\",\"kableExtra\"), repos=\"https://cloud.r-project.org\"); source(\"code/master_script.R\")'",
+          "duration_s": 2.23
         },
         {
           "name": "execute",
           "ok": false,
           "detail": "exit=1 timed_out=False",
-          "duration_s": 0.56
+          "duration_s": 674.45
         },
         {
           "name": "extract",
           "ok": true,
           "detail": "2 answers",
-          "duration_s": 1.82
+          "duration_s": 2.24
         },
         {
           "name": "score",
@@ -885,8 +885,8 @@
         "total_vision_questions": 1
       },
       "task_correct": false,
-      "cost_usd": 0.005456,
-      "duration_s": 5.49,
+      "cost_usd": 0.043846,
+      "duration_s": 905.15,
       "failed_stage": null,
       "error": null,
       "image": "r-base:4.4.1",
@@ -896,25 +896,25 @@
           "name": "prepare",
           "ok": true,
           "detail": "/mnt/data-2/asu/CSE598/repro-agent/work/capsule-2816027__hard",
-          "duration_s": 0.31
+          "duration_s": 0.32
         },
         {
           "name": "plan",
           "ok": true,
-          "detail": "Rscript -e 'pkgs <- c(\"ggplot2\",\"dplyr\",\"tidyr\",\"reshape2\",\"ggpubr\",\"survival\",\"survminer\",\"data.table\",\"stringr\",\"gridExtra\",\"cowplot\",\"RColorBrewer\",\"pheatmap\"); for(p in pkgs) if(!requireNamespace(p, quietly=TRUE)) install.packages(p, repos=\"https://cloud.r-project.org\")' && cd code && Rscript main.R",
-          "duration_s": 2.87
+          "detail": "cd code && Rscript -e 'pkgs <- c(\"tidyverse\",\"ggplot2\",\"reshape2\",\"gridExtra\",\"survival\",\"survminer\",\"estimate\",\"limma\"); for(p in pkgs) if(!requireNamespace(p, quietly=TRUE)) install.packages(p, repos=\"https://cloud.r-project.org\")' && Rscript main.R",
+          "duration_s": 2.46
         },
         {
           "name": "execute",
           "ok": false,
-          "detail": "exit=1 timed_out=False",
-          "duration_s": 0.73
+          "detail": "exit=-1 timed_out=True",
+          "duration_s": 900.34
         },
         {
           "name": "extract",
           "ok": true,
           "detail": "1 answers",
-          "duration_s": 1.58
+          "duration_s": 2.03
         },
         {
           "name": "score",
@@ -938,8 +938,8 @@
         "total_vision_questions": 2
       },
       "task_correct": false,
-      "cost_usd": 0.012148,
-      "duration_s": 6.54,
+      "cost_usd": 0.050378,
+      "duration_s": 560.88,
       "failed_stage": null,
       "error": null,
       "image": "r-base:4.4.1",
@@ -949,25 +949,25 @@
           "name": "prepare",
           "ok": true,
           "detail": "/mnt/data-2/asu/CSE598/repro-agent/work/capsule-3821950__hard",
-          "duration_s": 0.19
+          "duration_s": 0.18
         },
         {
           "name": "plan",
           "ok": true,
-          "detail": "cd code && Rscript -e 'if (!requireNamespace(\"rmarkdown\", quietly=TRUE)) install.packages(\"rmarkdown\", repos=\"https://cloud.r-project.org\"); if (!requireNamespace(\"devtools\", quietly=TRUE)) install.packages(\"devtools\", repos=\"https://cloud.r-project.org\"); pkgs <- c(\"knitr\",\"ggplot2\",\"dplyr\",\"tidyr\",\"png\",\"grid\",\"gridExtra\",\"cowplot\",\"scales\",\"readr\",\"stringr\",\"purrr\",\"rioja\",\"vegan\",\"reshape2\"); for(p in pkgs) if (!requireNamespace(p, quietly=TRUE)) try(install.packages(p, repos=\"https://cloud.r-project.org\")); rmarkdown::render(\"ktc_11_paper.Rmd\")'",
-          "duration_s": 4.0
+          "detail": "cd code && Rscript -e 'if (!requireNamespace(\"rmarkdown\", quietly=TRUE)) install.packages(\"rmarkdown\", repos=\"https://cloud.r-project.org\"); if (!requireNamespace(\"devtools\", quietly=TRUE)) install.packages(\"devtools\", repos=\"https://cloud.r-project.org\"); rmarkdown::render(\"ktc_11_paper.Rmd\")'",
+          "duration_s": 2.73
         },
         {
           "name": "execute",
           "ok": false,
           "detail": "exit=1 timed_out=False",
-          "duration_s": 0.55
+          "duration_s": 555.76
         },
         {
           "name": "extract",
           "ok": true,
           "detail": "2 answers",
-          "duration_s": 1.8
+          "duration_s": 2.2
         },
         {
           "name": "score",
@@ -992,7 +992,7 @@
       },
       "task_correct": false,
       "cost_usd": 0.002978,
-      "duration_s": 4.71,
+      "duration_s": 5.17,
       "failed_stage": null,
       "error": null,
       "image": "r-base:4.4.1",
@@ -1008,19 +1008,19 @@
           "name": "plan",
           "ok": true,
           "detail": "Rscript code/pancancer_calculation.R",
-          "duration_s": 1.43
+          "duration_s": 1.54
         },
         {
           "name": "execute",
           "ok": false,
           "detail": "exit=1 timed_out=False",
-          "duration_s": 0.41
+          "duration_s": 0.53
         },
         {
           "name": "extract",
           "ok": true,
           "detail": "2 answers",
-          "duration_s": 2.84
+          "duration_s": 3.08
         },
         {
           "name": "score",
@@ -1044,8 +1044,8 @@
         "total_vision_questions": 1
       },
       "task_correct": false,
-      "cost_usd": 0.015338,
-      "duration_s": 36.74,
+      "cost_usd": 0.015982,
+      "duration_s": 72.7,
       "failed_stage": null,
       "error": null,
       "image": "python:3.11-slim",
@@ -1061,19 +1061,19 @@
           "name": "plan",
           "ok": true,
           "detail": "pip install numpy tensorflow keras h5py scikit-learn && cd code && python run_prediction.py",
-          "duration_s": 1.62
+          "duration_s": 1.71
         },
         {
           "name": "execute",
           "ok": false,
           "detail": "exit=1 timed_out=False",
-          "duration_s": 33.25
+          "duration_s": 69.05
         },
         {
           "name": "extract",
           "ok": true,
           "detail": "2 answers",
-          "duration_s": 1.81
+          "duration_s": 1.88
         },
         {
           "name": "score",
@@ -1097,8 +1097,8 @@
         "total_vision_questions": 2
       },
       "task_correct": false,
-      "cost_usd": 0.004168,
-      "duration_s": 4.51,
+      "cost_usd": 0.0436,
+      "duration_s": 429.46,
       "failed_stage": null,
       "error": null,
       "image": "r-base:4.4.1",
@@ -1108,25 +1108,25 @@
           "name": "prepare",
           "ok": true,
           "detail": "/mnt/data-2/asu/CSE598/repro-agent/work/capsule-1724988__hard",
-          "duration_s": 0.02
+          "duration_s": 0.01
         },
         {
           "name": "plan",
           "ok": true,
-          "detail": "Rscript -e 'install.packages(c(\"lme4\",\"lmerTest\",\"ggplot2\",\"dplyr\",\"tidyr\",\"emmeans\",\"effsize\"), repos=\"https://cloud.r-project.org\")' && cd code && Rscript calibration_error.R && Rscript lss1_summary_analyses.R && Rscript lss2_summary_analyses.R && Rscript lss2_peak_analyses.R",
-          "duration_s": 2.46
+          "detail": "Rscript -e 'install.packages(c(\"lme4\",\"lmerTest\",\"ggplot2\",\"dplyr\",\"tidyr\",\"emmeans\",\"effsize\"), repos=\"https://cloud.r-project.org\")' && Rscript code/calibration_error.R && Rscript code/lss1_summary_analyses.R && Rscript code/lss2_summary_analyses.R && Rscript code/lss2_peak_analyses.R",
+          "duration_s": 2.58
         },
         {
           "name": "execute",
           "ok": false,
           "detail": "exit=1 timed_out=False",
-          "duration_s": 0.44
+          "duration_s": 424.82
         },
         {
           "name": "extract",
           "ok": true,
           "detail": "2 answers",
-          "duration_s": 1.59
+          "duration_s": 2.05
         },
         {
           "name": "score",
@@ -1150,8 +1150,8 @@
         "total_vision_questions": 2
       },
       "task_correct": false,
-      "cost_usd": 0.019322,
-      "duration_s": 6.92,
+      "cost_usd": 0.057814,
+      "duration_s": 908.36,
       "failed_stage": null,
       "error": null,
       "image": "r-base:4.4.1",
@@ -1166,20 +1166,20 @@
         {
           "name": "plan",
           "ok": true,
-          "detail": "cd code && Rscript -e 'install.packages(c(\"tidyverse\",\"lfe\",\"lme4\",\"stargazer\",\"sf\",\"sp\",\"rgdal\",\"readxl\",\"broom\",\"lmtest\",\"sandwich\",\"multiwayvcov\",\"boot\",\"ggplot2\",\"dplyr\",\"data.table\",\"gridExtra\",\"scales\",\"xtable\",\"maptools\",\"rgeos\"), repos=\"https://cloud.r-project.org\")' && for f in 01_motivation.R 02_design.R 03_survey.R 04_metaketa_comp.R 05_lapop.R 06_misc.R; do Rscript $f; done",
-          "duration_s": 3.68
+          "detail": "cd code && Rscript -e 'install.packages(c(\"tidyverse\",\"sf\",\"lfe\",\"stargazer\",\"readxl\",\"lme4\",\"broom\",\"estimatr\",\"gridExtra\",\"scales\",\"ggplot2\",\"dplyr\",\"tidyr\",\"stringr\",\"purrr\",\"boot\",\"reshape2\",\"grid\",\"RColorBrewer\"), repos=\"https://cloud.r-project.org\")' && for f in 01_motivation.R 02_design.R 03_survey.R 04_metaketa_comp.R 05_lapop.R 06_misc.R; do Rscript $f; done",
+          "duration_s": 3.54
         },
         {
           "name": "execute",
           "ok": false,
-          "detail": "exit=1 timed_out=False",
-          "duration_s": 0.53
+          "detail": "exit=-1 timed_out=True",
+          "duration_s": 902.04
         },
         {
           "name": "extract",
           "ok": true,
           "detail": "2 answers",
-          "duration_s": 2.61
+          "duration_s": 2.68
         },
         {
           "name": "score",
@@ -1202,8 +1202,8 @@
         "total_vision_questions": 0
       },
       "task_correct": false,
-      "cost_usd": 0.035366,
-      "duration_s": 118.86,
+      "cost_usd": 0.03517,
+      "duration_s": 213.63,
       "failed_stage": null,
       "error": null,
       "image": "python:3.11-slim",
@@ -1213,25 +1213,25 @@
           "name": "prepare",
           "ok": true,
           "detail": "/mnt/data-2/asu/CSE598/repro-agent/work/capsule-0851068__hard",
-          "duration_s": 0.79
+          "duration_s": 1.04
         },
         {
           "name": "plan",
           "ok": true,
           "detail": "pip install numpy pandas torch torchvision matplotlib tqdm timm==0.3.2 scikit-learn pillow && cd code && bash demo.sh",
-          "duration_s": 1.8
+          "duration_s": 1.88
         },
         {
           "name": "execute",
           "ok": false,
           "detail": "exit=1 timed_out=False",
-          "duration_s": 114.56
+          "duration_s": 208.85
         },
         {
           "name": "extract",
           "ok": true,
           "detail": "1 answers",
-          "duration_s": 1.7
+          "duration_s": 1.86
         },
         {
           "name": "score",
@@ -1255,8 +1255,8 @@
         "total_vision_questions": 1
       },
       "task_correct": false,
-      "cost_usd": 0.008018,
-      "duration_s": 4.71,
+      "cost_usd": 0.045366,
+      "duration_s": 852.85,
       "failed_stage": null,
       "error": null,
       "image": "r-base:4.4.1",
@@ -1266,25 +1266,25 @@
           "name": "prepare",
           "ok": true,
           "detail": "/mnt/data-2/asu/CSE598/repro-agent/work/capsule-1394704__hard",
-          "duration_s": 0.14
+          "duration_s": 0.13
         },
         {
           "name": "plan",
           "ok": true,
-          "detail": "Rscript -e 'install.packages(c(\"tidyverse\",\"gganimate\",\"gifski\",\"transformr\"), repos=\"https://cloud.r-project.org\"); rmarkdown::render(\"code/modular.Rmd\")'",
-          "duration_s": 2.43
+          "detail": "Rscript -e 'install.packages(c(\"tidyverse\",\"gganimate\",\"gifski\",\"transformr\",\"rmarkdown\",\"knitr\"), repos=\"https://cloud.r-project.org\"); rmarkdown::render(\"code/modular.Rmd\", output_dir = \"results\")'",
+          "duration_s": 2.42
         },
         {
           "name": "execute",
           "ok": false,
           "detail": "exit=1 timed_out=False",
-          "duration_s": 0.54
+          "duration_s": 848.21
         },
         {
           "name": "extract",
           "ok": true,
           "detail": "2 answers",
-          "duration_s": 1.6
+          "duration_s": 2.08
         },
         {
           "name": "score",
@@ -1307,8 +1307,8 @@
         "total_vision_questions": 1
       },
       "task_correct": false,
-      "cost_usd": 0.005222,
-      "duration_s": 4.5,
+      "cost_usd": 0.042332,
+      "duration_s": 733.78,
       "failed_stage": null,
       "error": null,
       "image": "r-base:4.4.1",
@@ -1323,20 +1323,20 @@
         {
           "name": "plan",
           "ok": true,
-          "detail": "Rscript -e 'install.packages(c(\"rmarkdown\",\"tidyverse\",\"knitr\",\"kableExtra\",\"lme4\",\"broom\",\"broom.mixed\",\"ggplot2\",\"cowplot\",\"scales\",\"here\"), repos=\"https://cloud.r-project.org\"); rmarkdown::render(\"code/manuscript.Rmd\", output_dir=\"results\")'",
-          "duration_s": 2.37
+          "detail": "Rscript -e 'install.packages(c(\"rmarkdown\",\"tidyverse\",\"knitr\",\"ggplot2\",\"lme4\",\"broom\",\"kableExtra\",\"stringr\",\"lubridate\",\"scales\",\"cowplot\"), repos=\"https://cloud.r-project.org\"); rmarkdown::render(\"code/manuscript.Rmd\", output_dir=\"results\")'",
+          "duration_s": 2.41
         },
         {
           "name": "execute",
           "ok": false,
           "detail": "exit=1 timed_out=False",
-          "duration_s": 0.49
+          "duration_s": 729.3
         },
         {
           "name": "extract",
           "ok": true,
           "detail": "1 answers",
-          "duration_s": 1.59
+          "duration_s": 2.01
         },
         {
           "name": "score",
@@ -1359,8 +1359,8 @@
         "total_vision_questions": 1
       },
       "task_correct": false,
-      "cost_usd": 0.004294,
-      "duration_s": 4.64,
+      "cost_usd": 0.041342,
+      "duration_s": 95.94,
       "failed_stage": null,
       "error": null,
       "image": "r-base:4.4.1",
@@ -1375,20 +1375,20 @@
         {
           "name": "plan",
           "ok": true,
-          "detail": "cd code && Rscript -e 'if (!require(\"rmarkdown\")) install.packages(\"rmarkdown\", repos=\"https://cloud.r-project.org\"); rmarkdown::render(\"manuscript_croco4_5.Rmd\")'",
-          "duration_s": 1.99
+          "detail": "Rscript -e 'if (!requireNamespace(\"rmarkdown\", quietly=TRUE)) install.packages(\"rmarkdown\", repos=\"https://cloud.r-project.org\"); rmarkdown::render(\"code/manuscript_croco4_5.Rmd\", output_dir = \"results\")'",
+          "duration_s": 2.22
         },
         {
           "name": "execute",
           "ok": false,
           "detail": "exit=1 timed_out=False",
-          "duration_s": 0.48
+          "duration_s": 91.08
         },
         {
           "name": "extract",
           "ok": true,
           "detail": "1 answers",
-          "duration_s": 2.14
+          "duration_s": 2.6
         },
         {
           "name": "score",
@@ -1411,8 +1411,8 @@
         "total_vision_questions": 1
       },
       "task_correct": false,
-      "cost_usd": 0.022194,
-      "duration_s": 20.04,
+      "cost_usd": 0.022916,
+      "duration_s": 37.86,
       "failed_stage": null,
       "error": null,
       "image": "python:3.11-slim",
@@ -1428,19 +1428,19 @@
           "name": "plan",
           "ok": true,
           "detail": "cd code && pip install -r requirements.txt && python physalia_automators/reports.py -o ../results",
-          "duration_s": 1.69
+          "duration_s": 1.93
         },
         {
           "name": "execute",
           "ok": false,
           "detail": "exit=1 timed_out=False",
-          "duration_s": 16.55
+          "duration_s": 34.09
         },
         {
           "name": "extract",
           "ok": true,
           "detail": "1 answers",
-          "duration_s": 1.74
+          "duration_s": 1.78
         },
         {
           "name": "score",
@@ -1464,7 +1464,7 @@
       },
       "task_correct": false,
       "cost_usd": 0.00551,
-      "duration_s": 3.56,
+      "duration_s": 3.65,
       "failed_stage": null,
       "error": null,
       "image": "r-base:4.4.1",
@@ -1474,25 +1474,25 @@
           "name": "prepare",
           "ok": true,
           "detail": "/mnt/data-2/asu/CSE598/repro-agent/work/capsule-9911222__hard",
-          "duration_s": 0.04
+          "duration_s": 0.05
         },
         {
           "name": "plan",
           "ok": true,
           "detail": "docker pull aljoshoh/oncobird_shiny && docker run --rm -p 3838:3838 aljoshoh/oncobird_shiny",
-          "duration_s": 1.62
+          "duration_s": 1.66
         },
         {
           "name": "execute",
           "ok": false,
           "detail": "exit=127 timed_out=False",
-          "duration_s": 0.3
+          "duration_s": 0.28
         },
         {
           "name": "extract",
           "ok": true,
           "detail": "1 answers",
-          "duration_s": 1.6
+          "duration_s": 1.65
         },
         {
           "name": "score",
@@ -1515,8 +1515,8 @@
         "total_vision_questions": 1
       },
       "task_correct": false,
-      "cost_usd": 0.03003,
-      "duration_s": 29.37,
+      "cost_usd": 0.029708,
+      "duration_s": 27.69,
       "failed_stage": null,
       "error": null,
       "image": "python:3.11-slim",
@@ -1532,19 +1532,19 @@
           "name": "plan",
           "ok": true,
           "detail": "cd code && pip install -r requirement.txt && python src/demo.py",
-          "duration_s": 1.57
+          "duration_s": 1.67
         },
         {
           "name": "execute",
           "ok": false,
           "detail": "exit=1 timed_out=False",
-          "duration_s": 25.93
+          "duration_s": 24.08
         },
         {
           "name": "extract",
           "ok": true,
           "detail": "1 answers",
-          "duration_s": 1.74
+          "duration_s": 1.8
         },
         {
           "name": "score",
@@ -1567,8 +1567,8 @@
         "total_vision_questions": 1
       },
       "task_correct": false,
-      "cost_usd": 0.00819,
-      "duration_s": 30.3,
+      "cost_usd": 0.008082,
+      "duration_s": 53.25,
       "failed_stage": null,
       "error": null,
       "image": "python:3.11-slim",
@@ -1578,25 +1578,25 @@
           "name": "prepare",
           "ok": true,
           "detail": "/mnt/data-2/asu/CSE598/repro-agent/work/capsule-1900704__hard",
-          "duration_s": 0.93
+          "duration_s": 0.94
         },
         {
           "name": "plan",
           "ok": true,
-          "detail": "pip install -q pandas numpy scikit-learn xgboost matplotlib openpyxl && python code/evaluation/roc/evaluation_roc_curve_total.py",
-          "duration_s": 2.01
+          "detail": "pip install -q numpy pandas scikit-learn xgboost matplotlib openpyxl seaborn scipy && python code/classifier/stats_svm_classifier.py",
+          "duration_s": 1.94
         },
         {
           "name": "execute",
           "ok": false,
           "detail": "exit=1 timed_out=False",
-          "duration_s": 25.51
+          "duration_s": 48.7
         },
         {
           "name": "extract",
           "ok": true,
           "detail": "1 answers",
-          "duration_s": 1.84
+          "duration_s": 1.67
         },
         {
           "name": "score",
@@ -1620,8 +1620,8 @@
         "total_vision_questions": 0
       },
       "task_correct": false,
-      "cost_usd": 0.012542,
-      "duration_s": 7.0,
+      "cost_usd": 0.050028,
+      "duration_s": 906.7,
       "failed_stage": null,
       "error": null,
       "image": "r-base:4.4.1",
@@ -1631,25 +1631,25 @@
           "name": "prepare",
           "ok": true,
           "detail": "/mnt/data-2/asu/CSE598/repro-agent/work/capsule-2345790__hard",
-          "duration_s": 0.57
+          "duration_s": 0.56
         },
         {
           "name": "plan",
           "ok": true,
-          "detail": "cd code && Rscript -e \"if (!requireNamespace('rmarkdown', quietly=TRUE)) install.packages('rmarkdown', repos='https://cloud.r-project.org'); pkgs <- c('tidyverse','lme4','lmerTest','emmeans','knitr','kableExtra','cowplot','ggpubr','patchwork','broom','broom.mixed','effsize','psych','yaml'); for(p in pkgs) if(!requireNamespace(p, quietly=TRUE)) install.packages(p, repos='https://cloud.r-project.org')\" && for f in Study1-encoding_analyses.Rmd Study1-recall_analyses.Rmd Study2-encoding_analyses.Rmd Study2-recall_analyses.Rmd Study3-encoding_analyses.Rmd Study3-recall_analyses.Rmd Study4-encoding_analyses.Rmd Study4-recall_analyses.Rmd Study1-2-4-combined_analyses.Rmd Publication_figures.Rmd; do Rscript -e \"rmarkdown::render('$f')\"; done",
-          "duration_s": 4.2
+          "detail": "cd code && Rscript -e 'install.packages(c(\"rmarkdown\",\"tidyverse\",\"knitr\",\"lme4\",\"lmerTest\",\"afex\",\"emmeans\",\"ggplot2\",\"cowplot\",\"broom\",\"broom.mixed\",\"effsize\",\"dplyr\",\"purrr\",\"stringr\",\"data.table\",\"kableExtra\",\"gridExtra\",\"scales\",\"Hmisc\"), repos=\"https://cloud.r-project.org\")' && mkdir -p ../results/stats_figures_markdowns ../results/figures ../results/intermediates && for f in Study1-encoding_analyses Study1-recall_analyses Study2-encoding_analyses Study2-recall_analyses Study3-encoding_analyses Study3-recall_analyses Study4-encoding_analyses Study4-recall_analyses Study1-2-4-combined_analyses Publication_figures; do Rscript -e \"rmarkdown::render('$f.Rmd', output_dir='../results/stats_figures_markdowns')\"; done",
+          "duration_s": 3.93
         },
         {
           "name": "execute",
           "ok": false,
-          "detail": "exit=1 timed_out=False",
-          "duration_s": 0.62
+          "detail": "exit=-1 timed_out=True",
+          "duration_s": 900.37
         },
         {
           "name": "extract",
           "ok": true,
           "detail": "2 answers",
-          "duration_s": 1.61
+          "duration_s": 1.83
         },
         {
           "name": "score",
@@ -1672,8 +1672,8 @@
         "total_vision_questions": 1
       },
       "task_correct": false,
-      "cost_usd": 0.003804,
-      "duration_s": 4.57,
+      "cost_usd": 0.040548,
+      "duration_s": 99.37,
       "failed_stage": null,
       "error": null,
       "image": "r-base:4.4.1",
@@ -1688,20 +1688,20 @@
         {
           "name": "plan",
           "ok": true,
-          "detail": "Rscript -e 'install.packages(c(\"rmarkdown\",\"pwr\",\"knitr\",\"tidyverse\"), repos=\"https://cloud.r-project.org\"); rmarkdown::render(\"NFpowerCalcs_RmarkdownScript_220405.Rmd\")'",
-          "duration_s": 1.97
+          "detail": "Rscript -e 'install.packages(c(\"rmarkdown\",\"pwr\",\"knitr\"), repos=\"https://cloud.r-project.org\"); rmarkdown::render(\"NFpowerCalcs_RmarkdownScript_220405.Rmd\")'",
+          "duration_s": 1.93
         },
         {
           "name": "execute",
           "ok": false,
           "detail": "exit=1 timed_out=False",
-          "duration_s": 0.47
+          "duration_s": 94.85
         },
         {
           "name": "extract",
           "ok": true,
           "detail": "1 answers",
-          "duration_s": 2.12
+          "duration_s": 2.58
         },
         {
           "name": "score",
@@ -1726,8 +1726,8 @@
         "total_vision_questions": 0
       },
       "task_correct": false,
-      "cost_usd": 0.008482,
-      "duration_s": 19.61,
+      "cost_usd": 0.008232,
+      "duration_s": 19.49,
       "failed_stage": null,
       "error": null,
       "image": "python:3.11-slim",
@@ -1737,25 +1737,25 @@
           "name": "prepare",
           "ok": true,
           "detail": "/mnt/data-2/asu/CSE598/repro-agent/work/capsule-9137200__hard",
-          "duration_s": 12.18
+          "duration_s": 14.11
         },
         {
           "name": "plan",
           "ok": true,
-          "detail": "pip install torch==1.7.1 transformers==4.2.1 numpy scipy scikit-learn tqdm && cd code/PGAT && python main.py --state test --source_type resume --batchSize 1 --hidden_dim 200",
-          "duration_s": 2.03
+          "detail": "pip install torch==1.7.1 transformers==4.2.1 && cd code/PGAT && python main.py --state test --source_type resume --batchSize 1 --hidden_dim 200",
+          "duration_s": 1.78
         },
         {
           "name": "execute",
           "ok": false,
           "detail": "exit=1 timed_out=False",
-          "duration_s": 3.72
+          "duration_s": 1.99
         },
         {
           "name": "extract",
           "ok": true,
           "detail": "3 answers",
-          "duration_s": 1.67
+          "duration_s": 1.61
         },
         {
           "name": "score",
@@ -1779,8 +1779,8 @@
         "total_vision_questions": 2
       },
       "task_correct": false,
-      "cost_usd": 0.00636,
-      "duration_s": 5.75,
+      "cost_usd": 0.042448,
+      "duration_s": 803.2,
       "failed_stage": null,
       "error": null,
       "image": "r-base:4.4.1",
@@ -1790,25 +1790,25 @@
           "name": "prepare",
           "ok": true,
           "detail": "/mnt/data-2/asu/CSE598/repro-agent/work/capsule-4933686__hard",
-          "duration_s": 0.69
+          "duration_s": 0.7
         },
         {
           "name": "plan",
           "ok": true,
-          "detail": "Rscript -e 'install.packages(c(\"survival\",\"scales\",\"limma\",\"FactoMineR\",\"factoextra\",\"fmsb\",\"plotrix\",\"vioplot\",\"grid\",\"psych\"), repos=\"https://cloud.r-project.org\")' && cd code && Rscript Main.R",
-          "duration_s": 2.02
+          "detail": "Rscript -e \"install.packages(c('survival','scales','limma','FactoMineR','factoextra','fmsb','plotrix','vioplot','psych'), repos='https://cloud.r-project.org')\" && cd code && Rscript Main.R",
+          "duration_s": 1.99
         },
         {
           "name": "execute",
           "ok": false,
           "detail": "exit=1 timed_out=False",
-          "duration_s": 1.22
+          "duration_s": 797.83
         },
         {
           "name": "extract",
           "ok": true,
           "detail": "2 answers",
-          "duration_s": 1.81
+          "duration_s": 2.68
         },
         {
           "name": "score",
@@ -1832,8 +1832,8 @@
         "total_vision_questions": 1
       },
       "task_correct": false,
-      "cost_usd": 0.00742,
-      "duration_s": 5.11,
+      "cost_usd": 0.045974,
+      "duration_s": 676.79,
       "failed_stage": null,
       "error": null,
       "image": "r-base:4.4.1",
@@ -1848,20 +1848,20 @@
         {
           "name": "plan",
           "ok": true,
-          "detail": "Rscript -e \"install.packages(c('quanteda','caret','glmnet','pROC','ggplot2','dplyr','tidyr','reshape2','irr'), repos='https://cloud.r-project.org')\" && pip install pandas numpy scikit-learn scipy && for f in code/0*.R; do Rscript \"$f\"; done && for f in code/a0*.R; do Rscript \"$f\"; done",
-          "duration_s": 2.63
+          "detail": "Rscript -e 'install.packages(c(\"dplyr\",\"ggplot2\",\"tidyr\",\"caret\",\"quanteda\",\"reticulate\",\"pROC\",\"stringr\",\"scales\",\"reshape2\",\"gridExtra\"), repos=\"https://cloud.r-project.org\")' && pip install numpy pandas scikit-learn scipy && cd code && for f in 01-overlap-analysis.R 02-relevance-analysis.R 03-segment-sentence-analysis.R 04-codings-simulation.R 05-SML-classifier.R 06-dictionary-methods.R 07-figure-3.R 08-sample-size-performance.R 09-ROC-curve.R 10-binning-analysis.R a01-training-data-summary.R a02-overlap-analysis.R a03-classifier-comparison.R a04-segment-sentence-analysis.R a05-feature-set-size-density.R a06-reliability.R a07-performance.R; do Rscript \"$f\"; done",
+          "duration_s": 3.56
         },
         {
           "name": "execute",
           "ok": false,
-          "detail": "exit=1 timed_out=False",
-          "duration_s": 0.67
+          "detail": "exit=127 timed_out=False",
+          "duration_s": 671.08
         },
         {
           "name": "extract",
           "ok": true,
           "detail": "2 answers",
-          "duration_s": 1.61
+          "duration_s": 1.95
         },
         {
           "name": "score",
@@ -1885,7 +1885,7 @@
       },
       "task_correct": false,
       "cost_usd": 0.00272,
-      "duration_s": 3.53,
+      "duration_s": 3.62,
       "failed_stage": null,
       "error": null,
       "image": "r-base:4.4.1",
@@ -1901,19 +1901,19 @@
           "name": "plan",
           "ok": true,
           "detail": "Rscript code/CardioSCZ.R",
-          "duration_s": 1.42
+          "duration_s": 1.62
         },
         {
           "name": "execute",
           "ok": false,
           "detail": "exit=1 timed_out=False",
-          "duration_s": 0.46
+          "duration_s": 0.44
         },
         {
           "name": "extract",
           "ok": true,
           "detail": "1 answers",
-          "duration_s": 1.65
+          "duration_s": 1.55
         },
         {
           "name": "score",
@@ -1937,8 +1937,8 @@
         "total_vision_questions": 0
       },
       "task_correct": false,
-      "cost_usd": 0.023968,
-      "duration_s": 5.96,
+      "cost_usd": 0.062716,
+      "duration_s": 421.17,
       "failed_stage": null,
       "error": null,
       "image": "r-base:4.4.1",
@@ -1948,25 +1948,25 @@
           "name": "prepare",
           "ok": true,
           "detail": "/mnt/data-2/asu/CSE598/repro-agent/work/capsule-4728591__hard",
-          "duration_s": 0.58
+          "duration_s": 0.6
         },
         {
           "name": "plan",
           "ok": true,
-          "detail": "cd code && Rscript -e 'if (!require(\"rmarkdown\", quietly=TRUE)) install.packages(\"rmarkdown\", repos=\"https://cloud.r-project.org\"); if (!require(\"devtools\", quietly=TRUE)) install.packages(\"devtools\", repos=\"https://cloud.r-project.org\"); devtools::install_deps(dependencies=TRUE, repos=\"https://cloud.r-project.org\"); devtools::install(dependencies=TRUE, repos=\"https://cloud.r-project.org\"); rmarkdown::render(\"docs/netlit-replication.Rmd\")'",
-          "duration_s": 2.79
+          "detail": "cd code && Rscript -e 'if (!requireNamespace(\"remotes\", quietly=TRUE)) install.packages(\"remotes\", repos=\"https://cloud.r-project.org\"); remotes::install_deps(dependencies=TRUE, repos=\"https://cloud.r-project.org\"); if (!requireNamespace(\"rmarkdown\", quietly=TRUE)) install.packages(\"rmarkdown\", repos=\"https://cloud.r-project.org\"); rmarkdown::render(\"docs/netlit-replication.Rmd\")'",
+          "duration_s": 3.46
         },
         {
           "name": "execute",
           "ok": false,
           "detail": "exit=1 timed_out=False",
-          "duration_s": 0.77
+          "duration_s": 414.7
         },
         {
           "name": "extract",
           "ok": true,
           "detail": "2 answers",
-          "duration_s": 1.81
+          "duration_s": 2.41
         },
         {
           "name": "score",
@@ -1989,8 +1989,8 @@
         "total_vision_questions": 1
       },
       "task_correct": false,
-      "cost_usd": 0.014738,
-      "duration_s": 4.55,
+      "cost_usd": 0.056326,
+      "duration_s": 781.42,
       "failed_stage": null,
       "error": null,
       "image": "r-base:4.4.1",
@@ -2005,20 +2005,20 @@
         {
           "name": "plan",
           "ok": true,
-          "detail": "cd code && Rscript -e \"pkgs <- c('readxl','tidyverse','psych','lavaan','stargazer','broom','sjPlot'); install.packages(pkgs[!pkgs %in% installed.packages()[,1]], repos='https://cloud.r-project.org')\" && Rscript 01_code.R",
-          "duration_s": 2.39
+          "detail": "cd code && Rscript -e \"pkgs <- c('readxl','tidyverse','dplyr','ggplot2','stargazer','broom','haven','estimatr','lfe','sandwich','lmtest','knitr'); for(p in pkgs) if(!requireNamespace(p, quietly=TRUE)) install.packages(p, repos='https://cloud.r-project.org')\" && Rscript 01_code.R",
+          "duration_s": 2.72
         },
         {
           "name": "execute",
           "ok": false,
           "detail": "exit=1 timed_out=False",
-          "duration_s": 0.5
+          "duration_s": 776.56
         },
         {
           "name": "extract",
           "ok": true,
           "detail": "1 answers",
-          "duration_s": 1.64
+          "duration_s": 2.14
         },
         {
           "name": "score",
@@ -2042,8 +2042,8 @@
         "total_vision_questions": 0
       },
       "task_correct": false,
-      "cost_usd": 0.006428,
-      "duration_s": 9.59,
+      "cost_usd": 0.006528,
+      "duration_s": 24.09,
       "failed_stage": null,
       "error": null,
       "image": "python:3.11-slim",
@@ -2059,19 +2059,19 @@
           "name": "plan",
           "ok": true,
           "detail": "pip install numpy pandas scikit-learn && cp data/diabeticos2.csv code/ && cd code && python clasificador.py && python clasificador_dt.py",
-          "duration_s": 1.62
+          "duration_s": 1.86
         },
         {
           "name": "execute",
           "ok": false,
           "detail": "exit=1 timed_out=False",
-          "duration_s": 6.25
+          "duration_s": 20.47
         },
         {
           "name": "extract",
           "ok": true,
           "detail": "2 answers",
-          "duration_s": 1.71
+          "duration_s": 1.75
         },
         {
           "name": "score",
@@ -2095,8 +2095,8 @@
         "total_vision_questions": 2
       },
       "task_correct": false,
-      "cost_usd": 0.004992,
-      "duration_s": 4.31,
+      "cost_usd": 0.042116,
+      "duration_s": 816.89,
       "failed_stage": null,
       "error": null,
       "image": "r-base:4.4.1",
@@ -2111,20 +2111,20 @@
         {
           "name": "plan",
           "ok": true,
-          "detail": "Rscript -e 'install.packages(c(\"rmarkdown\",\"knitr\",\"tidyverse\",\"metafor\",\"meta\",\"kableExtra\",\"bookdown\",\"citr\"), repos=\"https://cloud.r-project.org\"); rmarkdown::render(\"code/preregSR_manuscript.Rmd\", output_dir=\"results\")'",
-          "duration_s": 2.14
+          "detail": "Rscript -e 'install.packages(c(\"rmarkdown\",\"knitr\",\"tidyverse\",\"meta\",\"metafor\",\"kableExtra\",\"citr\",\"bookdown\"), repos=\"https://cloud.r-project.org\"); rmarkdown::render(\"code/preregSR_manuscript.Rmd\", output_dir=\"results\")'",
+          "duration_s": 2.34
         },
         {
           "name": "execute",
           "ok": false,
           "detail": "exit=1 timed_out=False",
-          "duration_s": 0.48
+          "duration_s": 811.96
         },
         {
           "name": "extract",
           "ok": true,
           "detail": "2 answers",
-          "duration_s": 1.66
+          "duration_s": 2.56
         },
         {
           "name": "score",
@@ -2148,7 +2148,7 @@
       },
       "task_correct": false,
       "cost_usd": 0.009402,
-      "duration_s": 5.15,
+      "duration_s": 4.93,
       "failed_stage": null,
       "error": null,
       "image": "r-base:4.4.1",
@@ -2158,25 +2158,25 @@
           "name": "prepare",
           "ok": true,
           "detail": "/mnt/data-2/asu/CSE598/repro-agent/work/capsule-4252248__hard",
-          "duration_s": 0.14
+          "duration_s": 0.13
         },
         {
           "name": "plan",
           "ok": true,
           "detail": "docker pull gosuzombie/dnf && docker run --rm -v $(pwd)/code:/code -v $(pwd)/data:/data -v $(pwd)/results:/results -w /code gosuzombie/dnf Rscript main-ctrpv.R && docker run --rm -v $(pwd)/code:/code -v $(pwd)/data:/data -v $(pwd)/results:/results -w /code gosuzombie/dnf Rscript main-nci.R && docker run --rm -v $(pwd)/code:/code -v $(pwd)/data:/data -v $(pwd)/results:/results -w /code gosuzombie/dnf Rscript main-network-generation.R",
-          "duration_s": 2.91
+          "duration_s": 2.78
         },
         {
           "name": "execute",
           "ok": false,
           "detail": "exit=127 timed_out=False",
-          "duration_s": 0.41
+          "duration_s": 0.36
         },
         {
           "name": "extract",
           "ok": true,
           "detail": "1 answers",
-          "duration_s": 1.69
+          "duration_s": 1.66
         },
         {
           "name": "score",
@@ -2199,8 +2199,8 @@
         "total_vision_questions": 1
       },
       "task_correct": false,
-      "cost_usd": 0.003586,
-      "duration_s": 4.56,
+      "cost_usd": 0.003616,
+      "duration_s": 4.79,
       "failed_stage": null,
       "error": null,
       "image": "python:3.11-slim",
@@ -2210,25 +2210,25 @@
           "name": "prepare",
           "ok": true,
           "detail": "/mnt/data-2/asu/CSE598/repro-agent/work/capsule-4671827__hard",
-          "duration_s": 0.02
+          "duration_s": 0.03
         },
         {
           "name": "plan",
           "ok": true,
-          "detail": "cd code && unzip -o i2nsf-spt-main.zip -d i2nsf-spt-main && pip install jupyter nbconvert ipykernel pandas numpy matplotlib scikit-learn pymongo && jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=-1 --output-dir=../results FullCode-With-PerformanceEval.ipynb PerformanveEval.ipynb",
-          "duration_s": 2.72
+          "detail": "cd code && unzip -o i2nsf-spt-main.zip && pip install jupyter nbconvert ipykernel pymongo pandas numpy matplotlib scikit-learn && jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=1200 --output-dir=../results FullCode-With-PerformanceEval.ipynb PerformanveEval.ipynb",
+          "duration_s": 2.45
         },
         {
           "name": "execute",
           "ok": false,
           "detail": "exit=127 timed_out=False",
-          "duration_s": 0.29
+          "duration_s": 0.25
         },
         {
           "name": "extract",
           "ok": true,
           "detail": "1 answers",
-          "duration_s": 1.52
+          "duration_s": 2.07
         },
         {
           "name": "score",
@@ -2252,8 +2252,8 @@
         "total_vision_questions": 2
       },
       "task_correct": false,
-      "cost_usd": 0.011482,
-      "duration_s": 5.93,
+      "cost_usd": 0.044294,
+      "duration_s": 169.35,
       "failed_stage": null,
       "error": null,
       "image": "r-base:4.4.1",
@@ -2268,20 +2268,20 @@
         {
           "name": "plan",
           "ok": true,
-          "detail": "R -e \"if (!requireNamespace('remotes', quietly=TRUE)) install.packages('remotes', repos='https://cloud.r-project.org'); remotes::install_deps(dependencies=TRUE, repos='https://cloud.r-project.org'); remotes::install_local(force=TRUE); rmarkdown::render('README.Rmd')\"",
-          "duration_s": 2.33
+          "detail": "R -e \"if (!requireNamespace('remotes', quietly=TRUE)) install.packages('remotes', repos='https://cloud.r-project.org'); remotes::install_deps(dependencies=TRUE, repos='https://cloud.r-project.org'); rmarkdown::render('README.Rmd')\"",
+          "duration_s": 2.17
         },
         {
           "name": "execute",
           "ok": false,
           "detail": "exit=1 timed_out=False",
-          "duration_s": 0.52
+          "duration_s": 164.31
         },
         {
           "name": "extract",
           "ok": true,
           "detail": "2 answers",
-          "duration_s": 2.97
+          "duration_s": 2.77
         },
         {
           "name": "score",
@@ -2304,8 +2304,8 @@
         "total_vision_questions": 1
       },
       "task_correct": false,
-      "cost_usd": 0.002918,
-      "duration_s": 4.25,
+      "cost_usd": 0.042822,
+      "duration_s": 536.16,
       "failed_stage": null,
       "error": null,
       "image": "r-base:4.4.1",
@@ -2320,20 +2320,20 @@
         {
           "name": "plan",
           "ok": true,
-          "detail": "Rscript -e 'install.packages(c(\"metafor\",\"meta\",\"dplyr\",\"ggplot2\"), repos=\"https://cloud.r-project.org\")' && Rscript code/meta-analysis.R",
-          "duration_s": 2.03
+          "detail": "Rscript -e 'install.packages(c(\"metafor\",\"meta\"), repos=\"https://cloud.r-project.org\")' && Rscript code/meta-analysis.R",
+          "duration_s": 1.9
         },
         {
           "name": "execute",
           "ok": false,
           "detail": "exit=1 timed_out=False",
-          "duration_s": 0.48
+          "duration_s": 531.83
         },
         {
           "name": "extract",
           "ok": true,
           "detail": "1 answers",
-          "duration_s": 1.72
+          "duration_s": 2.42
         },
         {
           "name": "score",
@@ -2357,8 +2357,8 @@
         "total_vision_questions": 2
       },
       "task_correct": false,
-      "cost_usd": 0.005402,
-      "duration_s": 13.42,
+      "cost_usd": 0.041818,
+      "duration_s": 471.81,
       "failed_stage": null,
       "error": null,
       "image": "r-base:4.4.1",
@@ -2368,25 +2368,25 @@
           "name": "prepare",
           "ok": true,
           "detail": "/mnt/data-2/asu/CSE598/repro-agent/work/capsule-5136217__hard",
-          "duration_s": 7.2
+          "duration_s": 7.43
         },
         {
           "name": "plan",
           "ok": true,
-          "detail": "Rscript -e 'install.packages(c(\"data.table\",\"ggplot2\",\"haven\",\"dplyr\",\"stringr\",\"lubridate\",\"broom\",\"fixest\",\"readr\",\"tidyr\",\"scales\"), repos=\"https://cloud.r-project.org\")' && cd code && for f in 2_classify_political.R 3_merge_survey.R 4_descriptive_analysis.R 5_custom_panels.R 6_event_study.R 7_event_study_party_binsR.R 8_usage_tables.R 9_weighted_event_study.R 10_plot_Gtrends.R 11_prepare_for_publication.R; do Rscript \"$f\"; done",
-          "duration_s": 2.6
+          "detail": "Rscript -e 'install.packages(c(\"data.table\",\"ggplot2\",\"stringr\",\"dplyr\",\"lubridate\",\"haven\",\"zoo\",\"scales\",\"gridExtra\"), repos=\"https://cloud.r-project.org\")' && cd code && for f in 2_classify_political.R 3_merge_survey.R 4_descriptive_analysis.R 5_custom_panels.R 6_event_study.R 7_event_study_party_binsR.R 8_usage_tables.R 9_weighted_event_study.R 10_plot_Gtrends.R 11_prepare_for_publication.R; do Rscript \"$f\"; done",
+          "duration_s": 3.82
         },
         {
           "name": "execute",
           "ok": false,
           "detail": "exit=1 timed_out=False",
-          "duration_s": 1.73
+          "duration_s": 457.1
         },
         {
           "name": "extract",
           "ok": true,
           "detail": "2 answers",
-          "duration_s": 1.88
+          "duration_s": 3.47
         },
         {
           "name": "score",

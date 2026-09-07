@@ -54,9 +54,16 @@ one run per task, figures attached as images at the easy tier:
 | Tier | Tasks | Written questions | Vision questions | All questions | $/task | s/task | Execute stage |
 |---|---|---|---|---|---|---|---|
 | easy | 43/90 = 47.8% | 63/98 = 64.3% | 38/83 = 45.8% | 101/181 = 55.8% | $0.0178 | 4.2 | not run |
-| hard | 0/90 | 0/98 | 0/83 | 0/181 | $0.0116 | 22.0 | succeeded 0/90 |
+| hard (test split, after sandbox fix) | 0/45 = 0.0% | 0/33 | 0/46 | 0/79 = 0.0% | $0.0282 | 273.1 | succeeded 0/45 |
 
-Totals: $1.61 for the easy sweep (152 images sent), $1.04 for the hard sweep.
+Totals: $1.61 for the easy sweep (152 images sent), $1.27 for the hard test-split sweep.
+
+The hard-tier row is the test split, re-run after a sandbox fix: the container ran
+as a user with no writable home, so every `pip install` and R `install.packages()`
+failed before the capsule's code ran. After the fix, installs succeed but no
+single-shot plan produced a clean run; 3 of 45 tasks hit the 900 s timeout. The
+committed `baseline_hard_train_all.json` predates the fix and is not valid; the
+train hard re-run is pending.
 
 Easy tier by split and language: test Python 15/22, test R 7/23, train Python
 17/27, train R 4/18.
