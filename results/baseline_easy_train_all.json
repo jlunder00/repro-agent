@@ -1,0 +1,2423 @@
+{
+  "generated_at": "2026-09-07T01:36:03.740053+00:00",
+  "tier": "easy",
+  "split": "train",
+  "n_tasks": 45,
+  "n_correct": 21,
+  "task_accuracy": 0.4666666666666667,
+  "total_cost_usd": 0.8106,
+  "total_duration_s": 169.6,
+  "stage_failures": {
+    "prepare": 0,
+    "plan": 0,
+    "execute": 0,
+    "extract": 0,
+    "score": 0
+  },
+  "aborted_at": {
+    "prepare": 0,
+    "plan": 0,
+    "execute": 0,
+    "extract": 0,
+    "score": 0
+  },
+  "runs": [
+    {
+      "capsule_id": "capsule-7038571",
+      "tier": "easy",
+      "report": {
+        "Report the average AUC score of Had using the CTGCN-C method on the UCI dataset.": null
+      },
+      "counts": {
+        "correct_written_answers": 0,
+        "correct_vision_answers": 0,
+        "total_written_questions": 1,
+        "total_vision_questions": 0
+      },
+      "task_correct": false,
+      "cost_usd": 0.026484,
+      "duration_s": 2.86,
+      "failed_stage": null,
+      "error": null,
+      "image": null,
+      "n_images": 0,
+      "stages": [
+        {
+          "name": "prepare",
+          "ok": true,
+          "detail": "/mnt/data-2/asu/CSE598/repro-agent/work/capsule-7038571__easy",
+          "duration_s": 0.19
+        },
+        {
+          "name": "plan",
+          "ok": true,
+          "detail": "read results/ (no execution), 0 figures",
+          "duration_s": 0.01
+        },
+        {
+          "name": "execute",
+          "ok": true,
+          "detail": "skipped by tier",
+          "duration_s": 0.0
+        },
+        {
+          "name": "extract",
+          "ok": true,
+          "detail": "1 answers",
+          "duration_s": 2.66
+        },
+        {
+          "name": "score",
+          "ok": true,
+          "detail": "{\"correct_written_answers\": 0, \"correct_vision_answers\": 0, \"total_written_questions\": 1, \"total_vision_questions\": 0}",
+          "duration_s": 0.0
+        }
+      ]
+    },
+    {
+      "capsule_id": "capsule-3137115",
+      "tier": "easy",
+      "report": {
+        "Report the final outcomes of reproducibility checks at the article level after original authors were contacted (Table 1 of the manuscript). You should report n for row 1 in the table (ignore the confidence interval).": 9,
+        "Report the final outcomes of reproducibility checks at the article level after original authors were contacted (Table 1 of the manuscript). You should report n for row 2 in the table (ignore the confidence interval).": 6,
+        "Report the final outcomes of reproducibility checks at the article level after original authors were contacted (Table 1 of the manuscript). You should report n for row 3 in the table (ignore the confidence interval).": 10,
+        "fig From Figure 1, report the proportion of articles with fully reproducible target values from the random effects model after author contact. Ignore the confidence intervals": 0.62
+      },
+      "counts": {
+        "correct_written_answers": 0,
+        "correct_vision_answers": 1,
+        "total_written_questions": 3,
+        "total_vision_questions": 1
+      },
+      "task_correct": false,
+      "cost_usd": 0.024218,
+      "duration_s": 6.6,
+      "failed_stage": null,
+      "error": null,
+      "image": null,
+      "n_images": 2,
+      "stages": [
+        {
+          "name": "prepare",
+          "ok": true,
+          "detail": "/mnt/data-2/asu/CSE598/repro-agent/work/capsule-3137115__easy",
+          "duration_s": 0.03
+        },
+        {
+          "name": "plan",
+          "ok": true,
+          "detail": "read results/ (no execution), 2 figures",
+          "duration_s": 0.0
+        },
+        {
+          "name": "execute",
+          "ok": true,
+          "detail": "skipped by tier",
+          "duration_s": 0.0
+        },
+        {
+          "name": "extract",
+          "ok": true,
+          "detail": "4 answers",
+          "duration_s": 6.56
+        },
+        {
+          "name": "score",
+          "ok": true,
+          "detail": "{\"correct_written_answers\": 0, \"correct_vision_answers\": 1, \"total_written_questions\": 3, \"total_vision_questions\": 1}",
+          "duration_s": 0.0
+        }
+      ]
+    },
+    {
+      "capsule_id": "capsule-5367566",
+      "tier": "easy",
+      "report": {
+        "Report the HyperETA MAPE with no DTW.": 17.374344500709498,
+        "Report the HyperETA RMSE with no DTW.": 459.7782074000463,
+        "Report the HyperETA MAE with no DTW.": 323.0
+      },
+      "counts": {
+        "correct_written_answers": 3,
+        "correct_vision_answers": 0,
+        "total_written_questions": 3,
+        "total_vision_questions": 0
+      },
+      "task_correct": true,
+      "cost_usd": 0.012794,
+      "duration_s": 2.57,
+      "failed_stage": null,
+      "error": null,
+      "image": null,
+      "n_images": 0,
+      "stages": [
+        {
+          "name": "prepare",
+          "ok": true,
+          "detail": "/mnt/data-2/asu/CSE598/repro-agent/work/capsule-5367566__easy",
+          "duration_s": 0.38
+        },
+        {
+          "name": "plan",
+          "ok": true,
+          "detail": "read results/ (no execution), 0 figures",
+          "duration_s": 0.0
+        },
+        {
+          "name": "execute",
+          "ok": true,
+          "detail": "skipped by tier",
+          "duration_s": 0.0
+        },
+        {
+          "name": "extract",
+          "ok": true,
+          "detail": "3 answers",
+          "duration_s": 2.19
+        },
+        {
+          "name": "score",
+          "ok": true,
+          "detail": "{\"correct_written_answers\": 3, \"correct_vision_answers\": 0, \"total_written_questions\": 3, \"total_vision_questions\": 0}",
+          "duration_s": 0.0
+        }
+      ]
+    },
+    {
+      "capsule_id": "capsule-9168639",
+      "tier": "easy",
+      "report": {
+        "fig Report Institutions Sampled for US in Table 1.": null,
+        "fig Report Institutions Sampled for UK in Table 1.": null
+      },
+      "counts": {
+        "correct_written_answers": 0,
+        "correct_vision_answers": 0,
+        "total_written_questions": 0,
+        "total_vision_questions": 2
+      },
+      "task_correct": false,
+      "cost_usd": 0.00174,
+      "duration_s": 1.63,
+      "failed_stage": null,
+      "error": null,
+      "image": null,
+      "n_images": 0,
+      "stages": [
+        {
+          "name": "prepare",
+          "ok": true,
+          "detail": "/mnt/data-2/asu/CSE598/repro-agent/work/capsule-9168639__easy",
+          "duration_s": 0.01
+        },
+        {
+          "name": "plan",
+          "ok": true,
+          "detail": "read results/ (no execution), 0 figures",
+          "duration_s": 0.0
+        },
+        {
+          "name": "execute",
+          "ok": true,
+          "detail": "skipped by tier",
+          "duration_s": 0.0
+        },
+        {
+          "name": "extract",
+          "ok": true,
+          "detail": "2 answers",
+          "duration_s": 1.62
+        },
+        {
+          "name": "score",
+          "ok": true,
+          "detail": "{\"correct_written_answers\": 0, \"correct_vision_answers\": 0, \"total_written_questions\": 0, \"total_vision_questions\": 2}",
+          "duration_s": 0.0
+        }
+      ]
+    },
+    {
+      "capsule_id": "capsule-9166182",
+      "tier": "easy",
+      "report": {
+        "For experiment 1, report the adversary errors without SEAM.": null,
+        "For experiment 1, report the adversary errors with SEAM.": null,
+        "For experiment 2, report the adversary errors without SEAM.": null,
+        "For experiment 2, report the adversary errors with SEAM.": null,
+        "For experiment 3, report the adversary errors without SEAM.": null,
+        "For experiment 3, report the adversary errors with SEAM.": null
+      },
+      "counts": {
+        "correct_written_answers": 0,
+        "correct_vision_answers": 0,
+        "total_written_questions": 6,
+        "total_vision_questions": 0
+      },
+      "task_correct": false,
+      "cost_usd": 0.013522,
+      "duration_s": 2.89,
+      "failed_stage": null,
+      "error": null,
+      "image": null,
+      "n_images": 0,
+      "stages": [
+        {
+          "name": "prepare",
+          "ok": true,
+          "detail": "/mnt/data-2/asu/CSE598/repro-agent/work/capsule-9166182__easy",
+          "duration_s": 0.72
+        },
+        {
+          "name": "plan",
+          "ok": true,
+          "detail": "read results/ (no execution), 0 figures",
+          "duration_s": 0.0
+        },
+        {
+          "name": "execute",
+          "ok": true,
+          "detail": "skipped by tier",
+          "duration_s": 0.0
+        },
+        {
+          "name": "extract",
+          "ok": true,
+          "detail": "6 answers",
+          "duration_s": 2.17
+        },
+        {
+          "name": "score",
+          "ok": true,
+          "detail": "{\"correct_written_answers\": 0, \"correct_vision_answers\": 0, \"total_written_questions\": 6, \"total_vision_questions\": 0}",
+          "duration_s": 0.0
+        }
+      ]
+    },
+    {
+      "capsule_id": "capsule-0325493",
+      "tier": "easy",
+      "report": {
+        "For the within-variance improvements, report the improvement for the FS_TotalGrayVol outcome with the Day variable.": null,
+        "For the within-variance improvements, report the improvement for the FS_CortexVol outcome with the Day variable.": null,
+        "fig Report the name of the model, LASSO or Random Forest, which has the higher out-of-sample R^2 in % for FS-GM.": null
+      },
+      "counts": {
+        "correct_written_answers": 0,
+        "correct_vision_answers": 0,
+        "total_written_questions": 2,
+        "total_vision_questions": 1
+      },
+      "task_correct": false,
+      "cost_usd": 0.00493,
+      "duration_s": 4.81,
+      "failed_stage": null,
+      "error": null,
+      "image": null,
+      "n_images": 0,
+      "stages": [
+        {
+          "name": "prepare",
+          "ok": true,
+          "detail": "/mnt/data-2/asu/CSE598/repro-agent/work/capsule-0325493__easy",
+          "duration_s": 2.5
+        },
+        {
+          "name": "plan",
+          "ok": true,
+          "detail": "read results/ (no execution), 0 figures",
+          "duration_s": 0.0
+        },
+        {
+          "name": "execute",
+          "ok": true,
+          "detail": "skipped by tier",
+          "duration_s": 0.0
+        },
+        {
+          "name": "extract",
+          "ok": true,
+          "detail": "3 answers",
+          "duration_s": 2.31
+        },
+        {
+          "name": "score",
+          "ok": true,
+          "detail": "{\"correct_written_answers\": 0, \"correct_vision_answers\": 0, \"total_written_questions\": 2, \"total_vision_questions\": 1}",
+          "duration_s": 0.0
+        }
+      ]
+    },
+    {
+      "capsule_id": "capsule-1854976",
+      "tier": "easy",
+      "report": {
+        "Report the final sensitivity (Sen1) after the ten different verifications.": 75.23,
+        "Report the final specificity (Spe1) after the ten different verifications.": 70.82,
+        "Report the final quality index (QI) after the ten different verifications.": 72.29
+      },
+      "counts": {
+        "correct_written_answers": 3,
+        "correct_vision_answers": 0,
+        "total_written_questions": 3,
+        "total_vision_questions": 0
+      },
+      "task_correct": true,
+      "cost_usd": 0.004586,
+      "duration_s": 2.14,
+      "failed_stage": null,
+      "error": null,
+      "image": null,
+      "n_images": 0,
+      "stages": [
+        {
+          "name": "prepare",
+          "ok": true,
+          "detail": "/mnt/data-2/asu/CSE598/repro-agent/work/capsule-1854976__easy",
+          "duration_s": 0.05
+        },
+        {
+          "name": "plan",
+          "ok": true,
+          "detail": "read results/ (no execution), 0 figures",
+          "duration_s": 0.0
+        },
+        {
+          "name": "execute",
+          "ok": true,
+          "detail": "skipped by tier",
+          "duration_s": 0.0
+        },
+        {
+          "name": "extract",
+          "ok": true,
+          "detail": "3 answers",
+          "duration_s": 2.09
+        },
+        {
+          "name": "score",
+          "ok": true,
+          "detail": "{\"correct_written_answers\": 3, \"correct_vision_answers\": 0, \"total_written_questions\": 3, \"total_vision_questions\": 0}",
+          "duration_s": 0.0
+        }
+      ]
+    },
+    {
+      "capsule_id": "capsule-9022937",
+      "tier": "easy",
+      "report": {
+        "fig From the Experimental IAQ Data graph, report the y-axis label.": null,
+        "fig From the Indoor Air Quality - Kitchen - Autumn plot, report the correlation between hum and gas.": -0.773
+      },
+      "counts": {
+        "correct_written_answers": 0,
+        "correct_vision_answers": 1,
+        "total_written_questions": 0,
+        "total_vision_questions": 2
+      },
+      "task_correct": false,
+      "cost_usd": 0.037466,
+      "duration_s": 4.54,
+      "failed_stage": null,
+      "error": null,
+      "image": null,
+      "n_images": 6,
+      "stages": [
+        {
+          "name": "prepare",
+          "ok": true,
+          "detail": "/mnt/data-2/asu/CSE598/repro-agent/work/capsule-9022937__easy",
+          "duration_s": 0.14
+        },
+        {
+          "name": "plan",
+          "ok": true,
+          "detail": "read results/ (no execution), 6 figures",
+          "duration_s": 0.0
+        },
+        {
+          "name": "execute",
+          "ok": true,
+          "detail": "skipped by tier",
+          "duration_s": 0.0
+        },
+        {
+          "name": "extract",
+          "ok": true,
+          "detail": "2 answers",
+          "duration_s": 4.4
+        },
+        {
+          "name": "score",
+          "ok": true,
+          "detail": "{\"correct_written_answers\": 0, \"correct_vision_answers\": 1, \"total_written_questions\": 0, \"total_vision_questions\": 2}",
+          "duration_s": 0.0
+        }
+      ]
+    },
+    {
+      "capsule_id": "capsule-8197429",
+      "tier": "easy",
+      "report": {
+        "fig From the figure measuring average bitrate (Kbps) over the Starlink network, report the name of the model with the highest average bitrate for 5 seconds of latency.": "L2A-LL",
+        "fig From the figure measuring average RTT without ISL, report the x-axis label.": "Seconds"
+      },
+      "counts": {
+        "correct_written_answers": 0,
+        "correct_vision_answers": 2,
+        "total_written_questions": 0,
+        "total_vision_questions": 2
+      },
+      "task_correct": true,
+      "cost_usd": 0.016178,
+      "duration_s": 5.59,
+      "failed_stage": null,
+      "error": null,
+      "image": null,
+      "n_images": 6,
+      "stages": [
+        {
+          "name": "prepare",
+          "ok": true,
+          "detail": "/mnt/data-2/asu/CSE598/repro-agent/work/capsule-8197429__easy",
+          "duration_s": 2.31
+        },
+        {
+          "name": "plan",
+          "ok": true,
+          "detail": "read results/ (no execution), 6 figures",
+          "duration_s": 0.0
+        },
+        {
+          "name": "execute",
+          "ok": true,
+          "detail": "skipped by tier",
+          "duration_s": 0.0
+        },
+        {
+          "name": "extract",
+          "ok": true,
+          "detail": "2 answers",
+          "duration_s": 3.28
+        },
+        {
+          "name": "score",
+          "ok": true,
+          "detail": "{\"correct_written_answers\": 0, \"correct_vision_answers\": 2, \"total_written_questions\": 0, \"total_vision_questions\": 2}",
+          "duration_s": 0.0
+        }
+      ]
+    },
+    {
+      "capsule_id": "capsule-2916503",
+      "tier": "easy",
+      "report": {
+        "Report the Variances estimate for Exam1.": 118.195,
+        "Report the Variances estimate for Exam2.": 124.754,
+        "Report the Variances estimate for Exam3.": 87.973
+      },
+      "counts": {
+        "correct_written_answers": 3,
+        "correct_vision_answers": 0,
+        "total_written_questions": 3,
+        "total_vision_questions": 0
+      },
+      "task_correct": true,
+      "cost_usd": 0.004618,
+      "duration_s": 2.02,
+      "failed_stage": null,
+      "error": null,
+      "image": null,
+      "n_images": 1,
+      "stages": [
+        {
+          "name": "prepare",
+          "ok": true,
+          "detail": "/mnt/data-2/asu/CSE598/repro-agent/work/capsule-2916503__easy",
+          "duration_s": 0.01
+        },
+        {
+          "name": "plan",
+          "ok": true,
+          "detail": "read results/ (no execution), 1 figures",
+          "duration_s": 0.0
+        },
+        {
+          "name": "execute",
+          "ok": true,
+          "detail": "skipped by tier",
+          "duration_s": 0.0
+        },
+        {
+          "name": "extract",
+          "ok": true,
+          "detail": "3 answers",
+          "duration_s": 2.01
+        },
+        {
+          "name": "score",
+          "ok": true,
+          "detail": "{\"correct_written_answers\": 3, \"correct_vision_answers\": 0, \"total_written_questions\": 3, \"total_vision_questions\": 0}",
+          "duration_s": 0.0
+        }
+      ]
+    },
+    {
+      "capsule_id": "capsule-0201225",
+      "tier": "easy",
+      "report": {
+        "Report the AUC at the 'sample-level'.": 0.998,
+        "Report the sensitivity at the 'sample-level'.": 0.966,
+        "Report the specificity at the 'sample-level'.": 0.994,
+        "Report the accuracy at the 'sample-level'.": 0.992,
+        "Report the AUC at the 'patient-level'.": 0.998,
+        "Report the sensitivity at the 'patient-level'.": 1.0,
+        "Report the specificity at the 'patient-level'.": 0.972,
+        "Report the accuracy at the 'patient-level'.": 0.978
+      },
+      "counts": {
+        "correct_written_answers": 8,
+        "correct_vision_answers": 0,
+        "total_written_questions": 8,
+        "total_vision_questions": 0
+      },
+      "task_correct": true,
+      "cost_usd": 0.006524,
+      "duration_s": 5.42,
+      "failed_stage": null,
+      "error": null,
+      "image": null,
+      "n_images": 0,
+      "stages": [
+        {
+          "name": "prepare",
+          "ok": true,
+          "detail": "/mnt/data-2/asu/CSE598/repro-agent/work/capsule-0201225__easy",
+          "duration_s": 2.94
+        },
+        {
+          "name": "plan",
+          "ok": true,
+          "detail": "read results/ (no execution), 0 figures",
+          "duration_s": 0.0
+        },
+        {
+          "name": "execute",
+          "ok": true,
+          "detail": "skipped by tier",
+          "duration_s": 0.0
+        },
+        {
+          "name": "extract",
+          "ok": true,
+          "detail": "8 answers",
+          "duration_s": 2.48
+        },
+        {
+          "name": "score",
+          "ok": true,
+          "detail": "{\"correct_written_answers\": 8, \"correct_vision_answers\": 0, \"total_written_questions\": 8, \"total_vision_questions\": 0}",
+          "duration_s": 0.0
+        }
+      ]
+    },
+    {
+      "capsule_id": "capsule-9070543",
+      "tier": "easy",
+      "report": {
+        "fig From the figure 4 continuous dose response, report the name of the sample with the highest normalized cell number at an LGX818 concentration of 0.": null
+      },
+      "counts": {
+        "correct_written_answers": 0,
+        "correct_vision_answers": 0,
+        "total_written_questions": 0,
+        "total_vision_questions": 1
+      },
+      "task_correct": false,
+      "cost_usd": 0.0308,
+      "duration_s": 3.78,
+      "failed_stage": null,
+      "error": null,
+      "image": null,
+      "n_images": 1,
+      "stages": [
+        {
+          "name": "prepare",
+          "ok": true,
+          "detail": "/mnt/data-2/asu/CSE598/repro-agent/work/capsule-9070543__easy",
+          "duration_s": 0.28
+        },
+        {
+          "name": "plan",
+          "ok": true,
+          "detail": "read results/ (no execution), 1 figures",
+          "duration_s": 0.0
+        },
+        {
+          "name": "execute",
+          "ok": true,
+          "detail": "skipped by tier",
+          "duration_s": 0.0
+        },
+        {
+          "name": "extract",
+          "ok": true,
+          "detail": "1 answers",
+          "duration_s": 3.5
+        },
+        {
+          "name": "score",
+          "ok": true,
+          "detail": "{\"correct_written_answers\": 0, \"correct_vision_answers\": 0, \"total_written_questions\": 0, \"total_vision_questions\": 1}",
+          "duration_s": 0.0
+        }
+      ]
+    },
+    {
+      "capsule_id": "capsule-1108125",
+      "tier": "easy",
+      "report": {
+        "Please report the mean of forestgroup.": 0.34,
+        "Please report the mean of gender.": 0.46,
+        "Please report the mean of income.": 1.0,
+        "fig Report 'decrease' if the eigen values of factors and components decreases as the factor or component number increases. Report 'increase' otherwise.": "decrease"
+      },
+      "counts": {
+        "correct_written_answers": 3,
+        "correct_vision_answers": 1,
+        "total_written_questions": 3,
+        "total_vision_questions": 1
+      },
+      "task_correct": true,
+      "cost_usd": 0.030282,
+      "duration_s": 6.37,
+      "failed_stage": null,
+      "error": null,
+      "image": null,
+      "n_images": 6,
+      "stages": [
+        {
+          "name": "prepare",
+          "ok": true,
+          "detail": "/mnt/data-2/asu/CSE598/repro-agent/work/capsule-1108125__easy",
+          "duration_s": 0.02
+        },
+        {
+          "name": "plan",
+          "ok": true,
+          "detail": "read results/ (no execution), 6 figures",
+          "duration_s": 0.0
+        },
+        {
+          "name": "execute",
+          "ok": true,
+          "detail": "skipped by tier",
+          "duration_s": 0.0
+        },
+        {
+          "name": "extract",
+          "ok": true,
+          "detail": "4 answers",
+          "duration_s": 6.35
+        },
+        {
+          "name": "score",
+          "ok": true,
+          "detail": "{\"correct_written_answers\": 3, \"correct_vision_answers\": 1, \"total_written_questions\": 3, \"total_vision_questions\": 1}",
+          "duration_s": 0.0
+        }
+      ]
+    },
+    {
+      "capsule_id": "capsule-6746514",
+      "tier": "easy",
+      "report": {
+        "fig For dataset 1, report the score (%) for the GRU classifier for ACC.": 92.76,
+        "fig For dataset 1, report the score (%) for the SGRU classifier for ACC.": 97.33,
+        "fig Report the count of Class 3.": 2300
+      },
+      "counts": {
+        "correct_written_answers": 0,
+        "correct_vision_answers": 3,
+        "total_written_questions": 0,
+        "total_vision_questions": 3
+      },
+      "task_correct": true,
+      "cost_usd": 0.034222,
+      "duration_s": 6.09,
+      "failed_stage": null,
+      "error": null,
+      "image": null,
+      "n_images": 6,
+      "stages": [
+        {
+          "name": "prepare",
+          "ok": true,
+          "detail": "/mnt/data-2/asu/CSE598/repro-agent/work/capsule-6746514__easy",
+          "duration_s": 0.03
+        },
+        {
+          "name": "plan",
+          "ok": true,
+          "detail": "read results/ (no execution), 6 figures",
+          "duration_s": 0.0
+        },
+        {
+          "name": "execute",
+          "ok": true,
+          "detail": "skipped by tier",
+          "duration_s": 0.0
+        },
+        {
+          "name": "extract",
+          "ok": true,
+          "detail": "3 answers",
+          "duration_s": 6.05
+        },
+        {
+          "name": "score",
+          "ok": true,
+          "detail": "{\"correct_written_answers\": 0, \"correct_vision_answers\": 3, \"total_written_questions\": 0, \"total_vision_questions\": 3}",
+          "duration_s": 0.0
+        }
+      ]
+    },
+    {
+      "capsule_id": "capsule-1683542",
+      "tier": "easy",
+      "report": {
+        "fig From Figure 2, report the Observed SMD for Bankole et al. 2016. Ignore the confidence interval.": 0.45,
+        "fig From Figure 12, report the Observed SMD for Jeppesen et al. 2006. Ignore the confidence interval.": 1.42
+      },
+      "counts": {
+        "correct_written_answers": 0,
+        "correct_vision_answers": 0,
+        "total_written_questions": 0,
+        "total_vision_questions": 2
+      },
+      "task_correct": false,
+      "cost_usd": 0.040654,
+      "duration_s": 3.29,
+      "failed_stage": null,
+      "error": null,
+      "image": null,
+      "n_images": 6,
+      "stages": [
+        {
+          "name": "prepare",
+          "ok": true,
+          "detail": "/mnt/data-2/asu/CSE598/repro-agent/work/capsule-1683542__easy",
+          "duration_s": 0.08
+        },
+        {
+          "name": "plan",
+          "ok": true,
+          "detail": "read results/ (no execution), 6 figures",
+          "duration_s": 0.0
+        },
+        {
+          "name": "execute",
+          "ok": true,
+          "detail": "skipped by tier",
+          "duration_s": 0.0
+        },
+        {
+          "name": "extract",
+          "ok": true,
+          "detail": "2 answers",
+          "duration_s": 3.21
+        },
+        {
+          "name": "score",
+          "ok": true,
+          "detail": "{\"correct_written_answers\": 0, \"correct_vision_answers\": 0, \"total_written_questions\": 0, \"total_vision_questions\": 2}",
+          "duration_s": 0.0
+        }
+      ]
+    },
+    {
+      "capsule_id": "capsule-5286757",
+      "tier": "easy",
+      "report": {
+        "Report the train loss after training the final epoch (epoch 9).": null
+      },
+      "counts": {
+        "correct_written_answers": 0,
+        "correct_vision_answers": 0,
+        "total_written_questions": 1,
+        "total_vision_questions": 0
+      },
+      "task_correct": false,
+      "cost_usd": 0.015748,
+      "duration_s": 1.83,
+      "failed_stage": null,
+      "error": null,
+      "image": null,
+      "n_images": 0,
+      "stages": [
+        {
+          "name": "prepare",
+          "ok": true,
+          "detail": "/mnt/data-2/asu/CSE598/repro-agent/work/capsule-5286757__easy",
+          "duration_s": 0.02
+        },
+        {
+          "name": "plan",
+          "ok": true,
+          "detail": "read results/ (no execution), 0 figures",
+          "duration_s": 0.0
+        },
+        {
+          "name": "execute",
+          "ok": true,
+          "detail": "skipped by tier",
+          "duration_s": 0.0
+        },
+        {
+          "name": "extract",
+          "ok": true,
+          "detail": "1 answers",
+          "duration_s": 1.81
+        },
+        {
+          "name": "score",
+          "ok": true,
+          "detail": "{\"correct_written_answers\": 0, \"correct_vision_answers\": 0, \"total_written_questions\": 1, \"total_vision_questions\": 0}",
+          "duration_s": 0.0
+        }
+      ]
+    },
+    {
+      "capsule_id": "capsule-4884085",
+      "tier": "easy",
+      "report": {
+        "Report the MSE for the file trento.h5.": 4.2629
+      },
+      "counts": {
+        "correct_written_answers": 1,
+        "correct_vision_answers": 0,
+        "total_written_questions": 1,
+        "total_vision_questions": 0
+      },
+      "task_correct": true,
+      "cost_usd": 0.00197,
+      "duration_s": 2.19,
+      "failed_stage": null,
+      "error": null,
+      "image": null,
+      "n_images": 0,
+      "stages": [
+        {
+          "name": "prepare",
+          "ok": true,
+          "detail": "/mnt/data-2/asu/CSE598/repro-agent/work/capsule-4884085__easy",
+          "duration_s": 0.71
+        },
+        {
+          "name": "plan",
+          "ok": true,
+          "detail": "read results/ (no execution), 0 figures",
+          "duration_s": 0.0
+        },
+        {
+          "name": "execute",
+          "ok": true,
+          "detail": "skipped by tier",
+          "duration_s": 0.0
+        },
+        {
+          "name": "extract",
+          "ok": true,
+          "detail": "1 answers",
+          "duration_s": 1.48
+        },
+        {
+          "name": "score",
+          "ok": true,
+          "detail": "{\"correct_written_answers\": 1, \"correct_vision_answers\": 0, \"total_written_questions\": 1, \"total_vision_questions\": 0}",
+          "duration_s": 0.0
+        }
+      ]
+    },
+    {
+      "capsule_id": "capsule-6460826",
+      "tier": "easy",
+      "report": {
+        "Report the CN prediction accuracy for the Iris dataset.": 100.0,
+        "Report the AA prediction acccuracy for the Iris dataset.": 100.0,
+        "Report the CN prediction acccuracy for the Zoo dataset.": 100.0,
+        "Report the AA prediction acccuracy for the Zoo dataset.": 100.0,
+        "Report the CN prediction acccuracy for the Wine dataset.": 97.22,
+        "Report the AA prediction acccuracy for the Wine dataset.": 97.22
+      },
+      "counts": {
+        "correct_written_answers": 6,
+        "correct_vision_answers": 0,
+        "total_written_questions": 6,
+        "total_vision_questions": 0
+      },
+      "task_correct": true,
+      "cost_usd": 0.003386,
+      "duration_s": 2.23,
+      "failed_stage": null,
+      "error": null,
+      "image": null,
+      "n_images": 0,
+      "stages": [
+        {
+          "name": "prepare",
+          "ok": true,
+          "detail": "/mnt/data-2/asu/CSE598/repro-agent/work/capsule-6460826__easy",
+          "duration_s": 0.01
+        },
+        {
+          "name": "plan",
+          "ok": true,
+          "detail": "read results/ (no execution), 0 figures",
+          "duration_s": 0.0
+        },
+        {
+          "name": "execute",
+          "ok": true,
+          "detail": "skipped by tier",
+          "duration_s": 0.0
+        },
+        {
+          "name": "extract",
+          "ok": true,
+          "detail": "6 answers",
+          "duration_s": 2.21
+        },
+        {
+          "name": "score",
+          "ok": true,
+          "detail": "{\"correct_written_answers\": 6, \"correct_vision_answers\": 0, \"total_written_questions\": 6, \"total_vision_questions\": 0}",
+          "duration_s": 0.0
+        }
+      ]
+    },
+    {
+      "capsule_id": "capsule-4098236",
+      "tier": "easy",
+      "report": {
+        "Report the exact match of the classification.": 0.27338983050847454,
+        "Report the hamming loss of the classification.": 0.2262241054613936
+      },
+      "counts": {
+        "correct_written_answers": 2,
+        "correct_vision_answers": 0,
+        "total_written_questions": 2,
+        "total_vision_questions": 0
+      },
+      "task_correct": true,
+      "cost_usd": 0.001122,
+      "duration_s": 1.61,
+      "failed_stage": null,
+      "error": null,
+      "image": null,
+      "n_images": 0,
+      "stages": [
+        {
+          "name": "prepare",
+          "ok": true,
+          "detail": "/mnt/data-2/asu/CSE598/repro-agent/work/capsule-4098236__easy",
+          "duration_s": 0.01
+        },
+        {
+          "name": "plan",
+          "ok": true,
+          "detail": "read results/ (no execution), 0 figures",
+          "duration_s": 0.0
+        },
+        {
+          "name": "execute",
+          "ok": true,
+          "detail": "skipped by tier",
+          "duration_s": 0.0
+        },
+        {
+          "name": "extract",
+          "ok": true,
+          "detail": "2 answers",
+          "duration_s": 1.6
+        },
+        {
+          "name": "score",
+          "ok": true,
+          "detail": "{\"correct_written_answers\": 2, \"correct_vision_answers\": 0, \"total_written_questions\": 2, \"total_vision_questions\": 0}",
+          "duration_s": 0.0
+        }
+      ]
+    },
+    {
+      "capsule_id": "capsule-5975162",
+      "tier": "easy",
+      "report": {
+        "Report the mean metric from the output.": 4.440892098500626e-16,
+        "Report the Avg FES from the output.": 96.7741935483871
+      },
+      "counts": {
+        "correct_written_answers": 2,
+        "correct_vision_answers": 0,
+        "total_written_questions": 2,
+        "total_vision_questions": 0
+      },
+      "task_correct": true,
+      "cost_usd": 0.009926,
+      "duration_s": 1.72,
+      "failed_stage": null,
+      "error": null,
+      "image": null,
+      "n_images": 0,
+      "stages": [
+        {
+          "name": "prepare",
+          "ok": true,
+          "detail": "/mnt/data-2/asu/CSE598/repro-agent/work/capsule-5975162__easy",
+          "duration_s": 0.02
+        },
+        {
+          "name": "plan",
+          "ok": true,
+          "detail": "read results/ (no execution), 0 figures",
+          "duration_s": 0.0
+        },
+        {
+          "name": "execute",
+          "ok": true,
+          "detail": "skipped by tier",
+          "duration_s": 0.0
+        },
+        {
+          "name": "extract",
+          "ok": true,
+          "detail": "2 answers",
+          "duration_s": 1.7
+        },
+        {
+          "name": "score",
+          "ok": true,
+          "detail": "{\"correct_written_answers\": 2, \"correct_vision_answers\": 0, \"total_written_questions\": 2, \"total_vision_questions\": 0}",
+          "duration_s": 0.0
+        }
+      ]
+    },
+    {
+      "capsule_id": "capsule-0220918",
+      "tier": "easy",
+      "report": {
+        "Report the eval mean loss from the classification.": 1.469021,
+        "Report the eval accuracy from the classification.": 0.931818
+      },
+      "counts": {
+        "correct_written_answers": 2,
+        "correct_vision_answers": 0,
+        "total_written_questions": 2,
+        "total_vision_questions": 0
+      },
+      "task_correct": true,
+      "cost_usd": 0.019268,
+      "duration_s": 7.12,
+      "failed_stage": null,
+      "error": null,
+      "image": null,
+      "n_images": 0,
+      "stages": [
+        {
+          "name": "prepare",
+          "ok": true,
+          "detail": "/mnt/data-2/asu/CSE598/repro-agent/work/capsule-0220918__easy",
+          "duration_s": 4.55
+        },
+        {
+          "name": "plan",
+          "ok": true,
+          "detail": "read results/ (no execution), 0 figures",
+          "duration_s": 0.0
+        },
+        {
+          "name": "execute",
+          "ok": true,
+          "detail": "skipped by tier",
+          "duration_s": 0.0
+        },
+        {
+          "name": "extract",
+          "ok": true,
+          "detail": "2 answers",
+          "duration_s": 2.57
+        },
+        {
+          "name": "score",
+          "ok": true,
+          "detail": "{\"correct_written_answers\": 2, \"correct_vision_answers\": 0, \"total_written_questions\": 2, \"total_vision_questions\": 0}",
+          "duration_s": 0.0
+        }
+      ]
+    },
+    {
+      "capsule_id": "capsule-4645832",
+      "tier": "easy",
+      "report": {
+        "Report the test mean of the model.": 0.3470596925303306
+      },
+      "counts": {
+        "correct_written_answers": 1,
+        "correct_vision_answers": 0,
+        "total_written_questions": 1,
+        "total_vision_questions": 0
+      },
+      "task_correct": true,
+      "cost_usd": 0.005038,
+      "duration_s": 3.4,
+      "failed_stage": null,
+      "error": null,
+      "image": null,
+      "n_images": 0,
+      "stages": [
+        {
+          "name": "prepare",
+          "ok": true,
+          "detail": "/mnt/data-2/asu/CSE598/repro-agent/work/capsule-4645832__easy",
+          "duration_s": 1.82
+        },
+        {
+          "name": "plan",
+          "ok": true,
+          "detail": "read results/ (no execution), 0 figures",
+          "duration_s": 0.0
+        },
+        {
+          "name": "execute",
+          "ok": true,
+          "detail": "skipped by tier",
+          "duration_s": 0.0
+        },
+        {
+          "name": "extract",
+          "ok": true,
+          "detail": "1 answers",
+          "duration_s": 1.58
+        },
+        {
+          "name": "score",
+          "ok": true,
+          "detail": "{\"correct_written_answers\": 1, \"correct_vision_answers\": 0, \"total_written_questions\": 1, \"total_vision_questions\": 0}",
+          "duration_s": 0.0
+        }
+      ]
+    },
+    {
+      "capsule_id": "capsule-2011424",
+      "tier": "easy",
+      "report": {
+        "Report the number of FtGEPs found.": 17
+      },
+      "counts": {
+        "correct_written_answers": 1,
+        "correct_vision_answers": 0,
+        "total_written_questions": 1,
+        "total_vision_questions": 0
+      },
+      "task_correct": true,
+      "cost_usd": 0.002806,
+      "duration_s": 1.59,
+      "failed_stage": null,
+      "error": null,
+      "image": null,
+      "n_images": 0,
+      "stages": [
+        {
+          "name": "prepare",
+          "ok": true,
+          "detail": "/mnt/data-2/asu/CSE598/repro-agent/work/capsule-2011424__easy",
+          "duration_s": 0.02
+        },
+        {
+          "name": "plan",
+          "ok": true,
+          "detail": "read results/ (no execution), 0 figures",
+          "duration_s": 0.0
+        },
+        {
+          "name": "execute",
+          "ok": true,
+          "detail": "skipped by tier",
+          "duration_s": 0.0
+        },
+        {
+          "name": "extract",
+          "ok": true,
+          "detail": "1 answers",
+          "duration_s": 1.57
+        },
+        {
+          "name": "score",
+          "ok": true,
+          "detail": "{\"correct_written_answers\": 1, \"correct_vision_answers\": 0, \"total_written_questions\": 1, \"total_vision_questions\": 0}",
+          "duration_s": 0.0
+        }
+      ]
+    },
+    {
+      "capsule_id": "capsule-3249574",
+      "tier": "easy",
+      "report": {
+        "Report the F1-score after epoch 200.": null
+      },
+      "counts": {
+        "correct_written_answers": 0,
+        "correct_vision_answers": 0,
+        "total_written_questions": 1,
+        "total_vision_questions": 0
+      },
+      "task_correct": false,
+      "cost_usd": 0.014604,
+      "duration_s": 1.97,
+      "failed_stage": null,
+      "error": null,
+      "image": null,
+      "n_images": 0,
+      "stages": [
+        {
+          "name": "prepare",
+          "ok": true,
+          "detail": "/mnt/data-2/asu/CSE598/repro-agent/work/capsule-3249574__easy",
+          "duration_s": 0.46
+        },
+        {
+          "name": "plan",
+          "ok": true,
+          "detail": "read results/ (no execution), 0 figures",
+          "duration_s": 0.0
+        },
+        {
+          "name": "execute",
+          "ok": true,
+          "detail": "skipped by tier",
+          "duration_s": 0.0
+        },
+        {
+          "name": "extract",
+          "ok": true,
+          "detail": "1 answers",
+          "duration_s": 1.51
+        },
+        {
+          "name": "score",
+          "ok": true,
+          "detail": "{\"correct_written_answers\": 0, \"correct_vision_answers\": 0, \"total_written_questions\": 1, \"total_vision_questions\": 0}",
+          "duration_s": 0.0
+        }
+      ]
+    },
+    {
+      "capsule_id": "capsule-5777882",
+      "tier": "easy",
+      "report": {
+        "fig Report the name of the license with the greatest number of DOIs.": "ADS",
+        "fig Report the name of the language (the abbreviation, as presented in the plot) with the least number of DOIs.": "it"
+      },
+      "counts": {
+        "correct_written_answers": 0,
+        "correct_vision_answers": 2,
+        "total_written_questions": 0,
+        "total_vision_questions": 2
+      },
+      "task_correct": true,
+      "cost_usd": 0.031414,
+      "duration_s": 4.22,
+      "failed_stage": null,
+      "error": null,
+      "image": null,
+      "n_images": 5,
+      "stages": [
+        {
+          "name": "prepare",
+          "ok": true,
+          "detail": "/mnt/data-2/asu/CSE598/repro-agent/work/capsule-5777882__easy",
+          "duration_s": 0.62
+        },
+        {
+          "name": "plan",
+          "ok": true,
+          "detail": "read results/ (no execution), 5 figures",
+          "duration_s": 0.0
+        },
+        {
+          "name": "execute",
+          "ok": true,
+          "detail": "skipped by tier",
+          "duration_s": 0.0
+        },
+        {
+          "name": "extract",
+          "ok": true,
+          "detail": "2 answers",
+          "duration_s": 3.6
+        },
+        {
+          "name": "score",
+          "ok": true,
+          "detail": "{\"correct_written_answers\": 0, \"correct_vision_answers\": 2, \"total_written_questions\": 0, \"total_vision_questions\": 2}",
+          "duration_s": 0.0
+        }
+      ]
+    },
+    {
+      "capsule_id": "capsule-9370340",
+      "tier": "easy",
+      "report": {
+        "Report the accuracy for testing after epoch 3.": 0.8907
+      },
+      "counts": {
+        "correct_written_answers": 1,
+        "correct_vision_answers": 0,
+        "total_written_questions": 1,
+        "total_vision_questions": 0
+      },
+      "task_correct": true,
+      "cost_usd": 0.002022,
+      "duration_s": 1.87,
+      "failed_stage": null,
+      "error": null,
+      "image": null,
+      "n_images": 1,
+      "stages": [
+        {
+          "name": "prepare",
+          "ok": true,
+          "detail": "/mnt/data-2/asu/CSE598/repro-agent/work/capsule-9370340__easy",
+          "duration_s": 0.12
+        },
+        {
+          "name": "plan",
+          "ok": true,
+          "detail": "read results/ (no execution), 1 figures",
+          "duration_s": 0.0
+        },
+        {
+          "name": "execute",
+          "ok": true,
+          "detail": "skipped by tier",
+          "duration_s": 0.0
+        },
+        {
+          "name": "extract",
+          "ok": true,
+          "detail": "1 answers",
+          "duration_s": 1.75
+        },
+        {
+          "name": "score",
+          "ok": true,
+          "detail": "{\"correct_written_answers\": 1, \"correct_vision_answers\": 0, \"total_written_questions\": 1, \"total_vision_questions\": 0}",
+          "duration_s": 0.0
+        }
+      ]
+    },
+    {
+      "capsule_id": "capsule-4807644",
+      "tier": "easy",
+      "report": {
+        "fig Report the name of the model that has the highest aggregate F1 Macro score for 500 random traning samples.": "NLI DeBERTa-base",
+        "fig Report the name of the model that has the lowest aggregate F1 Macro score for 500 random traning samples.": "Logistic Regression TF-IDF"
+      },
+      "counts": {
+        "correct_written_answers": 0,
+        "correct_vision_answers": 0,
+        "total_written_questions": 0,
+        "total_vision_questions": 2
+      },
+      "task_correct": false,
+      "cost_usd": 0.016094,
+      "duration_s": 6.57,
+      "failed_stage": null,
+      "error": null,
+      "image": null,
+      "n_images": 0,
+      "stages": [
+        {
+          "name": "prepare",
+          "ok": true,
+          "detail": "/mnt/data-2/asu/CSE598/repro-agent/work/capsule-4807644__easy",
+          "duration_s": 4.23
+        },
+        {
+          "name": "plan",
+          "ok": true,
+          "detail": "read results/ (no execution), 0 figures",
+          "duration_s": 0.0
+        },
+        {
+          "name": "execute",
+          "ok": true,
+          "detail": "skipped by tier",
+          "duration_s": 0.0
+        },
+        {
+          "name": "extract",
+          "ok": true,
+          "detail": "2 answers",
+          "duration_s": 2.34
+        },
+        {
+          "name": "score",
+          "ok": true,
+          "detail": "{\"correct_written_answers\": 0, \"correct_vision_answers\": 0, \"total_written_questions\": 0, \"total_vision_questions\": 2}",
+          "duration_s": 0.0
+        }
+      ]
+    },
+    {
+      "capsule_id": "capsule-1906954",
+      "tier": "easy",
+      "report": {
+        "Report the Delta value for Italy.": null,
+        "Report the Delta value for adults.": null
+      },
+      "counts": {
+        "correct_written_answers": 0,
+        "correct_vision_answers": 0,
+        "total_written_questions": 2,
+        "total_vision_questions": 0
+      },
+      "task_correct": false,
+      "cost_usd": 0.018908,
+      "duration_s": 1.78,
+      "failed_stage": null,
+      "error": null,
+      "image": null,
+      "n_images": 0,
+      "stages": [
+        {
+          "name": "prepare",
+          "ok": true,
+          "detail": "/mnt/data-2/asu/CSE598/repro-agent/work/capsule-1906954__easy",
+          "duration_s": 0.02
+        },
+        {
+          "name": "plan",
+          "ok": true,
+          "detail": "read results/ (no execution), 0 figures",
+          "duration_s": 0.0
+        },
+        {
+          "name": "execute",
+          "ok": true,
+          "detail": "skipped by tier",
+          "duration_s": 0.0
+        },
+        {
+          "name": "extract",
+          "ok": true,
+          "detail": "2 answers",
+          "duration_s": 1.76
+        },
+        {
+          "name": "score",
+          "ok": true,
+          "detail": "{\"correct_written_answers\": 0, \"correct_vision_answers\": 0, \"total_written_questions\": 2, \"total_vision_questions\": 0}",
+          "duration_s": 0.0
+        }
+      ]
+    },
+    {
+      "capsule_id": "capsule-9348218",
+      "tier": "easy",
+      "report": {
+        "fig From Figure 3 panel A, report the label of the green line.": "ranger explainer_m",
+        "fig From Figure 1, report the numerical value of N for example 1 (the first row).": null
+      },
+      "counts": {
+        "correct_written_answers": 0,
+        "correct_vision_answers": 0,
+        "total_written_questions": 0,
+        "total_vision_questions": 2
+      },
+      "task_correct": false,
+      "cost_usd": 0.056538,
+      "duration_s": 19.75,
+      "failed_stage": null,
+      "error": null,
+      "image": null,
+      "n_images": 6,
+      "stages": [
+        {
+          "name": "prepare",
+          "ok": true,
+          "detail": "/mnt/data-2/asu/CSE598/repro-agent/work/capsule-9348218__easy",
+          "duration_s": 0.08
+        },
+        {
+          "name": "plan",
+          "ok": true,
+          "detail": "read results/ (no execution), 6 figures",
+          "duration_s": 0.0
+        },
+        {
+          "name": "execute",
+          "ok": true,
+          "detail": "skipped by tier",
+          "duration_s": 0.0
+        },
+        {
+          "name": "extract",
+          "ok": true,
+          "detail": "2 answers",
+          "duration_s": 19.67
+        },
+        {
+          "name": "score",
+          "ok": true,
+          "detail": "{\"correct_written_answers\": 0, \"correct_vision_answers\": 0, \"total_written_questions\": 0, \"total_vision_questions\": 2}",
+          "duration_s": 0.0
+        }
+      ]
+    },
+    {
+      "capsule_id": "capsule-0238624",
+      "tier": "easy",
+      "report": {
+        "Report the macro avg precision from the classification report.": null,
+        "Report the macro avg recall from the classification report.": null
+      },
+      "counts": {
+        "correct_written_answers": 0,
+        "correct_vision_answers": 0,
+        "total_written_questions": 2,
+        "total_vision_questions": 0
+      },
+      "task_correct": false,
+      "cost_usd": 0.008942,
+      "duration_s": 1.75,
+      "failed_stage": null,
+      "error": null,
+      "image": null,
+      "n_images": 0,
+      "stages": [
+        {
+          "name": "prepare",
+          "ok": true,
+          "detail": "/mnt/data-2/asu/CSE598/repro-agent/work/capsule-0238624__easy",
+          "duration_s": 0.03
+        },
+        {
+          "name": "plan",
+          "ok": true,
+          "detail": "read results/ (no execution), 0 figures",
+          "duration_s": 0.0
+        },
+        {
+          "name": "execute",
+          "ok": true,
+          "detail": "skipped by tier",
+          "duration_s": 0.0
+        },
+        {
+          "name": "extract",
+          "ok": true,
+          "detail": "2 answers",
+          "duration_s": 1.72
+        },
+        {
+          "name": "score",
+          "ok": true,
+          "detail": "{\"correct_written_answers\": 0, \"correct_vision_answers\": 0, \"total_written_questions\": 2, \"total_vision_questions\": 0}",
+          "duration_s": 0.0
+        }
+      ]
+    },
+    {
+      "capsule_id": "capsule-3272782",
+      "tier": "easy",
+      "report": {
+        "Report Average accuracy for the VisGIN model.": 1.0,
+        "Report Average FNMR for the VisGIN model.": 0.0,
+        "Report Average FMR for the VisGIN model.": 0.0
+      },
+      "counts": {
+        "correct_written_answers": 3,
+        "correct_vision_answers": 0,
+        "total_written_questions": 3,
+        "total_vision_questions": 0
+      },
+      "task_correct": true,
+      "cost_usd": 0.018694,
+      "duration_s": 4.19,
+      "failed_stage": null,
+      "error": null,
+      "image": null,
+      "n_images": 0,
+      "stages": [
+        {
+          "name": "prepare",
+          "ok": true,
+          "detail": "/mnt/data-2/asu/CSE598/repro-agent/work/capsule-3272782__easy",
+          "duration_s": 0.21
+        },
+        {
+          "name": "plan",
+          "ok": true,
+          "detail": "read results/ (no execution), 0 figures",
+          "duration_s": 0.0
+        },
+        {
+          "name": "execute",
+          "ok": true,
+          "detail": "skipped by tier",
+          "duration_s": 0.0
+        },
+        {
+          "name": "extract",
+          "ok": true,
+          "detail": "3 answers",
+          "duration_s": 3.97
+        },
+        {
+          "name": "score",
+          "ok": true,
+          "detail": "{\"correct_written_answers\": 3, \"correct_vision_answers\": 0, \"total_written_questions\": 3, \"total_vision_questions\": 0}",
+          "duration_s": 0.0
+        }
+      ]
+    },
+    {
+      "capsule_id": "capsule-4600160",
+      "tier": "easy",
+      "report": {
+        "fig Report the name of the script with the lowest pupil dilation at 1500 m/s.": "print"
+      },
+      "counts": {
+        "correct_written_answers": 0,
+        "correct_vision_answers": 1,
+        "total_written_questions": 0,
+        "total_vision_questions": 1
+      },
+      "task_correct": true,
+      "cost_usd": 0.019154,
+      "duration_s": 3.49,
+      "failed_stage": null,
+      "error": null,
+      "image": null,
+      "n_images": 2,
+      "stages": [
+        {
+          "name": "prepare",
+          "ok": true,
+          "detail": "/mnt/data-2/asu/CSE598/repro-agent/work/capsule-4600160__easy",
+          "duration_s": 0.47
+        },
+        {
+          "name": "plan",
+          "ok": true,
+          "detail": "read results/ (no execution), 2 figures",
+          "duration_s": 0.0
+        },
+        {
+          "name": "execute",
+          "ok": true,
+          "detail": "skipped by tier",
+          "duration_s": 0.0
+        },
+        {
+          "name": "extract",
+          "ok": true,
+          "detail": "1 answers",
+          "duration_s": 3.02
+        },
+        {
+          "name": "score",
+          "ok": true,
+          "detail": "{\"correct_written_answers\": 0, \"correct_vision_answers\": 1, \"total_written_questions\": 0, \"total_vision_questions\": 1}",
+          "duration_s": 0.0
+        }
+      ]
+    },
+    {
+      "capsule_id": "capsule-1324693",
+      "tier": "easy",
+      "report": {
+        "fig Report the y-axis label of the subplot measuring Normal Q-Q": null,
+        "fig Report the y-axis label of fig 1.": "Scores on Manipulation Check Index"
+      },
+      "counts": {
+        "correct_written_answers": 0,
+        "correct_vision_answers": 1,
+        "total_written_questions": 0,
+        "total_vision_questions": 2
+      },
+      "task_correct": false,
+      "cost_usd": 0.045752,
+      "duration_s": 3.69,
+      "failed_stage": null,
+      "error": null,
+      "image": null,
+      "n_images": 6,
+      "stages": [
+        {
+          "name": "prepare",
+          "ok": true,
+          "detail": "/mnt/data-2/asu/CSE598/repro-agent/work/capsule-1324693__easy",
+          "duration_s": 0.02
+        },
+        {
+          "name": "plan",
+          "ok": true,
+          "detail": "read results/ (no execution), 6 figures",
+          "duration_s": 0.0
+        },
+        {
+          "name": "execute",
+          "ok": true,
+          "detail": "skipped by tier",
+          "duration_s": 0.0
+        },
+        {
+          "name": "extract",
+          "ok": true,
+          "detail": "2 answers",
+          "duration_s": 3.68
+        },
+        {
+          "name": "score",
+          "ok": true,
+          "detail": "{\"correct_written_answers\": 0, \"correct_vision_answers\": 1, \"total_written_questions\": 0, \"total_vision_questions\": 2}",
+          "duration_s": 0.0
+        }
+      ]
+    },
+    {
+      "capsule_id": "capsule-6133093",
+      "tier": "easy",
+      "report": {
+        "Report the estimate for the Label2 attribute and Attackers level in the Average Marginal Component Effects (AMCE) table of model6_c": null
+      },
+      "counts": {
+        "correct_written_answers": 0,
+        "correct_vision_answers": 0,
+        "total_written_questions": 1,
+        "total_vision_questions": 0
+      },
+      "task_correct": false,
+      "cost_usd": 0.023682,
+      "duration_s": 2.76,
+      "failed_stage": null,
+      "error": null,
+      "image": null,
+      "n_images": 0,
+      "stages": [
+        {
+          "name": "prepare",
+          "ok": true,
+          "detail": "/mnt/data-2/asu/CSE598/repro-agent/work/capsule-6133093__easy",
+          "duration_s": 0.02
+        },
+        {
+          "name": "plan",
+          "ok": true,
+          "detail": "read results/ (no execution), 0 figures",
+          "duration_s": 0.0
+        },
+        {
+          "name": "execute",
+          "ok": true,
+          "detail": "skipped by tier",
+          "duration_s": 0.0
+        },
+        {
+          "name": "extract",
+          "ok": true,
+          "detail": "1 answers",
+          "duration_s": 2.74
+        },
+        {
+          "name": "score",
+          "ok": true,
+          "detail": "{\"correct_written_answers\": 0, \"correct_vision_answers\": 0, \"total_written_questions\": 1, \"total_vision_questions\": 0}",
+          "duration_s": 0.0
+        }
+      ]
+    },
+    {
+      "capsule_id": "capsule-0396930",
+      "tier": "easy",
+      "report": {
+        "Report the f1 score of the 'duration' entity tag (out of 1).": 0.59375,
+        "Report the precision of the 'drug' entity tag (out of 1).": 0.6733021077
+      },
+      "counts": {
+        "correct_written_answers": 2,
+        "correct_vision_answers": 0,
+        "total_written_questions": 2,
+        "total_vision_questions": 0
+      },
+      "task_correct": true,
+      "cost_usd": 0.008682,
+      "duration_s": 1.83,
+      "failed_stage": null,
+      "error": null,
+      "image": null,
+      "n_images": 0,
+      "stages": [
+        {
+          "name": "prepare",
+          "ok": true,
+          "detail": "/mnt/data-2/asu/CSE598/repro-agent/work/capsule-0396930__easy",
+          "duration_s": 0.05
+        },
+        {
+          "name": "plan",
+          "ok": true,
+          "detail": "read results/ (no execution), 0 figures",
+          "duration_s": 0.0
+        },
+        {
+          "name": "execute",
+          "ok": true,
+          "detail": "skipped by tier",
+          "duration_s": 0.0
+        },
+        {
+          "name": "extract",
+          "ok": true,
+          "detail": "2 answers",
+          "duration_s": 1.78
+        },
+        {
+          "name": "score",
+          "ok": true,
+          "detail": "{\"correct_written_answers\": 2, \"correct_vision_answers\": 0, \"total_written_questions\": 2, \"total_vision_questions\": 0}",
+          "duration_s": 0.0
+        }
+      ]
+    },
+    {
+      "capsule_id": "capsule-7981862",
+      "tier": "easy",
+      "report": {
+        "fig Report the middle decile (50%) median RMSE for the Monte Carlo results by CoS algorithm.": null
+      },
+      "counts": {
+        "correct_written_answers": 0,
+        "correct_vision_answers": 0,
+        "total_written_questions": 0,
+        "total_vision_questions": 1
+      },
+      "task_correct": false,
+      "cost_usd": 0.031834,
+      "duration_s": 6.11,
+      "failed_stage": null,
+      "error": null,
+      "image": null,
+      "n_images": 6,
+      "stages": [
+        {
+          "name": "prepare",
+          "ok": true,
+          "detail": "/mnt/data-2/asu/CSE598/repro-agent/work/capsule-7981862__easy",
+          "duration_s": 2.41
+        },
+        {
+          "name": "plan",
+          "ok": true,
+          "detail": "read results/ (no execution), 6 figures",
+          "duration_s": 0.0
+        },
+        {
+          "name": "execute",
+          "ok": true,
+          "detail": "skipped by tier",
+          "duration_s": 0.0
+        },
+        {
+          "name": "extract",
+          "ok": true,
+          "detail": "1 answers",
+          "duration_s": 3.69
+        },
+        {
+          "name": "score",
+          "ok": true,
+          "detail": "{\"correct_written_answers\": 0, \"correct_vision_answers\": 0, \"total_written_questions\": 0, \"total_vision_questions\": 1}",
+          "duration_s": 0.0
+        }
+      ]
+    },
+    {
+      "capsule_id": "capsule-2061060",
+      "tier": "easy",
+      "report": {
+        "fig From supplementary table 2, report the % reaching consensus for the quant domain.": null
+      },
+      "counts": {
+        "correct_written_answers": 0,
+        "correct_vision_answers": 0,
+        "total_written_questions": 0,
+        "total_vision_questions": 1
+      },
+      "task_correct": false,
+      "cost_usd": 0.036926,
+      "duration_s": 3.49,
+      "failed_stage": null,
+      "error": null,
+      "image": null,
+      "n_images": 6,
+      "stages": [
+        {
+          "name": "prepare",
+          "ok": true,
+          "detail": "/mnt/data-2/asu/CSE598/repro-agent/work/capsule-2061060__easy",
+          "duration_s": 0.19
+        },
+        {
+          "name": "plan",
+          "ok": true,
+          "detail": "read results/ (no execution), 6 figures",
+          "duration_s": 0.01
+        },
+        {
+          "name": "execute",
+          "ok": true,
+          "detail": "skipped by tier",
+          "duration_s": 0.0
+        },
+        {
+          "name": "extract",
+          "ok": true,
+          "detail": "1 answers",
+          "duration_s": 3.28
+        },
+        {
+          "name": "score",
+          "ok": true,
+          "detail": "{\"correct_written_answers\": 0, \"correct_vision_answers\": 0, \"total_written_questions\": 0, \"total_vision_questions\": 1}",
+          "duration_s": 0.0
+        }
+      ]
+    },
+    {
+      "capsule_id": "capsule-0940461",
+      "tier": "easy",
+      "report": {
+        "Report the best test R^2 value for c = 1.0.": null,
+        "Report the best test RMSE value for c = 1.0.": null
+      },
+      "counts": {
+        "correct_written_answers": 0,
+        "correct_vision_answers": 0,
+        "total_written_questions": 2,
+        "total_vision_questions": 0
+      },
+      "task_correct": false,
+      "cost_usd": 0.012282,
+      "duration_s": 1.76,
+      "failed_stage": null,
+      "error": null,
+      "image": null,
+      "n_images": 0,
+      "stages": [
+        {
+          "name": "prepare",
+          "ok": true,
+          "detail": "/mnt/data-2/asu/CSE598/repro-agent/work/capsule-0940461__easy",
+          "duration_s": 0.01
+        },
+        {
+          "name": "plan",
+          "ok": true,
+          "detail": "read results/ (no execution), 0 figures",
+          "duration_s": 0.0
+        },
+        {
+          "name": "execute",
+          "ok": true,
+          "detail": "skipped by tier",
+          "duration_s": 0.0
+        },
+        {
+          "name": "extract",
+          "ok": true,
+          "detail": "2 answers",
+          "duration_s": 1.75
+        },
+        {
+          "name": "score",
+          "ok": true,
+          "detail": "{\"correct_written_answers\": 0, \"correct_vision_answers\": 0, \"total_written_questions\": 2, \"total_vision_questions\": 0}",
+          "duration_s": 0.0
+        }
+      ]
+    },
+    {
+      "capsule_id": "capsule-3894632",
+      "tier": "easy",
+      "report": {
+        "Report the p value for Lesions.Contoured.": 0.6683816173447221
+      },
+      "counts": {
+        "correct_written_answers": 0,
+        "correct_vision_answers": 0,
+        "total_written_questions": 1,
+        "total_vision_questions": 0
+      },
+      "task_correct": false,
+      "cost_usd": 0.015786,
+      "duration_s": 3.65,
+      "failed_stage": null,
+      "error": null,
+      "image": null,
+      "n_images": 0,
+      "stages": [
+        {
+          "name": "prepare",
+          "ok": true,
+          "detail": "/mnt/data-2/asu/CSE598/repro-agent/work/capsule-3894632__easy",
+          "duration_s": 0.03
+        },
+        {
+          "name": "plan",
+          "ok": true,
+          "detail": "read results/ (no execution), 0 figures",
+          "duration_s": 0.0
+        },
+        {
+          "name": "execute",
+          "ok": true,
+          "detail": "skipped by tier",
+          "duration_s": 0.0
+        },
+        {
+          "name": "extract",
+          "ok": true,
+          "detail": "1 answers",
+          "duration_s": 3.61
+        },
+        {
+          "name": "score",
+          "ok": true,
+          "detail": "{\"correct_written_answers\": 0, \"correct_vision_answers\": 0, \"total_written_questions\": 1, \"total_vision_questions\": 0}",
+          "duration_s": 0.0
+        }
+      ]
+    },
+    {
+      "capsule_id": "capsule-5496369",
+      "tier": "easy",
+      "report": {
+        "fig For the GC diagnosis model's AUROC curve of test data, report the Lasso AUROC of the test data.": null,
+        "fig From the GC prognosis model's AUROC curve, report the Lasso AUROC of the test data.": null
+      },
+      "counts": {
+        "correct_written_answers": 0,
+        "correct_vision_answers": 0,
+        "total_written_questions": 0,
+        "total_vision_questions": 2
+      },
+      "task_correct": false,
+      "cost_usd": 0.013184,
+      "duration_s": 2.23,
+      "failed_stage": null,
+      "error": null,
+      "image": null,
+      "n_images": 0,
+      "stages": [
+        {
+          "name": "prepare",
+          "ok": true,
+          "detail": "/mnt/data-2/asu/CSE598/repro-agent/work/capsule-5496369__easy",
+          "duration_s": 0.09
+        },
+        {
+          "name": "plan",
+          "ok": true,
+          "detail": "read results/ (no execution), 0 figures",
+          "duration_s": 0.01
+        },
+        {
+          "name": "execute",
+          "ok": true,
+          "detail": "skipped by tier",
+          "duration_s": 0.0
+        },
+        {
+          "name": "extract",
+          "ok": true,
+          "detail": "2 answers",
+          "duration_s": 2.13
+        },
+        {
+          "name": "score",
+          "ok": true,
+          "detail": "{\"correct_written_answers\": 0, \"correct_vision_answers\": 0, \"total_written_questions\": 0, \"total_vision_questions\": 2}",
+          "duration_s": 0.0
+        }
+      ]
+    },
+    {
+      "capsule_id": "capsule-8912293",
+      "tier": "easy",
+      "report": {
+        "fig Report the location of experiment with the higher proportion of 131 pre\u2212registered experiments in AEA and EGAP registries for the mobilization intervention class (ignore the n value).": "US",
+        "fig From Figure A5, report the y-axis label.": null,
+        "fig From Figure A2, report the x-axis label of the first plot.": null
+      },
+      "counts": {
+        "correct_written_answers": 0,
+        "correct_vision_answers": 1,
+        "total_written_questions": 0,
+        "total_vision_questions": 3
+      },
+      "task_correct": false,
+      "cost_usd": 0.00709,
+      "duration_s": 2.51,
+      "failed_stage": null,
+      "error": null,
+      "image": null,
+      "n_images": 0,
+      "stages": [
+        {
+          "name": "prepare",
+          "ok": true,
+          "detail": "/mnt/data-2/asu/CSE598/repro-agent/work/capsule-8912293__easy",
+          "duration_s": 0.16
+        },
+        {
+          "name": "plan",
+          "ok": true,
+          "detail": "read results/ (no execution), 0 figures",
+          "duration_s": 0.01
+        },
+        {
+          "name": "execute",
+          "ok": true,
+          "detail": "skipped by tier",
+          "duration_s": 0.0
+        },
+        {
+          "name": "extract",
+          "ok": true,
+          "detail": "3 answers",
+          "duration_s": 2.35
+        },
+        {
+          "name": "score",
+          "ok": true,
+          "detail": "{\"correct_written_answers\": 0, \"correct_vision_answers\": 1, \"total_written_questions\": 0, \"total_vision_questions\": 3}",
+          "duration_s": 0.0
+        }
+      ]
+    },
+    {
+      "capsule_id": "capsule-3497606",
+      "tier": "easy",
+      "report": {
+        "fig Report which image type has the greatest noise at 100 iterations.": "High Resolution"
+      },
+      "counts": {
+        "correct_written_answers": 0,
+        "correct_vision_answers": 1,
+        "total_written_questions": 0,
+        "total_vision_questions": 1
+      },
+      "task_correct": true,
+      "cost_usd": 0.009308,
+      "duration_s": 3.2,
+      "failed_stage": null,
+      "error": null,
+      "image": null,
+      "n_images": 6,
+      "stages": [
+        {
+          "name": "prepare",
+          "ok": true,
+          "detail": "/mnt/data-2/asu/CSE598/repro-agent/work/capsule-3497606__easy",
+          "duration_s": 0.01
+        },
+        {
+          "name": "plan",
+          "ok": true,
+          "detail": "read results/ (no execution), 6 figures",
+          "duration_s": 0.0
+        },
+        {
+          "name": "execute",
+          "ok": true,
+          "detail": "skipped by tier",
+          "duration_s": 0.0
+        },
+        {
+          "name": "extract",
+          "ok": true,
+          "detail": "1 answers",
+          "duration_s": 3.19
+        },
+        {
+          "name": "score",
+          "ok": true,
+          "detail": "{\"correct_written_answers\": 0, \"correct_vision_answers\": 1, \"total_written_questions\": 0, \"total_vision_questions\": 1}",
+          "duration_s": 0.0
+        }
+      ]
+    },
+    {
+      "capsule_id": "capsule-7156696",
+      "tier": "easy",
+      "report": {
+        "fig From Figure 5A, report the name of the source with the lowest fluence rate at depth 1.": null,
+        "fig From Figure 5B, report the name of the source with the highest effective fluence rate at depth 1.": null
+      },
+      "counts": {
+        "correct_written_answers": 0,
+        "correct_vision_answers": 0,
+        "total_written_questions": 0,
+        "total_vision_questions": 2
+      },
+      "task_correct": false,
+      "cost_usd": 0.042386,
+      "duration_s": 5.79,
+      "failed_stage": null,
+      "error": null,
+      "image": null,
+      "n_images": 6,
+      "stages": [
+        {
+          "name": "prepare",
+          "ok": true,
+          "detail": "/mnt/data-2/asu/CSE598/repro-agent/work/capsule-7156696__easy",
+          "duration_s": 0.08
+        },
+        {
+          "name": "plan",
+          "ok": true,
+          "detail": "read results/ (no execution), 6 figures",
+          "duration_s": 0.0
+        },
+        {
+          "name": "execute",
+          "ok": true,
+          "detail": "skipped by tier",
+          "duration_s": 0.0
+        },
+        {
+          "name": "extract",
+          "ok": true,
+          "detail": "2 answers",
+          "duration_s": 5.71
+        },
+        {
+          "name": "score",
+          "ok": true,
+          "detail": "{\"correct_written_answers\": 0, \"correct_vision_answers\": 0, \"total_written_questions\": 0, \"total_vision_questions\": 2}",
+          "duration_s": 0.0
+        }
+      ]
+    },
+    {
+      "capsule_id": "capsule-7935517",
+      "tier": "easy",
+      "report": {
+        "fig From the plot sampling rho, report the rho value corresponding to the solid red line.": 0.25,
+        "fig Report the x-axis label of the plot measuring Cohen's d.": "Cohen's d"
+      },
+      "counts": {
+        "correct_written_answers": 0,
+        "correct_vision_answers": 0,
+        "total_written_questions": 0,
+        "total_vision_questions": 2
+      },
+      "task_correct": false,
+      "cost_usd": 0.016468,
+      "duration_s": 2.63,
+      "failed_stage": null,
+      "error": null,
+      "image": null,
+      "n_images": 3,
+      "stages": [
+        {
+          "name": "prepare",
+          "ok": true,
+          "detail": "/mnt/data-2/asu/CSE598/repro-agent/work/capsule-7935517__easy",
+          "duration_s": 0.09
+        },
+        {
+          "name": "plan",
+          "ok": true,
+          "detail": "read results/ (no execution), 3 figures",
+          "duration_s": 0.0
+        },
+        {
+          "name": "execute",
+          "ok": true,
+          "detail": "skipped by tier",
+          "duration_s": 0.0
+        },
+        {
+          "name": "extract",
+          "ok": true,
+          "detail": "2 answers",
+          "duration_s": 2.54
+        },
+        {
+          "name": "score",
+          "ok": true,
+          "detail": "{\"correct_written_answers\": 0, \"correct_vision_answers\": 0, \"total_written_questions\": 0, \"total_vision_questions\": 2}",
+          "duration_s": 0.0
+        }
+      ]
+    },
+    {
+      "capsule_id": "capsule-3269870",
+      "tier": "easy",
+      "report": {
+        "Report the percentage accuracy of the result.": 60,
+        "Report the percentage precision of the result.": 62,
+        "fig Report the y-axis label of the training plot.": "Cost"
+      },
+      "counts": {
+        "correct_written_answers": 2,
+        "correct_vision_answers": 1,
+        "total_written_questions": 2,
+        "total_vision_questions": 1
+      },
+      "task_correct": true,
+      "cost_usd": 0.012564,
+      "duration_s": 2.06,
+      "failed_stage": null,
+      "error": null,
+      "image": null,
+      "n_images": 1,
+      "stages": [
+        {
+          "name": "prepare",
+          "ok": true,
+          "detail": "/mnt/data-2/asu/CSE598/repro-agent/work/capsule-3269870__easy",
+          "duration_s": 0.01
+        },
+        {
+          "name": "plan",
+          "ok": true,
+          "detail": "read results/ (no execution), 1 figures",
+          "duration_s": 0.0
+        },
+        {
+          "name": "execute",
+          "ok": true,
+          "detail": "skipped by tier",
+          "duration_s": 0.0
+        },
+        {
+          "name": "extract",
+          "ok": true,
+          "detail": "3 answers",
+          "duration_s": 2.04
+        },
+        {
+          "name": "score",
+          "ok": true,
+          "detail": "{\"correct_written_answers\": 2, \"correct_vision_answers\": 1, \"total_written_questions\": 2, \"total_vision_questions\": 1}",
+          "duration_s": 0.0
+        }
+      ]
+    }
+  ]
+}

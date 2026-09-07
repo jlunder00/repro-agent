@@ -68,9 +68,6 @@ is 90. The results JSON reports the two separately.
 Task accuracy is all-or-nothing, so per-question accuracy is reported alongside
 it.
 
-Vision questions were unanswerable before image input was added: the model
-scored 7/54 on them by guessing from result text, versus 38/83 with images.
-
 ### Example failure
 
 For `capsule-9052293` the planning call proposed
@@ -160,7 +157,6 @@ failure-mode breakdown (dependency install vs. execution vs. answer extraction).
 
 ```
 run_baseline.py              CLI entry point
-CONTRACTS.md                 fixed module interfaces
 src/repro_agent/
     dataset.py               CORE-Bench task loading and subset selection
     capsules.py              capsule download, extraction, per-tier preparation
@@ -170,7 +166,6 @@ src/repro_agent/
     scoring.py               vendored CORE-Bench scorer (MIT, attributed)
 examples/                    vendored task metadata + official tier prompts
 results/                     run output (JSON)
-proposal/                    the LaTeX proposal
 third_party/                 upstream licence and attribution
 ```
 
@@ -196,7 +191,7 @@ tiers.
 ## Known limitations
 
 - **Figure cap.** At most 6 figures are attached per capsule, chosen by sorted
-  filename. 13 capsules have more than 6, so a question about a figure outside
+  filename. 17 capsules have more than 6, so a question about a figure outside
   that set stays unanswerable.
 - **Result truncation.** Result files are concatenated in directory order up to
   a character budget, so an answer late in a long log can be truncated away.
@@ -206,9 +201,9 @@ tiers.
   task accuracy.
 - **The base image is a fixed lookup**: `python:3.11-slim` for Python,
   `r-base:4.4.1` for R. The lookup exists so an R capsule is not run without an
-  interpreter, which would measure the image choice rather than the plan. Even
-  with the correct interpreter, R hard-tier execution succeeded 0/41. Image
-  choice should become a recorded per-run variable.
+  interpreter, which would measure the image choice rather than the plan. Code
+  that targets an older interpreter cannot be matched. Image choice should
+  become a recorded per-run variable.
 - **No GPU execution.** GPU-flagged capsules run on CPU.
 - **Dependency rot.** Much of this code is years old and may no longer install
   cleanly on a modern base image.

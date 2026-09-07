@@ -1,0 +1,2423 @@
+{
+  "generated_at": "2026-09-07T02:11:36.665289+00:00",
+  "tier": "hard",
+  "split": "train",
+  "n_tasks": 45,
+  "n_correct": 0,
+  "task_accuracy": 0.0,
+  "total_cost_usd": 0.5566,
+  "total_duration_s": 1251.4,
+  "stage_failures": {
+    "prepare": 0,
+    "plan": 0,
+    "execute": 45,
+    "extract": 0,
+    "score": 0
+  },
+  "aborted_at": {
+    "prepare": 0,
+    "plan": 0,
+    "execute": 0,
+    "extract": 0,
+    "score": 0
+  },
+  "runs": [
+    {
+      "capsule_id": "capsule-7038571",
+      "tier": "hard",
+      "report": {
+        "Report the average AUC score of Had using the CTGCN-C method on the UCI dataset.": null
+      },
+      "counts": {
+        "correct_written_answers": 0,
+        "correct_vision_answers": 0,
+        "total_written_questions": 1,
+        "total_vision_questions": 0
+      },
+      "task_correct": false,
+      "cost_usd": 0.012364,
+      "duration_s": 7.22,
+      "failed_stage": null,
+      "error": null,
+      "image": "python:3.11-slim",
+      "n_images": 0,
+      "stages": [
+        {
+          "name": "prepare",
+          "ok": true,
+          "detail": "/mnt/data-2/asu/CSE598/repro-agent/work/capsule-7038571__hard",
+          "duration_s": 0.2
+        },
+        {
+          "name": "plan",
+          "ok": true,
+          "detail": "pip install -q numpy pandas scipy scikit-learn networkx torch==1.5.1 && cd code && python3 main.py --config=config/uci.json --task=preprocessing --method=CTGCN-C && python3 main.py --config=config/uci.json --task=embedding --method=CTGCN-C && python3 main.py --config=config/uci.json --task=link_pred",
+          "duration_s": 2.16
+        },
+        {
+          "name": "execute",
+          "ok": false,
+          "detail": "exit=1 timed_out=False",
+          "duration_s": 3.04
+        },
+        {
+          "name": "extract",
+          "ok": true,
+          "detail": "1 answers",
+          "duration_s": 1.82
+        },
+        {
+          "name": "score",
+          "ok": true,
+          "detail": "{\"correct_written_answers\": 0, \"correct_vision_answers\": 0, \"total_written_questions\": 1, \"total_vision_questions\": 0}",
+          "duration_s": 0.0
+        }
+      ]
+    },
+    {
+      "capsule_id": "capsule-3137115",
+      "tier": "hard",
+      "report": {
+        "Report the final outcomes of reproducibility checks at the article level after original authors were contacted (Table 1 of the manuscript). You should report n for row 1 in the table (ignore the confidence interval).": null,
+        "Report the final outcomes of reproducibility checks at the article level after original authors were contacted (Table 1 of the manuscript). You should report n for row 2 in the table (ignore the confidence interval).": null,
+        "Report the final outcomes of reproducibility checks at the article level after original authors were contacted (Table 1 of the manuscript). You should report n for row 3 in the table (ignore the confidence interval).": null,
+        "fig From Figure 1, report the proportion of articles with fully reproducible target values from the random effects model after author contact. Ignore the confidence intervals": null
+      },
+      "counts": {
+        "correct_written_answers": 0,
+        "correct_vision_answers": 0,
+        "total_written_questions": 3,
+        "total_vision_questions": 1
+      },
+      "task_correct": false,
+      "cost_usd": 0.008144,
+      "duration_s": 6.01,
+      "failed_stage": null,
+      "error": null,
+      "image": "r-base:4.4.1",
+      "n_images": 0,
+      "stages": [
+        {
+          "name": "prepare",
+          "ok": true,
+          "detail": "/mnt/data-2/asu/CSE598/repro-agent/work/capsule-3137115__hard",
+          "duration_s": 0.03
+        },
+        {
+          "name": "plan",
+          "ok": true,
+          "detail": "Rscript -e 'if (!requireNamespace(\"rmarkdown\", quietly=TRUE)) install.packages(\"rmarkdown\", repos=\"https://cloud.r-project.org\"); pkgs <- c(\"tidyverse\",\"knitr\",\"papaja\",\"metafor\",\"kableExtra\",\"here\",\"english\",\"boot\",\"broom\",\"stringr\",\"scales\",\"cowplot\"); for(p in pkgs) if (!requireNamespace(p, quietly=TRUE)) install.packages(p, repos=\"https://cloud.r-project.org\"); rmarkdown::render(\"code/manuscript.Rmd\")'",
+          "duration_s": 2.89
+        },
+        {
+          "name": "execute",
+          "ok": false,
+          "detail": "exit=1 timed_out=False",
+          "duration_s": 0.47
+        },
+        {
+          "name": "extract",
+          "ok": true,
+          "detail": "4 answers",
+          "duration_s": 2.63
+        },
+        {
+          "name": "score",
+          "ok": true,
+          "detail": "{\"correct_written_answers\": 0, \"correct_vision_answers\": 0, \"total_written_questions\": 3, \"total_vision_questions\": 1}",
+          "duration_s": 0.0
+        }
+      ]
+    },
+    {
+      "capsule_id": "capsule-5367566",
+      "tier": "hard",
+      "report": {
+        "Report the HyperETA MAPE with no DTW.": null,
+        "Report the HyperETA RMSE with no DTW.": null,
+        "Report the HyperETA MAE with no DTW.": null
+      },
+      "counts": {
+        "correct_written_answers": 0,
+        "correct_vision_answers": 0,
+        "total_written_questions": 3,
+        "total_vision_questions": 0
+      },
+      "task_correct": false,
+      "cost_usd": 0.004996,
+      "duration_s": 23.0,
+      "failed_stage": null,
+      "error": null,
+      "image": "python:3.11-slim",
+      "n_images": 0,
+      "stages": [
+        {
+          "name": "prepare",
+          "ok": true,
+          "detail": "/mnt/data-2/asu/CSE598/repro-agent/work/capsule-5367566__hard",
+          "duration_s": 0.37
+        },
+        {
+          "name": "plan",
+          "ok": true,
+          "detail": "pip install -q numpy scipy pandas scikit-learn dtaidistance jupyter nbconvert && cd code && jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=-1 run.ipynb --output run.ipynb",
+          "duration_s": 2.06
+        },
+        {
+          "name": "execute",
+          "ok": false,
+          "detail": "exit=1 timed_out=False",
+          "duration_s": 18.72
+        },
+        {
+          "name": "extract",
+          "ok": true,
+          "detail": "3 answers",
+          "duration_s": 1.85
+        },
+        {
+          "name": "score",
+          "ok": true,
+          "detail": "{\"correct_written_answers\": 0, \"correct_vision_answers\": 0, \"total_written_questions\": 3, \"total_vision_questions\": 0}",
+          "duration_s": 0.0
+        }
+      ]
+    },
+    {
+      "capsule_id": "capsule-9168639",
+      "tier": "hard",
+      "report": {
+        "fig Report Institutions Sampled for US in Table 1.": null,
+        "fig Report Institutions Sampled for UK in Table 1.": null
+      },
+      "counts": {
+        "correct_written_answers": 0,
+        "correct_vision_answers": 0,
+        "total_written_questions": 0,
+        "total_vision_questions": 2
+      },
+      "task_correct": false,
+      "cost_usd": 0.005764,
+      "duration_s": 4.84,
+      "failed_stage": null,
+      "error": null,
+      "image": "r-base:4.4.1",
+      "n_images": 0,
+      "stages": [
+        {
+          "name": "prepare",
+          "ok": true,
+          "detail": "/mnt/data-2/asu/CSE598/repro-agent/work/capsule-9168639__hard",
+          "duration_s": 0.01
+        },
+        {
+          "name": "plan",
+          "ok": true,
+          "detail": "R -e \"if (!requireNamespace('rmarkdown', quietly=TRUE)) install.packages('rmarkdown', repos='https://cloud.r-project.org'); if (!requireNamespace('tidyverse', quietly=TRUE)) install.packages('tidyverse', repos='https://cloud.r-project.org'); if (!requireNamespace('knitr', quietly=TRUE)) install.packages('knitr', repos='https://cloud.r-project.org'); rmarkdown::render('code/analysis.Rmd', output_file='analysis.pdf', output_dir='results')\"",
+          "duration_s": 2.61
+        },
+        {
+          "name": "execute",
+          "ok": false,
+          "detail": "exit=1 timed_out=False",
+          "duration_s": 0.49
+        },
+        {
+          "name": "extract",
+          "ok": true,
+          "detail": "2 answers",
+          "duration_s": 1.73
+        },
+        {
+          "name": "score",
+          "ok": true,
+          "detail": "{\"correct_written_answers\": 0, \"correct_vision_answers\": 0, \"total_written_questions\": 0, \"total_vision_questions\": 2}",
+          "duration_s": 0.0
+        }
+      ]
+    },
+    {
+      "capsule_id": "capsule-9166182",
+      "tier": "hard",
+      "report": {
+        "For experiment 1, report the adversary errors without SEAM.": null,
+        "For experiment 1, report the adversary errors with SEAM.": null,
+        "For experiment 2, report the adversary errors without SEAM.": null,
+        "For experiment 2, report the adversary errors with SEAM.": null,
+        "For experiment 3, report the adversary errors without SEAM.": null,
+        "For experiment 3, report the adversary errors with SEAM.": null
+      },
+      "counts": {
+        "correct_written_answers": 0,
+        "correct_vision_answers": 0,
+        "total_written_questions": 6,
+        "total_vision_questions": 0
+      },
+      "task_correct": false,
+      "cost_usd": 0.02791,
+      "duration_s": 20.43,
+      "failed_stage": null,
+      "error": null,
+      "image": "python:3.11-slim",
+      "n_images": 0,
+      "stages": [
+        {
+          "name": "prepare",
+          "ok": true,
+          "detail": "/mnt/data-2/asu/CSE598/repro-agent/work/capsule-9166182__hard",
+          "duration_s": 0.71
+        },
+        {
+          "name": "plan",
+          "ok": true,
+          "detail": "pip install -r requirements.txt 2>/dev/null || pip install numpy scipy pandas wfdb matplotlib scikit-learn psycopg2-binary; cd code && python main.py",
+          "duration_s": 1.91
+        },
+        {
+          "name": "execute",
+          "ok": false,
+          "detail": "exit=1 timed_out=False",
+          "duration_s": 15.47
+        },
+        {
+          "name": "extract",
+          "ok": true,
+          "detail": "6 answers",
+          "duration_s": 2.34
+        },
+        {
+          "name": "score",
+          "ok": true,
+          "detail": "{\"correct_written_answers\": 0, \"correct_vision_answers\": 0, \"total_written_questions\": 6, \"total_vision_questions\": 0}",
+          "duration_s": 0.0
+        }
+      ]
+    },
+    {
+      "capsule_id": "capsule-0325493",
+      "tier": "hard",
+      "report": {
+        "For the within-variance improvements, report the improvement for the FS_TotalGrayVol outcome with the Day variable.": null,
+        "For the within-variance improvements, report the improvement for the FS_CortexVol outcome with the Day variable.": null,
+        "fig Report the name of the model, LASSO or Random Forest, which has the higher out-of-sample R^2 in % for FS-GM.": null
+      },
+      "counts": {
+        "correct_written_answers": 0,
+        "correct_vision_answers": 0,
+        "total_written_questions": 2,
+        "total_vision_questions": 1
+      },
+      "task_correct": false,
+      "cost_usd": 0.018392,
+      "duration_s": 9.68,
+      "failed_stage": null,
+      "error": null,
+      "image": "r-base:4.4.1",
+      "n_images": 0,
+      "stages": [
+        {
+          "name": "prepare",
+          "ok": true,
+          "detail": "/mnt/data-2/asu/CSE598/repro-agent/work/capsule-0325493__hard",
+          "duration_s": 2.52
+        },
+        {
+          "name": "plan",
+          "ok": true,
+          "detail": "cd code && Rscript -e 'install.packages(c(\"tidyverse\",\"haven\",\"psych\",\"mice\",\"glmnet\",\"randomForest\",\"party\",\"partykit\",\"caret\",\"knitr\",\"rmarkdown\",\"ggplot2\",\"reshape2\",\"gridExtra\"), repos=\"https://cloud.r-project.org\")' && bash run.sh",
+          "duration_s": 2.46
+        },
+        {
+          "name": "execute",
+          "ok": false,
+          "detail": "exit=1 timed_out=False",
+          "duration_s": 2.5
+        },
+        {
+          "name": "extract",
+          "ok": true,
+          "detail": "3 answers",
+          "duration_s": 2.2
+        },
+        {
+          "name": "score",
+          "ok": true,
+          "detail": "{\"correct_written_answers\": 0, \"correct_vision_answers\": 0, \"total_written_questions\": 2, \"total_vision_questions\": 1}",
+          "duration_s": 0.0
+        }
+      ]
+    },
+    {
+      "capsule_id": "capsule-1854976",
+      "tier": "hard",
+      "report": {
+        "Report the final sensitivity (Sen1) after the ten different verifications.": null,
+        "Report the final specificity (Spe1) after the ten different verifications.": null,
+        "Report the final quality index (QI) after the ten different verifications.": null
+      },
+      "counts": {
+        "correct_written_answers": 0,
+        "correct_vision_answers": 0,
+        "total_written_questions": 3,
+        "total_vision_questions": 0
+      },
+      "task_correct": false,
+      "cost_usd": 0.003178,
+      "duration_s": 35.28,
+      "failed_stage": null,
+      "error": null,
+      "image": "python:3.11-slim",
+      "n_images": 0,
+      "stages": [
+        {
+          "name": "prepare",
+          "ok": true,
+          "detail": "/mnt/data-2/asu/CSE598/repro-agent/work/capsule-1854976__hard",
+          "duration_s": 0.05
+        },
+        {
+          "name": "plan",
+          "ok": true,
+          "detail": "pip install --quiet numpy scipy h5py keras tensorflow scikit-learn && cd code && python 'Train&&test.py'",
+          "duration_s": 1.69
+        },
+        {
+          "name": "execute",
+          "ok": false,
+          "detail": "exit=1 timed_out=False",
+          "duration_s": 31.72
+        },
+        {
+          "name": "extract",
+          "ok": true,
+          "detail": "3 answers",
+          "duration_s": 1.82
+        },
+        {
+          "name": "score",
+          "ok": true,
+          "detail": "{\"correct_written_answers\": 0, \"correct_vision_answers\": 0, \"total_written_questions\": 3, \"total_vision_questions\": 0}",
+          "duration_s": 0.0
+        }
+      ]
+    },
+    {
+      "capsule_id": "capsule-9022937",
+      "tier": "hard",
+      "report": {
+        "fig From the Experimental IAQ Data graph, report the y-axis label.": null,
+        "fig From the Indoor Air Quality - Kitchen - Autumn plot, report the correlation between hum and gas.": null
+      },
+      "counts": {
+        "correct_written_answers": 0,
+        "correct_vision_answers": 0,
+        "total_written_questions": 0,
+        "total_vision_questions": 2
+      },
+      "task_correct": false,
+      "cost_usd": 0.005998,
+      "duration_s": 4.98,
+      "failed_stage": null,
+      "error": null,
+      "image": "r-base:4.4.1",
+      "n_images": 0,
+      "stages": [
+        {
+          "name": "prepare",
+          "ok": true,
+          "detail": "/mnt/data-2/asu/CSE598/repro-agent/work/capsule-9022937__hard",
+          "duration_s": 0.16
+        },
+        {
+          "name": "plan",
+          "ok": true,
+          "detail": "Rscript -e 'options(repos=c(CRAN=\"https://cloud.r-project.org\")); pkgs <- c(\"ggplot2\",\"dplyr\",\"tidyr\",\"lubridate\",\"readr\",\"corrplot\",\"reshape2\",\"scales\",\"gridExtra\"); for(p in pkgs) if(!requireNamespace(p, quietly=TRUE)) install.packages(p)' && Rscript code/IAQ-PostCollection-Analysis.R",
+          "duration_s": 2.5
+        },
+        {
+          "name": "execute",
+          "ok": false,
+          "detail": "exit=1 timed_out=False",
+          "duration_s": 0.59
+        },
+        {
+          "name": "extract",
+          "ok": true,
+          "detail": "2 answers",
+          "duration_s": 1.74
+        },
+        {
+          "name": "score",
+          "ok": true,
+          "detail": "{\"correct_written_answers\": 0, \"correct_vision_answers\": 0, \"total_written_questions\": 0, \"total_vision_questions\": 2}",
+          "duration_s": 0.0
+        }
+      ]
+    },
+    {
+      "capsule_id": "capsule-8197429",
+      "tier": "hard",
+      "report": {
+        "fig From the figure measuring average bitrate (Kbps) over the Starlink network, report the name of the model with the highest average bitrate for 5 seconds of latency.": null,
+        "fig From the figure measuring average RTT without ISL, report the x-axis label.": null
+      },
+      "counts": {
+        "correct_written_answers": 0,
+        "correct_vision_answers": 0,
+        "total_written_questions": 0,
+        "total_vision_questions": 2
+      },
+      "task_correct": false,
+      "cost_usd": 0.023116,
+      "duration_s": 7.29,
+      "failed_stage": null,
+      "error": null,
+      "image": "python:3.11-slim",
+      "n_images": 0,
+      "stages": [
+        {
+          "name": "prepare",
+          "ok": true,
+          "detail": "/mnt/data-2/asu/CSE598/repro-agent/work/capsule-8197429__hard",
+          "duration_s": 2.14
+        },
+        {
+          "name": "plan",
+          "ok": true,
+          "detail": "sudo docker run --rm -v ${PWD}/data:/data -v ${PWD}/paper-figures:/app/src/figures -it clarkzjw/mmsys24-reproducibility",
+          "duration_s": 2.05
+        },
+        {
+          "name": "execute",
+          "ok": false,
+          "detail": "exit=127 timed_out=False",
+          "duration_s": 1.13
+        },
+        {
+          "name": "extract",
+          "ok": true,
+          "detail": "2 answers",
+          "duration_s": 1.97
+        },
+        {
+          "name": "score",
+          "ok": true,
+          "detail": "{\"correct_written_answers\": 0, \"correct_vision_answers\": 0, \"total_written_questions\": 0, \"total_vision_questions\": 2}",
+          "duration_s": 0.0
+        }
+      ]
+    },
+    {
+      "capsule_id": "capsule-2916503",
+      "tier": "hard",
+      "report": {
+        "Report the Variances estimate for Exam1.": null,
+        "Report the Variances estimate for Exam2.": null,
+        "Report the Variances estimate for Exam3.": null
+      },
+      "counts": {
+        "correct_written_answers": 0,
+        "correct_vision_answers": 0,
+        "total_written_questions": 3,
+        "total_vision_questions": 0
+      },
+      "task_correct": false,
+      "cost_usd": 0.003932,
+      "duration_s": 4.54,
+      "failed_stage": null,
+      "error": null,
+      "image": "r-base:4.4.1",
+      "n_images": 0,
+      "stages": [
+        {
+          "name": "prepare",
+          "ok": true,
+          "detail": "/mnt/data-2/asu/CSE598/repro-agent/work/capsule-2916503__hard",
+          "duration_s": 0.01
+        },
+        {
+          "name": "plan",
+          "ok": true,
+          "detail": "Rscript -e 'install.packages(c(\"lavaan\", \"semPlot\"), repos=\"https://cloud.r-project.org\")' && Rscript code/code.R",
+          "duration_s": 2.32
+        },
+        {
+          "name": "execute",
+          "ok": false,
+          "detail": "exit=1 timed_out=False",
+          "duration_s": 0.49
+        },
+        {
+          "name": "extract",
+          "ok": true,
+          "detail": "3 answers",
+          "duration_s": 1.72
+        },
+        {
+          "name": "score",
+          "ok": true,
+          "detail": "{\"correct_written_answers\": 0, \"correct_vision_answers\": 0, \"total_written_questions\": 3, \"total_vision_questions\": 0}",
+          "duration_s": 0.0
+        }
+      ]
+    },
+    {
+      "capsule_id": "capsule-0201225",
+      "tier": "hard",
+      "report": {
+        "Report the AUC at the 'sample-level'.": null,
+        "Report the sensitivity at the 'sample-level'.": null,
+        "Report the specificity at the 'sample-level'.": null,
+        "Report the accuracy at the 'sample-level'.": null,
+        "Report the AUC at the 'patient-level'.": null,
+        "Report the sensitivity at the 'patient-level'.": null,
+        "Report the specificity at the 'patient-level'.": null,
+        "Report the accuracy at the 'patient-level'.": null
+      },
+      "counts": {
+        "correct_written_answers": 0,
+        "correct_vision_answers": 0,
+        "total_written_questions": 8,
+        "total_vision_questions": 0
+      },
+      "task_correct": false,
+      "cost_usd": 0.009024,
+      "duration_s": 47.59,
+      "failed_stage": null,
+      "error": null,
+      "image": "python:3.11-slim",
+      "n_images": 0,
+      "stages": [
+        {
+          "name": "prepare",
+          "ok": true,
+          "detail": "/mnt/data-2/asu/CSE598/repro-agent/work/capsule-0201225__hard",
+          "duration_s": 4.28
+        },
+        {
+          "name": "plan",
+          "ok": true,
+          "detail": "pip install -q numpy scipy tensorflow keras wfdb scikit-learn && cd code && python main.py",
+          "duration_s": 1.84
+        },
+        {
+          "name": "execute",
+          "ok": false,
+          "detail": "exit=1 timed_out=False",
+          "duration_s": 38.86
+        },
+        {
+          "name": "extract",
+          "ok": true,
+          "detail": "8 answers",
+          "duration_s": 2.61
+        },
+        {
+          "name": "score",
+          "ok": true,
+          "detail": "{\"correct_written_answers\": 0, \"correct_vision_answers\": 0, \"total_written_questions\": 8, \"total_vision_questions\": 0}",
+          "duration_s": 0.0
+        }
+      ]
+    },
+    {
+      "capsule_id": "capsule-9070543",
+      "tier": "hard",
+      "report": {
+        "fig From the figure 4 continuous dose response, report the name of the sample with the highest normalized cell number at an LGX818 concentration of 0.": null
+      },
+      "counts": {
+        "correct_written_answers": 0,
+        "correct_vision_answers": 0,
+        "total_written_questions": 0,
+        "total_vision_questions": 1
+      },
+      "task_correct": false,
+      "cost_usd": 0.008266,
+      "duration_s": 6.67,
+      "failed_stage": null,
+      "error": null,
+      "image": "r-base:4.4.1",
+      "n_images": 0,
+      "stages": [
+        {
+          "name": "prepare",
+          "ok": true,
+          "detail": "/mnt/data-2/asu/CSE598/repro-agent/work/capsule-9070543__hard",
+          "duration_s": 0.31
+        },
+        {
+          "name": "plan",
+          "ok": true,
+          "detail": "Rscript -e 'if (!requireNamespace(\"BiocManager\", quietly=TRUE)) install.packages(\"BiocManager\", repos=\"https://cloud.r-project.org\"); BiocManager::install(c(\"DESeq2\",\"BiocParallel\"), update=FALSE, ask=FALSE); install.packages(c(\"tidyr\",\"stringr\",\"readr\",\"scales\",\"dplyr\",\"magrittr\",\"RColorBrewer\",\"ggplot2\",\"pheatmap\",\"rmarkdown\",\"knitr\"), repos=\"https://cloud.r-project.org\")' && cd code && Rscript -e 'rmarkdown::render(\"RNA_Seq_Script.Rmd\"); rmarkdown::render(\"Dose_Response_Script.Rmd\"); rmarkdown::render(\"Figure_6c_Script.Rmd\"); rmarkdown::render(\"Resistance_and_Sensitivity_Genes_Script.Rmd\")'",
+          "duration_s": 3.47
+        },
+        {
+          "name": "execute",
+          "ok": false,
+          "detail": "exit=1 timed_out=False",
+          "duration_s": 0.54
+        },
+        {
+          "name": "extract",
+          "ok": true,
+          "detail": "1 answers",
+          "duration_s": 2.35
+        },
+        {
+          "name": "score",
+          "ok": true,
+          "detail": "{\"correct_written_answers\": 0, \"correct_vision_answers\": 0, \"total_written_questions\": 0, \"total_vision_questions\": 1}",
+          "duration_s": 0.0
+        }
+      ]
+    },
+    {
+      "capsule_id": "capsule-1108125",
+      "tier": "hard",
+      "report": {
+        "Please report the mean of forestgroup.": null,
+        "Please report the mean of gender.": null,
+        "Please report the mean of income.": null,
+        "fig Report 'decrease' if the eigen values of factors and components decreases as the factor or component number increases. Report 'increase' otherwise.": null
+      },
+      "counts": {
+        "correct_written_answers": 0,
+        "correct_vision_answers": 0,
+        "total_written_questions": 3,
+        "total_vision_questions": 1
+      },
+      "task_correct": false,
+      "cost_usd": 0.00285,
+      "duration_s": 3.94,
+      "failed_stage": null,
+      "error": null,
+      "image": "r-base:4.4.1",
+      "n_images": 0,
+      "stages": [
+        {
+          "name": "prepare",
+          "ok": true,
+          "detail": "/mnt/data-2/asu/CSE598/repro-agent/work/capsule-1108125__hard",
+          "duration_s": 0.02
+        },
+        {
+          "name": "plan",
+          "ok": true,
+          "detail": "cd code && Rscript analysis.R",
+          "duration_s": 1.58
+        },
+        {
+          "name": "execute",
+          "ok": false,
+          "detail": "exit=1 timed_out=False",
+          "duration_s": 0.44
+        },
+        {
+          "name": "extract",
+          "ok": true,
+          "detail": "4 answers",
+          "duration_s": 1.9
+        },
+        {
+          "name": "score",
+          "ok": true,
+          "detail": "{\"correct_written_answers\": 0, \"correct_vision_answers\": 0, \"total_written_questions\": 3, \"total_vision_questions\": 1}",
+          "duration_s": 0.0
+        }
+      ]
+    },
+    {
+      "capsule_id": "capsule-6746514",
+      "tier": "hard",
+      "report": {
+        "fig For dataset 1, report the score (%) for the GRU classifier for ACC.": null,
+        "fig For dataset 1, report the score (%) for the SGRU classifier for ACC.": null,
+        "fig Report the count of Class 3.": null
+      },
+      "counts": {
+        "correct_written_answers": 0,
+        "correct_vision_answers": 0,
+        "total_written_questions": 0,
+        "total_vision_questions": 3
+      },
+      "task_correct": false,
+      "cost_usd": 0.021064,
+      "duration_s": 38.47,
+      "failed_stage": null,
+      "error": null,
+      "image": "python:3.11-slim",
+      "n_images": 0,
+      "stages": [
+        {
+          "name": "prepare",
+          "ok": true,
+          "detail": "/mnt/data-2/asu/CSE598/repro-agent/work/capsule-6746514__hard",
+          "duration_s": 0.03
+        },
+        {
+          "name": "plan",
+          "ok": true,
+          "detail": "pip install numpy pandas scikit-learn tensorflow keras matplotlib scipy pywavelets && cd code && python RawData_ML_Kfold.py && python NewData_ML_Kfold.py && python SGRU_GRU_Kfold.py",
+          "duration_s": 1.96
+        },
+        {
+          "name": "execute",
+          "ok": false,
+          "detail": "exit=1 timed_out=False",
+          "duration_s": 34.5
+        },
+        {
+          "name": "extract",
+          "ok": true,
+          "detail": "3 answers",
+          "duration_s": 1.98
+        },
+        {
+          "name": "score",
+          "ok": true,
+          "detail": "{\"correct_written_answers\": 0, \"correct_vision_answers\": 0, \"total_written_questions\": 0, \"total_vision_questions\": 3}",
+          "duration_s": 0.0
+        }
+      ]
+    },
+    {
+      "capsule_id": "capsule-1683542",
+      "tier": "hard",
+      "report": {
+        "fig From Figure 2, report the Observed SMD for Bankole et al. 2016. Ignore the confidence interval.": null,
+        "fig From Figure 12, report the Observed SMD for Jeppesen et al. 2006. Ignore the confidence interval.": null
+      },
+      "counts": {
+        "correct_written_answers": 0,
+        "correct_vision_answers": 0,
+        "total_written_questions": 0,
+        "total_vision_questions": 2
+      },
+      "task_correct": false,
+      "cost_usd": 0.007358,
+      "duration_s": 4.54,
+      "failed_stage": null,
+      "error": null,
+      "image": "r-base:4.4.1",
+      "n_images": 0,
+      "stages": [
+        {
+          "name": "prepare",
+          "ok": true,
+          "detail": "/mnt/data-2/asu/CSE598/repro-agent/work/capsule-1683542__hard",
+          "duration_s": 0.07
+        },
+        {
+          "name": "plan",
+          "ok": true,
+          "detail": "Rscript -e 'install.packages(c(\"meta\", \"metafor\", \"readxl\", \"dplyr\", \"tidyr\", \"ggplot2\"), repos=\"https://cloud.r-project.org\")' && Rscript code/main.R",
+          "duration_s": 2.15
+        },
+        {
+          "name": "execute",
+          "ok": false,
+          "detail": "exit=1 timed_out=False",
+          "duration_s": 0.47
+        },
+        {
+          "name": "extract",
+          "ok": true,
+          "detail": "2 answers",
+          "duration_s": 1.84
+        },
+        {
+          "name": "score",
+          "ok": true,
+          "detail": "{\"correct_written_answers\": 0, \"correct_vision_answers\": 0, \"total_written_questions\": 0, \"total_vision_questions\": 2}",
+          "duration_s": 0.0
+        }
+      ]
+    },
+    {
+      "capsule_id": "capsule-5286757",
+      "tier": "hard",
+      "report": {
+        "Report the train loss after training the final epoch (epoch 9).": null
+      },
+      "counts": {
+        "correct_written_answers": 0,
+        "correct_vision_answers": 0,
+        "total_written_questions": 1,
+        "total_vision_questions": 0
+      },
+      "task_correct": false,
+      "cost_usd": 0.017542,
+      "duration_s": 123.83,
+      "failed_stage": null,
+      "error": null,
+      "image": "python:3.11-slim",
+      "n_images": 0,
+      "stages": [
+        {
+          "name": "prepare",
+          "ok": true,
+          "detail": "/mnt/data-2/asu/CSE598/repro-agent/work/capsule-5286757__hard",
+          "duration_s": 0.02
+        },
+        {
+          "name": "plan",
+          "ok": true,
+          "detail": "pip install torch numpy scipy && cd code && python train_2D3D.py --dataset 2D",
+          "duration_s": 1.65
+        },
+        {
+          "name": "execute",
+          "ok": false,
+          "detail": "exit=1 timed_out=False",
+          "duration_s": 120.36
+        },
+        {
+          "name": "extract",
+          "ok": true,
+          "detail": "1 answers",
+          "duration_s": 1.8
+        },
+        {
+          "name": "score",
+          "ok": true,
+          "detail": "{\"correct_written_answers\": 0, \"correct_vision_answers\": 0, \"total_written_questions\": 1, \"total_vision_questions\": 0}",
+          "duration_s": 0.0
+        }
+      ]
+    },
+    {
+      "capsule_id": "capsule-4884085",
+      "tier": "hard",
+      "report": {
+        "Report the MSE for the file trento.h5.": null
+      },
+      "counts": {
+        "correct_written_answers": 0,
+        "correct_vision_answers": 0,
+        "total_written_questions": 1,
+        "total_vision_questions": 0
+      },
+      "task_correct": false,
+      "cost_usd": 0.021114,
+      "duration_s": 121.31,
+      "failed_stage": null,
+      "error": null,
+      "image": "python:3.11-slim",
+      "n_images": 0,
+      "stages": [
+        {
+          "name": "prepare",
+          "ok": true,
+          "detail": "/mnt/data-2/asu/CSE598/repro-agent/work/capsule-4884085__hard",
+          "duration_s": 0.71
+        },
+        {
+          "name": "plan",
+          "ok": true,
+          "detail": "pip install torch numpy pandas h5py scikit-learn scipy && bash run_trento.sh",
+          "duration_s": 1.67
+        },
+        {
+          "name": "execute",
+          "ok": false,
+          "detail": "exit=1 timed_out=False",
+          "duration_s": 116.95
+        },
+        {
+          "name": "extract",
+          "ok": true,
+          "detail": "1 answers",
+          "duration_s": 1.98
+        },
+        {
+          "name": "score",
+          "ok": true,
+          "detail": "{\"correct_written_answers\": 0, \"correct_vision_answers\": 0, \"total_written_questions\": 1, \"total_vision_questions\": 0}",
+          "duration_s": 0.0
+        }
+      ]
+    },
+    {
+      "capsule_id": "capsule-6460826",
+      "tier": "hard",
+      "report": {
+        "Report the CN prediction accuracy for the Iris dataset.": null,
+        "Report the AA prediction acccuracy for the Iris dataset.": null,
+        "Report the CN prediction acccuracy for the Zoo dataset.": null,
+        "Report the AA prediction acccuracy for the Zoo dataset.": null,
+        "Report the CN prediction acccuracy for the Wine dataset.": null,
+        "Report the AA prediction acccuracy for the Wine dataset.": null
+      },
+      "counts": {
+        "correct_written_answers": 0,
+        "correct_vision_answers": 0,
+        "total_written_questions": 6,
+        "total_vision_questions": 0
+      },
+      "task_correct": false,
+      "cost_usd": 0.006884,
+      "duration_s": 9.56,
+      "failed_stage": null,
+      "error": null,
+      "image": "python:3.11-slim",
+      "n_images": 0,
+      "stages": [
+        {
+          "name": "prepare",
+          "ok": true,
+          "detail": "/mnt/data-2/asu/CSE598/repro-agent/work/capsule-6460826__hard",
+          "duration_s": 0.01
+        },
+        {
+          "name": "plan",
+          "ok": true,
+          "detail": "pip install numpy scikit-learn scipy && cd code && python iris_sample.py && python zoo_sample.py && python wine_sample.py",
+          "duration_s": 1.69
+        },
+        {
+          "name": "execute",
+          "ok": false,
+          "detail": "exit=1 timed_out=False",
+          "duration_s": 5.51
+        },
+        {
+          "name": "extract",
+          "ok": true,
+          "detail": "6 answers",
+          "duration_s": 2.35
+        },
+        {
+          "name": "score",
+          "ok": true,
+          "detail": "{\"correct_written_answers\": 0, \"correct_vision_answers\": 0, \"total_written_questions\": 6, \"total_vision_questions\": 0}",
+          "duration_s": 0.0
+        }
+      ]
+    },
+    {
+      "capsule_id": "capsule-4098236",
+      "tier": "hard",
+      "report": {
+        "Report the exact match of the classification.": null,
+        "Report the hamming loss of the classification.": null
+      },
+      "counts": {
+        "correct_written_answers": 0,
+        "correct_vision_answers": 0,
+        "total_written_questions": 2,
+        "total_vision_questions": 0
+      },
+      "task_correct": false,
+      "cost_usd": 0.004464,
+      "duration_s": 6.23,
+      "failed_stage": null,
+      "error": null,
+      "image": "python:3.11-slim",
+      "n_images": 0,
+      "stages": [
+        {
+          "name": "prepare",
+          "ok": true,
+          "detail": "/mnt/data-2/asu/CSE598/repro-agent/work/capsule-4098236__hard",
+          "duration_s": 0.01
+        },
+        {
+          "name": "plan",
+          "ok": true,
+          "detail": "pip install numpy scipy scikit-learn scikit-multilearn arff2pandas && cd code && python mainMLCA.py",
+          "duration_s": 1.74
+        },
+        {
+          "name": "execute",
+          "ok": false,
+          "detail": "exit=1 timed_out=False",
+          "duration_s": 2.77
+        },
+        {
+          "name": "extract",
+          "ok": true,
+          "detail": "2 answers",
+          "duration_s": 1.71
+        },
+        {
+          "name": "score",
+          "ok": true,
+          "detail": "{\"correct_written_answers\": 0, \"correct_vision_answers\": 0, \"total_written_questions\": 2, \"total_vision_questions\": 0}",
+          "duration_s": 0.0
+        }
+      ]
+    },
+    {
+      "capsule_id": "capsule-5975162",
+      "tier": "hard",
+      "report": {
+        "Report the mean metric from the output.": null,
+        "Report the Avg FES from the output.": null
+      },
+      "counts": {
+        "correct_written_answers": 0,
+        "correct_vision_answers": 0,
+        "total_written_questions": 2,
+        "total_vision_questions": 0
+      },
+      "task_correct": false,
+      "cost_usd": 0.007804,
+      "duration_s": 157.96,
+      "failed_stage": null,
+      "error": null,
+      "image": "python:3.11-slim",
+      "n_images": 0,
+      "stages": [
+        {
+          "name": "prepare",
+          "ok": true,
+          "detail": "/mnt/data-2/asu/CSE598/repro-agent/work/capsule-5975162__hard",
+          "duration_s": 0.01
+        },
+        {
+          "name": "plan",
+          "ok": true,
+          "detail": "pip install -q ./dist/ExPSO-0.1.4-py3-none-any.whl numpy scikit-learn tensorflow keras torch && python code/ExPSOWithClassicalBenchmark01.py",
+          "duration_s": 2.15
+        },
+        {
+          "name": "execute",
+          "ok": false,
+          "detail": "exit=1 timed_out=False",
+          "duration_s": 154.02
+        },
+        {
+          "name": "extract",
+          "ok": true,
+          "detail": "2 answers",
+          "duration_s": 1.78
+        },
+        {
+          "name": "score",
+          "ok": true,
+          "detail": "{\"correct_written_answers\": 0, \"correct_vision_answers\": 0, \"total_written_questions\": 2, \"total_vision_questions\": 0}",
+          "duration_s": 0.0
+        }
+      ]
+    },
+    {
+      "capsule_id": "capsule-0220918",
+      "tier": "hard",
+      "report": {
+        "Report the eval mean loss from the classification.": null,
+        "Report the eval accuracy from the classification.": null
+      },
+      "counts": {
+        "correct_written_answers": 0,
+        "correct_vision_answers": 0,
+        "total_written_questions": 2,
+        "total_vision_questions": 0
+      },
+      "task_correct": false,
+      "cost_usd": 0.008016,
+      "duration_s": 11.98,
+      "failed_stage": null,
+      "error": null,
+      "image": "python:3.11-slim",
+      "n_images": 0,
+      "stages": [
+        {
+          "name": "prepare",
+          "ok": true,
+          "detail": "/mnt/data-2/asu/CSE598/repro-agent/work/capsule-0220918__hard",
+          "duration_s": 4.41
+        },
+        {
+          "name": "plan",
+          "ok": true,
+          "detail": "pip install -q tensorflow==1.15.0 h5py numpy && cd code && python evaluate.py",
+          "duration_s": 1.85
+        },
+        {
+          "name": "execute",
+          "ok": false,
+          "detail": "exit=1 timed_out=False",
+          "duration_s": 4.11
+        },
+        {
+          "name": "extract",
+          "ok": true,
+          "detail": "2 answers",
+          "duration_s": 1.61
+        },
+        {
+          "name": "score",
+          "ok": true,
+          "detail": "{\"correct_written_answers\": 0, \"correct_vision_answers\": 0, \"total_written_questions\": 2, \"total_vision_questions\": 0}",
+          "duration_s": 0.0
+        }
+      ]
+    },
+    {
+      "capsule_id": "capsule-4645832",
+      "tier": "hard",
+      "report": {
+        "Report the test mean of the model.": null
+      },
+      "counts": {
+        "correct_written_answers": 0,
+        "correct_vision_answers": 0,
+        "total_written_questions": 1,
+        "total_vision_questions": 0
+      },
+      "task_correct": false,
+      "cost_usd": 0.04141,
+      "duration_s": 171.77,
+      "failed_stage": null,
+      "error": null,
+      "image": "python:3.11-slim",
+      "n_images": 0,
+      "stages": [
+        {
+          "name": "prepare",
+          "ok": true,
+          "detail": "/mnt/data-2/asu/CSE598/repro-agent/work/capsule-4645832__hard",
+          "duration_s": 1.72
+        },
+        {
+          "name": "plan",
+          "ok": true,
+          "detail": "cd code && pip install -r requirements.txt 2>/dev/null; pip install numpy pandas scikit-learn tensorflow keras networkx torch torch-geometric scipy; bash run.sh",
+          "duration_s": 4.97
+        },
+        {
+          "name": "execute",
+          "ok": false,
+          "detail": "exit=127 timed_out=False",
+          "duration_s": 163.45
+        },
+        {
+          "name": "extract",
+          "ok": true,
+          "detail": "1 answers",
+          "duration_s": 1.62
+        },
+        {
+          "name": "score",
+          "ok": true,
+          "detail": "{\"correct_written_answers\": 0, \"correct_vision_answers\": 0, \"total_written_questions\": 1, \"total_vision_questions\": 0}",
+          "duration_s": 0.0
+        }
+      ]
+    },
+    {
+      "capsule_id": "capsule-2011424",
+      "tier": "hard",
+      "report": {
+        "Report the number of FtGEPs found.": null
+      },
+      "counts": {
+        "correct_written_answers": 0,
+        "correct_vision_answers": 0,
+        "total_written_questions": 1,
+        "total_vision_questions": 0
+      },
+      "task_correct": false,
+      "cost_usd": 0.006372,
+      "duration_s": 6.61,
+      "failed_stage": null,
+      "error": null,
+      "image": "python:3.11-slim",
+      "n_images": 0,
+      "stages": [
+        {
+          "name": "prepare",
+          "ok": true,
+          "detail": "/mnt/data-2/asu/CSE598/repro-agent/work/capsule-2011424__hard",
+          "duration_s": 0.02
+        },
+        {
+          "name": "plan",
+          "ok": true,
+          "detail": "pip install numpy python-dateutil scikit-fuzzy && cd code/algorithms && python border_tgraank.py -t 2 -f ../../data/DATASET.csv -c 0 -s 0.52 -r 0.5",
+          "duration_s": 1.91
+        },
+        {
+          "name": "execute",
+          "ok": false,
+          "detail": "exit=1 timed_out=False",
+          "duration_s": 3.15
+        },
+        {
+          "name": "extract",
+          "ok": true,
+          "detail": "1 answers",
+          "duration_s": 1.54
+        },
+        {
+          "name": "score",
+          "ok": true,
+          "detail": "{\"correct_written_answers\": 0, \"correct_vision_answers\": 0, \"total_written_questions\": 1, \"total_vision_questions\": 0}",
+          "duration_s": 0.0
+        }
+      ]
+    },
+    {
+      "capsule_id": "capsule-3249574",
+      "tier": "hard",
+      "report": {
+        "Report the F1-score after epoch 200.": null
+      },
+      "counts": {
+        "correct_written_answers": 0,
+        "correct_vision_answers": 0,
+        "total_written_questions": 1,
+        "total_vision_questions": 0
+      },
+      "task_correct": false,
+      "cost_usd": 0.027688,
+      "duration_s": 123.75,
+      "failed_stage": null,
+      "error": null,
+      "image": "python:3.11-slim",
+      "n_images": 0,
+      "stages": [
+        {
+          "name": "prepare",
+          "ok": true,
+          "detail": "/mnt/data-2/asu/CSE598/repro-agent/work/capsule-3249574__hard",
+          "duration_s": 0.45
+        },
+        {
+          "name": "plan",
+          "ok": true,
+          "detail": "pip install -r requirements.txt 2>/dev/null; pip install numpy pandas scikit-learn torch torch-geometric && python code/sybilflyover_model.py",
+          "duration_s": 1.83
+        },
+        {
+          "name": "execute",
+          "ok": false,
+          "detail": "exit=1 timed_out=False",
+          "duration_s": 119.7
+        },
+        {
+          "name": "extract",
+          "ok": true,
+          "detail": "1 answers",
+          "duration_s": 1.76
+        },
+        {
+          "name": "score",
+          "ok": true,
+          "detail": "{\"correct_written_answers\": 0, \"correct_vision_answers\": 0, \"total_written_questions\": 1, \"total_vision_questions\": 0}",
+          "duration_s": 0.0
+        }
+      ]
+    },
+    {
+      "capsule_id": "capsule-5777882",
+      "tier": "hard",
+      "report": {
+        "fig Report the name of the license with the greatest number of DOIs.": null,
+        "fig Report the name of the language (the abbreviation, as presented in the plot) with the least number of DOIs.": null
+      },
+      "counts": {
+        "correct_written_answers": 0,
+        "correct_vision_answers": 0,
+        "total_written_questions": 0,
+        "total_vision_questions": 2
+      },
+      "task_correct": false,
+      "cost_usd": 0.005382,
+      "duration_s": 6.54,
+      "failed_stage": null,
+      "error": null,
+      "image": "r-base:4.4.1",
+      "n_images": 0,
+      "stages": [
+        {
+          "name": "prepare",
+          "ok": true,
+          "detail": "/mnt/data-2/asu/CSE598/repro-agent/work/capsule-5777882__hard",
+          "duration_s": 0.64
+        },
+        {
+          "name": "plan",
+          "ok": true,
+          "detail": "Rscript -e 'if (!requireNamespace(\"rmarkdown\", quietly = TRUE)) install.packages(\"rmarkdown\", repos=\"https://cloud.r-project.org\"); pkgs <- c(\"tidyverse\",\"knitr\",\"here\",\"readr\",\"ggplot2\",\"scales\"); for(p in pkgs) if (!requireNamespace(p, quietly=TRUE)) install.packages(p, repos=\"https://cloud.r-project.org\"); rmarkdown::render(\"code/paper.Rmd\", output_dir = \"results\")'",
+          "duration_s": 2.92
+        },
+        {
+          "name": "execute",
+          "ok": false,
+          "detail": "exit=1 timed_out=False",
+          "duration_s": 1.09
+        },
+        {
+          "name": "extract",
+          "ok": true,
+          "detail": "2 answers",
+          "duration_s": 1.89
+        },
+        {
+          "name": "score",
+          "ok": true,
+          "detail": "{\"correct_written_answers\": 0, \"correct_vision_answers\": 0, \"total_written_questions\": 0, \"total_vision_questions\": 2}",
+          "duration_s": 0.0
+        }
+      ]
+    },
+    {
+      "capsule_id": "capsule-9370340",
+      "tier": "hard",
+      "report": {
+        "Report the accuracy for testing after epoch 3.": null
+      },
+      "counts": {
+        "correct_written_answers": 0,
+        "correct_vision_answers": 0,
+        "total_written_questions": 1,
+        "total_vision_questions": 0
+      },
+      "task_correct": false,
+      "cost_usd": 0.006626,
+      "duration_s": 8.65,
+      "failed_stage": null,
+      "error": null,
+      "image": "python:3.11-slim",
+      "n_images": 0,
+      "stages": [
+        {
+          "name": "prepare",
+          "ok": true,
+          "detail": "/mnt/data-2/asu/CSE598/repro-agent/work/capsule-9370340__hard",
+          "duration_s": 0.12
+        },
+        {
+          "name": "plan",
+          "ok": true,
+          "detail": "pip install numpy matplotlib && cd code && python -u CHL_clamped.py",
+          "duration_s": 1.69
+        },
+        {
+          "name": "execute",
+          "ok": false,
+          "detail": "exit=1 timed_out=False",
+          "duration_s": 5.16
+        },
+        {
+          "name": "extract",
+          "ok": true,
+          "detail": "1 answers",
+          "duration_s": 1.67
+        },
+        {
+          "name": "score",
+          "ok": true,
+          "detail": "{\"correct_written_answers\": 0, \"correct_vision_answers\": 0, \"total_written_questions\": 1, \"total_vision_questions\": 0}",
+          "duration_s": 0.0
+        }
+      ]
+    },
+    {
+      "capsule_id": "capsule-4807644",
+      "tier": "hard",
+      "report": {
+        "fig Report the name of the model that has the highest aggregate F1 Macro score for 500 random traning samples.": null,
+        "fig Report the name of the model that has the lowest aggregate F1 Macro score for 500 random traning samples.": null
+      },
+      "counts": {
+        "correct_written_answers": 0,
+        "correct_vision_answers": 0,
+        "total_written_questions": 0,
+        "total_vision_questions": 2
+      },
+      "task_correct": false,
+      "cost_usd": 0.025622,
+      "duration_s": 47.75,
+      "failed_stage": null,
+      "error": null,
+      "image": "python:3.11-slim",
+      "n_images": 0,
+      "stages": [
+        {
+          "name": "prepare",
+          "ok": true,
+          "detail": "/mnt/data-2/asu/CSE598/repro-agent/work/capsule-4807644__hard",
+          "duration_s": 4.06
+        },
+        {
+          "name": "plan",
+          "ok": true,
+          "detail": "cd code && pip install -r requirements.txt && python data-analysis-viz.py && python appendix.py",
+          "duration_s": 1.73
+        },
+        {
+          "name": "execute",
+          "ok": false,
+          "detail": "exit=1 timed_out=False",
+          "duration_s": 39.74
+        },
+        {
+          "name": "extract",
+          "ok": true,
+          "detail": "2 answers",
+          "duration_s": 2.22
+        },
+        {
+          "name": "score",
+          "ok": true,
+          "detail": "{\"correct_written_answers\": 0, \"correct_vision_answers\": 0, \"total_written_questions\": 0, \"total_vision_questions\": 2}",
+          "duration_s": 0.0
+        }
+      ]
+    },
+    {
+      "capsule_id": "capsule-1906954",
+      "tier": "hard",
+      "report": {
+        "Report the Delta value for Italy.": null,
+        "Report the Delta value for adults.": null
+      },
+      "counts": {
+        "correct_written_answers": 0,
+        "correct_vision_answers": 0,
+        "total_written_questions": 2,
+        "total_vision_questions": 0
+      },
+      "task_correct": false,
+      "cost_usd": 0.004274,
+      "duration_s": 4.0,
+      "failed_stage": null,
+      "error": null,
+      "image": "r-base:4.4.1",
+      "n_images": 0,
+      "stages": [
+        {
+          "name": "prepare",
+          "ok": true,
+          "detail": "/mnt/data-2/asu/CSE598/repro-agent/work/capsule-1906954__hard",
+          "duration_s": 0.02
+        },
+        {
+          "name": "plan",
+          "ok": true,
+          "detail": "Rscript -e 'install.packages(c(\"rmarkdown\",\"metafor\",\"tidyverse\",\"broom\",\"purrr\"), repos=\"https://cloud.r-project.org\"); rmarkdown::render(\"code/vegan-meta.Rmd\")'",
+          "duration_s": 1.97
+        },
+        {
+          "name": "execute",
+          "ok": false,
+          "detail": "exit=1 timed_out=False",
+          "duration_s": 0.43
+        },
+        {
+          "name": "extract",
+          "ok": true,
+          "detail": "2 answers",
+          "duration_s": 1.58
+        },
+        {
+          "name": "score",
+          "ok": true,
+          "detail": "{\"correct_written_answers\": 0, \"correct_vision_answers\": 0, \"total_written_questions\": 2, \"total_vision_questions\": 0}",
+          "duration_s": 0.0
+        }
+      ]
+    },
+    {
+      "capsule_id": "capsule-9348218",
+      "tier": "hard",
+      "report": {
+        "fig From Figure 3 panel A, report the label of the green line.": null,
+        "fig From Figure 1, report the numerical value of N for example 1 (the first row).": null
+      },
+      "counts": {
+        "correct_written_answers": 0,
+        "correct_vision_answers": 0,
+        "total_written_questions": 0,
+        "total_vision_questions": 2
+      },
+      "task_correct": false,
+      "cost_usd": 0.0053,
+      "duration_s": 4.79,
+      "failed_stage": null,
+      "error": null,
+      "image": "r-base:4.4.1",
+      "n_images": 0,
+      "stages": [
+        {
+          "name": "prepare",
+          "ok": true,
+          "detail": "/mnt/data-2/asu/CSE598/repro-agent/work/capsule-9348218__hard",
+          "duration_s": 0.08
+        },
+        {
+          "name": "plan",
+          "ok": true,
+          "detail": "Rscript -e 'if (!requireNamespace(\"rmarkdown\", quietly = TRUE)) install.packages(\"rmarkdown\", repos=\"https://cloud.r-project.org\"); for (f in list.files(c(\"code\", \"code/exercises\"), pattern = \"\\\\.Rmd$\", full.names = TRUE)) { tryCatch(rmarkdown::render(f, output_dir = \"results\"), error = function(e) message(\"Error rendering \", f, \": \", e)) }'",
+          "duration_s": 2.61
+        },
+        {
+          "name": "execute",
+          "ok": false,
+          "detail": "exit=1 timed_out=False",
+          "duration_s": 0.45
+        },
+        {
+          "name": "extract",
+          "ok": true,
+          "detail": "2 answers",
+          "duration_s": 1.66
+        },
+        {
+          "name": "score",
+          "ok": true,
+          "detail": "{\"correct_written_answers\": 0, \"correct_vision_answers\": 0, \"total_written_questions\": 0, \"total_vision_questions\": 2}",
+          "duration_s": 0.0
+        }
+      ]
+    },
+    {
+      "capsule_id": "capsule-0238624",
+      "tier": "hard",
+      "report": {
+        "Report the macro avg precision from the classification report.": null,
+        "Report the macro avg recall from the classification report.": null
+      },
+      "counts": {
+        "correct_written_answers": 0,
+        "correct_vision_answers": 0,
+        "total_written_questions": 2,
+        "total_vision_questions": 0
+      },
+      "task_correct": false,
+      "cost_usd": 0.017616,
+      "duration_s": 35.71,
+      "failed_stage": null,
+      "error": null,
+      "image": "python:3.11-slim",
+      "n_images": 0,
+      "stages": [
+        {
+          "name": "prepare",
+          "ok": true,
+          "detail": "/mnt/data-2/asu/CSE598/repro-agent/work/capsule-0238624__hard",
+          "duration_s": 0.04
+        },
+        {
+          "name": "plan",
+          "ok": true,
+          "detail": "pip install tensorflow keras scikit-learn pandas numpy && cd code && python3 sub_models.py && python3 ensemble.py",
+          "duration_s": 1.61
+        },
+        {
+          "name": "execute",
+          "ok": false,
+          "detail": "exit=1 timed_out=False",
+          "duration_s": 32.13
+        },
+        {
+          "name": "extract",
+          "ok": true,
+          "detail": "2 answers",
+          "duration_s": 1.94
+        },
+        {
+          "name": "score",
+          "ok": true,
+          "detail": "{\"correct_written_answers\": 0, \"correct_vision_answers\": 0, \"total_written_questions\": 2, \"total_vision_questions\": 0}",
+          "duration_s": 0.0
+        }
+      ]
+    },
+    {
+      "capsule_id": "capsule-3272782",
+      "tier": "hard",
+      "report": {
+        "Report Average accuracy for the VisGIN model.": null,
+        "Report Average FNMR for the VisGIN model.": null,
+        "Report Average FMR for the VisGIN model.": null
+      },
+      "counts": {
+        "correct_written_answers": 0,
+        "correct_vision_answers": 0,
+        "total_written_questions": 3,
+        "total_vision_questions": 0
+      },
+      "task_correct": false,
+      "cost_usd": 0.009224,
+      "duration_s": 5.4,
+      "failed_stage": null,
+      "error": null,
+      "image": "python:3.11-slim",
+      "n_images": 0,
+      "stages": [
+        {
+          "name": "prepare",
+          "ok": true,
+          "detail": "/mnt/data-2/asu/CSE598/repro-agent/work/capsule-3272782__hard",
+          "duration_s": 0.21
+        },
+        {
+          "name": "plan",
+          "ok": true,
+          "detail": "cd code && pip install -r requirements.txt && python tsai_trial.py --preprocessing=multi_3 --arch=MLP --epochs=500 --subject_size=3 --save_output=not_save",
+          "duration_s": 1.83
+        },
+        {
+          "name": "execute",
+          "ok": false,
+          "detail": "exit=1 timed_out=False",
+          "duration_s": 1.74
+        },
+        {
+          "name": "extract",
+          "ok": true,
+          "detail": "3 answers",
+          "duration_s": 1.62
+        },
+        {
+          "name": "score",
+          "ok": true,
+          "detail": "{\"correct_written_answers\": 0, \"correct_vision_answers\": 0, \"total_written_questions\": 3, \"total_vision_questions\": 0}",
+          "duration_s": 0.0
+        }
+      ]
+    },
+    {
+      "capsule_id": "capsule-4600160",
+      "tier": "hard",
+      "report": {
+        "fig Report the name of the script with the lowest pupil dilation at 1500 m/s.": null
+      },
+      "counts": {
+        "correct_written_answers": 0,
+        "correct_vision_answers": 0,
+        "total_written_questions": 0,
+        "total_vision_questions": 1
+      },
+      "task_correct": false,
+      "cost_usd": 0.006628,
+      "duration_s": 5.02,
+      "failed_stage": null,
+      "error": null,
+      "image": "r-base:4.4.1",
+      "n_images": 0,
+      "stages": [
+        {
+          "name": "prepare",
+          "ok": true,
+          "detail": "/mnt/data-2/asu/CSE598/repro-agent/work/capsule-4600160__hard",
+          "duration_s": 0.47
+        },
+        {
+          "name": "plan",
+          "ok": true,
+          "detail": "cd code && Rscript install.R && Rscript -e \"devtools::install('.', dependencies=TRUE); rmarkdown::render('Gazer_walkthrough.R')\"",
+          "duration_s": 2.08
+        },
+        {
+          "name": "execute",
+          "ok": false,
+          "detail": "exit=1 timed_out=False",
+          "duration_s": 0.89
+        },
+        {
+          "name": "extract",
+          "ok": true,
+          "detail": "1 answers",
+          "duration_s": 1.58
+        },
+        {
+          "name": "score",
+          "ok": true,
+          "detail": "{\"correct_written_answers\": 0, \"correct_vision_answers\": 0, \"total_written_questions\": 0, \"total_vision_questions\": 1}",
+          "duration_s": 0.0
+        }
+      ]
+    },
+    {
+      "capsule_id": "capsule-1324693",
+      "tier": "hard",
+      "report": {
+        "fig Report the y-axis label of the subplot measuring Normal Q-Q": null,
+        "fig Report the y-axis label of fig 1.": null
+      },
+      "counts": {
+        "correct_written_answers": 0,
+        "correct_vision_answers": 0,
+        "total_written_questions": 0,
+        "total_vision_questions": 2
+      },
+      "task_correct": false,
+      "cost_usd": 0.005132,
+      "duration_s": 4.61,
+      "failed_stage": null,
+      "error": null,
+      "image": "r-base:4.4.1",
+      "n_images": 0,
+      "stages": [
+        {
+          "name": "prepare",
+          "ok": true,
+          "detail": "/mnt/data-2/asu/CSE598/repro-agent/work/capsule-1324693__hard",
+          "duration_s": 0.02
+        },
+        {
+          "name": "plan",
+          "ok": true,
+          "detail": "cd code && R -e \"pkgs <- c('rmarkdown','knitr','tidyverse','dplyr','ggplot2','psych','car','effsize','apa','papaja'); installed <- rownames(installed.packages()); to_install <- setdiff(pkgs, installed); if(length(to_install)) install.packages(to_install, repos='https://cloud.r-project.org'); rmarkdown::render('main.Rmd', output_dir='../results')\"",
+          "duration_s": 2.48
+        },
+        {
+          "name": "execute",
+          "ok": false,
+          "detail": "exit=1 timed_out=False",
+          "duration_s": 0.45
+        },
+        {
+          "name": "extract",
+          "ok": true,
+          "detail": "2 answers",
+          "duration_s": 1.66
+        },
+        {
+          "name": "score",
+          "ok": true,
+          "detail": "{\"correct_written_answers\": 0, \"correct_vision_answers\": 0, \"total_written_questions\": 0, \"total_vision_questions\": 2}",
+          "duration_s": 0.0
+        }
+      ]
+    },
+    {
+      "capsule_id": "capsule-6133093",
+      "tier": "hard",
+      "report": {
+        "Report the estimate for the Label2 attribute and Attackers level in the Average Marginal Component Effects (AMCE) table of model6_c": null
+      },
+      "counts": {
+        "correct_written_answers": 0,
+        "correct_vision_answers": 0,
+        "total_written_questions": 1,
+        "total_vision_questions": 0
+      },
+      "task_correct": false,
+      "cost_usd": 0.014284,
+      "duration_s": 4.77,
+      "failed_stage": null,
+      "error": null,
+      "image": "r-base:4.4.1",
+      "n_images": 0,
+      "stages": [
+        {
+          "name": "prepare",
+          "ok": true,
+          "detail": "/mnt/data-2/asu/CSE598/repro-agent/work/capsule-6133093__hard",
+          "duration_s": 0.02
+        },
+        {
+          "name": "plan",
+          "ok": true,
+          "detail": "cd code && Rscript -e 'install.packages(c(\"tidyverse\",\"rmarkdown\",\"knitr\",\"broom\",\"stargazer\",\"psych\",\"car\",\"lm.beta\"), repos=\"https://cloud.r-project.org\"); rmarkdown::render(\"mediabiasreplication.Rmd\", output_dir = \"../results\")'",
+          "duration_s": 2.63
+        },
+        {
+          "name": "execute",
+          "ok": false,
+          "detail": "exit=1 timed_out=False",
+          "duration_s": 0.44
+        },
+        {
+          "name": "extract",
+          "ok": true,
+          "detail": "1 answers",
+          "duration_s": 1.68
+        },
+        {
+          "name": "score",
+          "ok": true,
+          "detail": "{\"correct_written_answers\": 0, \"correct_vision_answers\": 0, \"total_written_questions\": 1, \"total_vision_questions\": 0}",
+          "duration_s": 0.0
+        }
+      ]
+    },
+    {
+      "capsule_id": "capsule-0396930",
+      "tier": "hard",
+      "report": {
+        "Report the f1 score of the 'duration' entity tag (out of 1).": null,
+        "Report the precision of the 'drug' entity tag (out of 1).": null
+      },
+      "counts": {
+        "correct_written_answers": 0,
+        "correct_vision_answers": 0,
+        "total_written_questions": 2,
+        "total_vision_questions": 0
+      },
+      "task_correct": false,
+      "cost_usd": 0.02097,
+      "duration_s": 14.34,
+      "failed_stage": null,
+      "error": null,
+      "image": "python:3.11-slim",
+      "n_images": 0,
+      "stages": [
+        {
+          "name": "prepare",
+          "ok": true,
+          "detail": "/mnt/data-2/asu/CSE598/repro-agent/work/capsule-0396930__hard",
+          "duration_s": 0.05
+        },
+        {
+          "name": "plan",
+          "ok": true,
+          "detail": "pip install spacy && pip install ./code/de_GERNERMED-1.0.0.tar.gz && bash run_eval.sh",
+          "duration_s": 1.63
+        },
+        {
+          "name": "execute",
+          "ok": false,
+          "detail": "exit=1 timed_out=False",
+          "duration_s": 10.82
+        },
+        {
+          "name": "extract",
+          "ok": true,
+          "detail": "2 answers",
+          "duration_s": 1.83
+        },
+        {
+          "name": "score",
+          "ok": true,
+          "detail": "{\"correct_written_answers\": 0, \"correct_vision_answers\": 0, \"total_written_questions\": 2, \"total_vision_questions\": 0}",
+          "duration_s": 0.0
+        }
+      ]
+    },
+    {
+      "capsule_id": "capsule-7981862",
+      "tier": "hard",
+      "report": {
+        "fig Report the middle decile (50%) median RMSE for the Monte Carlo results by CoS algorithm.": null
+      },
+      "counts": {
+        "correct_written_answers": 0,
+        "correct_vision_answers": 0,
+        "total_written_questions": 0,
+        "total_vision_questions": 1
+      },
+      "task_correct": false,
+      "cost_usd": 0.019568,
+      "duration_s": 7.16,
+      "failed_stage": null,
+      "error": null,
+      "image": "r-base:4.4.1",
+      "n_images": 0,
+      "stages": [
+        {
+          "name": "prepare",
+          "ok": true,
+          "detail": "/mnt/data-2/asu/CSE598/repro-agent/work/capsule-7981862__hard",
+          "duration_s": 2.3
+        },
+        {
+          "name": "plan",
+          "ok": true,
+          "detail": "cd code && Rscript master.R",
+          "duration_s": 1.63
+        },
+        {
+          "name": "execute",
+          "ok": false,
+          "detail": "exit=1 timed_out=False",
+          "duration_s": 1.55
+        },
+        {
+          "name": "extract",
+          "ok": true,
+          "detail": "1 answers",
+          "duration_s": 1.68
+        },
+        {
+          "name": "score",
+          "ok": true,
+          "detail": "{\"correct_written_answers\": 0, \"correct_vision_answers\": 0, \"total_written_questions\": 0, \"total_vision_questions\": 1}",
+          "duration_s": 0.0
+        }
+      ]
+    },
+    {
+      "capsule_id": "capsule-2061060",
+      "tier": "hard",
+      "report": {
+        "fig From supplementary table 2, report the % reaching consensus for the quant domain.": null
+      },
+      "counts": {
+        "correct_written_answers": 0,
+        "correct_vision_answers": 0,
+        "total_written_questions": 0,
+        "total_vision_questions": 1
+      },
+      "task_correct": false,
+      "cost_usd": 0.006858,
+      "duration_s": 4.62,
+      "failed_stage": null,
+      "error": null,
+      "image": "r-base:4.4.1",
+      "n_images": 0,
+      "stages": [
+        {
+          "name": "prepare",
+          "ok": true,
+          "detail": "/mnt/data-2/asu/CSE598/repro-agent/work/capsule-2061060__hard",
+          "duration_s": 0.19
+        },
+        {
+          "name": "plan",
+          "ok": true,
+          "detail": "R -e \"install.packages(c('rmarkdown','tidyverse','knitr','kableExtra','papaja','flextable','psych','irr'), repos='https://cloud.r-project.org')\" && cd code && R -e \"rmarkdown::render('manuscript.Rmd')\"",
+          "duration_s": 2.41
+        },
+        {
+          "name": "execute",
+          "ok": false,
+          "detail": "exit=1 timed_out=False",
+          "duration_s": 0.45
+        },
+        {
+          "name": "extract",
+          "ok": true,
+          "detail": "1 answers",
+          "duration_s": 1.57
+        },
+        {
+          "name": "score",
+          "ok": true,
+          "detail": "{\"correct_written_answers\": 0, \"correct_vision_answers\": 0, \"total_written_questions\": 0, \"total_vision_questions\": 1}",
+          "duration_s": 0.0
+        }
+      ]
+    },
+    {
+      "capsule_id": "capsule-0940461",
+      "tier": "hard",
+      "report": {
+        "Report the best test R^2 value for c = 1.0.": null,
+        "Report the best test RMSE value for c = 1.0.": null
+      },
+      "counts": {
+        "correct_written_answers": 0,
+        "correct_vision_answers": 0,
+        "total_written_questions": 2,
+        "total_vision_questions": 0
+      },
+      "task_correct": false,
+      "cost_usd": 0.02906,
+      "duration_s": 23.49,
+      "failed_stage": null,
+      "error": null,
+      "image": "python:3.11-slim",
+      "n_images": 0,
+      "stages": [
+        {
+          "name": "prepare",
+          "ok": true,
+          "detail": "/mnt/data-2/asu/CSE598/repro-agent/work/capsule-0940461__hard",
+          "duration_s": 0.01
+        },
+        {
+          "name": "plan",
+          "ok": true,
+          "detail": "pip install numpy pandas scikit-learn matplotlib jupyter nbconvert && jupyter nbconvert --to notebook --execute --output-dir=results code/FGBR_OC.ipynb",
+          "duration_s": 1.81
+        },
+        {
+          "name": "execute",
+          "ok": false,
+          "detail": "exit=1 timed_out=False",
+          "duration_s": 19.92
+        },
+        {
+          "name": "extract",
+          "ok": true,
+          "detail": "2 answers",
+          "duration_s": 1.75
+        },
+        {
+          "name": "score",
+          "ok": true,
+          "detail": "{\"correct_written_answers\": 0, \"correct_vision_answers\": 0, \"total_written_questions\": 2, \"total_vision_questions\": 0}",
+          "duration_s": 0.0
+        }
+      ]
+    },
+    {
+      "capsule_id": "capsule-3894632",
+      "tier": "hard",
+      "report": {
+        "Report the p value for Lesions.Contoured.": null
+      },
+      "counts": {
+        "correct_written_answers": 0,
+        "correct_vision_answers": 0,
+        "total_written_questions": 1,
+        "total_vision_questions": 0
+      },
+      "task_correct": false,
+      "cost_usd": 0.00579,
+      "duration_s": 9.22,
+      "failed_stage": null,
+      "error": null,
+      "image": "python:3.11-slim",
+      "n_images": 0,
+      "stages": [
+        {
+          "name": "prepare",
+          "ok": true,
+          "detail": "/mnt/data-2/asu/CSE598/repro-agent/work/capsule-3894632__hard",
+          "duration_s": 0.03
+        },
+        {
+          "name": "plan",
+          "ok": true,
+          "detail": "pip install pandas numpy scipy openpyxl && python code/correlation.py",
+          "duration_s": 1.66
+        },
+        {
+          "name": "execute",
+          "ok": false,
+          "detail": "exit=1 timed_out=False",
+          "duration_s": 5.29
+        },
+        {
+          "name": "extract",
+          "ok": true,
+          "detail": "1 answers",
+          "duration_s": 2.23
+        },
+        {
+          "name": "score",
+          "ok": true,
+          "detail": "{\"correct_written_answers\": 0, \"correct_vision_answers\": 0, \"total_written_questions\": 1, \"total_vision_questions\": 0}",
+          "duration_s": 0.0
+        }
+      ]
+    },
+    {
+      "capsule_id": "capsule-5496369",
+      "tier": "hard",
+      "report": {
+        "fig For the GC diagnosis model's AUROC curve of test data, report the Lasso AUROC of the test data.": null,
+        "fig From the GC prognosis model's AUROC curve, report the Lasso AUROC of the test data.": null
+      },
+      "counts": {
+        "correct_written_answers": 0,
+        "correct_vision_answers": 0,
+        "total_written_questions": 0,
+        "total_vision_questions": 2
+      },
+      "task_correct": false,
+      "cost_usd": 0.006046,
+      "duration_s": 24.55,
+      "failed_stage": null,
+      "error": null,
+      "image": "python:3.11-slim",
+      "n_images": 0,
+      "stages": [
+        {
+          "name": "prepare",
+          "ok": true,
+          "detail": "/mnt/data-2/asu/CSE598/repro-agent/work/capsule-5496369__hard",
+          "duration_s": 0.08
+        },
+        {
+          "name": "plan",
+          "ok": true,
+          "detail": "pip install -q jupyter nbconvert numpy pandas scikit-learn matplotlib seaborn openpyxl xlrd && jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=1200 --output-dir=results 'code/GC-diagnosis-model/run.ipynb' 'code/GC-diagnosis-model/Confusion matrix.ipynb' 'code/GC-prognosis-model/run.ipynb'",
+          "duration_s": 2.43
+        },
+        {
+          "name": "execute",
+          "ok": false,
+          "detail": "exit=1 timed_out=False",
+          "duration_s": 20.26
+        },
+        {
+          "name": "extract",
+          "ok": true,
+          "detail": "2 answers",
+          "duration_s": 1.78
+        },
+        {
+          "name": "score",
+          "ok": true,
+          "detail": "{\"correct_written_answers\": 0, \"correct_vision_answers\": 0, \"total_written_questions\": 0, \"total_vision_questions\": 2}",
+          "duration_s": 0.0
+        }
+      ]
+    },
+    {
+      "capsule_id": "capsule-8912293",
+      "tier": "hard",
+      "report": {
+        "fig Report the location of experiment with the higher proportion of 131 pre\u2212registered experiments in AEA and EGAP registries for the mobilization intervention class (ignore the n value).": null,
+        "fig From Figure A5, report the y-axis label.": null,
+        "fig From Figure A2, report the x-axis label of the first plot.": null
+      },
+      "counts": {
+        "correct_written_answers": 0,
+        "correct_vision_answers": 0,
+        "total_written_questions": 0,
+        "total_vision_questions": 3
+      },
+      "task_correct": false,
+      "cost_usd": 0.017314,
+      "duration_s": 5.84,
+      "failed_stage": null,
+      "error": null,
+      "image": "r-base:4.4.1",
+      "n_images": 0,
+      "stages": [
+        {
+          "name": "prepare",
+          "ok": true,
+          "detail": "/mnt/data-2/asu/CSE598/repro-agent/work/capsule-8912293__hard",
+          "duration_s": 0.16
+        },
+        {
+          "name": "plan",
+          "ok": true,
+          "detail": "cd code && Rscript -e \"pkgs <- c('tidyverse','readxl','haven','data.table','stringr','lubridate','estimatr','sandwich','lmtest','ggplot2','scales','xtable','knitr','broom'); install.packages(pkgs[!pkgs %in% installed.packages()[,1]], repos='https://cloud.r-project.org')\" && Rscript 01_data_processing.R && Rscript 02_info_exps.R && Rscript 03_colorado_sim.R && Rscript 04_pap_analysis.R && Rscript 05_existing_applications.R",
+          "duration_s": 3.11
+        },
+        {
+          "name": "execute",
+          "ok": false,
+          "detail": "exit=1 timed_out=False",
+          "duration_s": 0.57
+        },
+        {
+          "name": "extract",
+          "ok": true,
+          "detail": "3 answers",
+          "duration_s": 2.01
+        },
+        {
+          "name": "score",
+          "ok": true,
+          "detail": "{\"correct_written_answers\": 0, \"correct_vision_answers\": 0, \"total_written_questions\": 0, \"total_vision_questions\": 3}",
+          "duration_s": 0.0
+        }
+      ]
+    },
+    {
+      "capsule_id": "capsule-3497606",
+      "tier": "hard",
+      "report": {
+        "fig Report which image type has the greatest noise at 100 iterations.": null
+      },
+      "counts": {
+        "correct_written_answers": 0,
+        "correct_vision_answers": 0,
+        "total_written_questions": 0,
+        "total_vision_questions": 1
+      },
+      "task_correct": false,
+      "cost_usd": 0.007172,
+      "duration_s": 10.79,
+      "failed_stage": null,
+      "error": null,
+      "image": "python:3.11-slim",
+      "n_images": 0,
+      "stages": [
+        {
+          "name": "prepare",
+          "ok": true,
+          "detail": "/mnt/data-2/asu/CSE598/repro-agent/work/capsule-3497606__hard",
+          "duration_s": 0.01
+        },
+        {
+          "name": "plan",
+          "ok": true,
+          "detail": "pip install numpy scipy pandas matplotlib && python code/Super-Iterative.py",
+          "duration_s": 1.61
+        },
+        {
+          "name": "execute",
+          "ok": false,
+          "detail": "exit=1 timed_out=False",
+          "duration_s": 7.48
+        },
+        {
+          "name": "extract",
+          "ok": true,
+          "detail": "1 answers",
+          "duration_s": 1.68
+        },
+        {
+          "name": "score",
+          "ok": true,
+          "detail": "{\"correct_written_answers\": 0, \"correct_vision_answers\": 0, \"total_written_questions\": 0, \"total_vision_questions\": 1}",
+          "duration_s": 0.0
+        }
+      ]
+    },
+    {
+      "capsule_id": "capsule-7156696",
+      "tier": "hard",
+      "report": {
+        "fig From Figure 5A, report the name of the source with the lowest fluence rate at depth 1.": null,
+        "fig From Figure 5B, report the name of the source with the highest effective fluence rate at depth 1.": null
+      },
+      "counts": {
+        "correct_written_answers": 0,
+        "correct_vision_answers": 0,
+        "total_written_questions": 0,
+        "total_vision_questions": 2
+      },
+      "task_correct": false,
+      "cost_usd": 0.005664,
+      "duration_s": 29.0,
+      "failed_stage": null,
+      "error": null,
+      "image": "python:3.11-slim",
+      "n_images": 0,
+      "stages": [
+        {
+          "name": "prepare",
+          "ok": true,
+          "detail": "/mnt/data-2/asu/CSE598/repro-agent/work/capsule-7156696__hard",
+          "duration_s": 0.08
+        },
+        {
+          "name": "plan",
+          "ok": true,
+          "detail": "cd code && pip install --quiet jupyter nbconvert notebook numpy scipy pandas matplotlib openpyxl && jupyter nbconvert --to notebook --execute --output-dir=../results \"Monte Carlo Analysis.ipynb\"",
+          "duration_s": 2.06
+        },
+        {
+          "name": "execute",
+          "ok": false,
+          "detail": "exit=1 timed_out=False",
+          "duration_s": 25.05
+        },
+        {
+          "name": "extract",
+          "ok": true,
+          "detail": "2 answers",
+          "duration_s": 1.82
+        },
+        {
+          "name": "score",
+          "ok": true,
+          "detail": "{\"correct_written_answers\": 0, \"correct_vision_answers\": 0, \"total_written_questions\": 0, \"total_vision_questions\": 2}",
+          "duration_s": 0.0
+        }
+      ]
+    },
+    {
+      "capsule_id": "capsule-7935517",
+      "tier": "hard",
+      "report": {
+        "fig From the plot sampling rho, report the rho value corresponding to the solid red line.": null,
+        "fig Report the x-axis label of the plot measuring Cohen's d.": null
+      },
+      "counts": {
+        "correct_written_answers": 0,
+        "correct_vision_answers": 0,
+        "total_written_questions": 0,
+        "total_vision_questions": 2
+      },
+      "task_correct": false,
+      "cost_usd": 0.019638,
+      "duration_s": 5.03,
+      "failed_stage": null,
+      "error": null,
+      "image": "r-base:4.4.1",
+      "n_images": 0,
+      "stages": [
+        {
+          "name": "prepare",
+          "ok": true,
+          "detail": "/mnt/data-2/asu/CSE598/repro-agent/work/capsule-7935517__hard",
+          "duration_s": 0.08
+        },
+        {
+          "name": "plan",
+          "ok": true,
+          "detail": "cd code && Rscript -e 'if (!requireNamespace(\"renv\", quietly=TRUE)) install.packages(\"renv\", repos=\"https://cloud.r-project.org\"); renv::restore(); if (!requireNamespace(\"knitr\", quietly=TRUE)) install.packages(\"knitr\", repos=\"https://cloud.r-project.org\")' && Rscript -e 'knitr::knit(\"Documents/Paper_main/Paper_main.Rnw\", output=\"../../results/Paper_main.tex\")'",
+          "duration_s": 2.67
+        },
+        {
+          "name": "execute",
+          "ok": false,
+          "detail": "exit=1 timed_out=False",
+          "duration_s": 0.46
+        },
+        {
+          "name": "extract",
+          "ok": true,
+          "detail": "2 answers",
+          "duration_s": 1.82
+        },
+        {
+          "name": "score",
+          "ok": true,
+          "detail": "{\"correct_written_answers\": 0, \"correct_vision_answers\": 0, \"total_written_questions\": 0, \"total_vision_questions\": 2}",
+          "duration_s": 0.0
+        }
+      ]
+    },
+    {
+      "capsule_id": "capsule-3269870",
+      "tier": "hard",
+      "report": {
+        "Report the percentage accuracy of the result.": null,
+        "Report the percentage precision of the result.": null,
+        "fig Report the y-axis label of the training plot.": null
+      },
+      "counts": {
+        "correct_written_answers": 0,
+        "correct_vision_answers": 0,
+        "total_written_questions": 2,
+        "total_vision_questions": 1
+      },
+      "task_correct": false,
+      "cost_usd": 0.01475,
+      "duration_s": 32.67,
+      "failed_stage": null,
+      "error": null,
+      "image": "python:3.11-slim",
+      "n_images": 0,
+      "stages": [
+        {
+          "name": "prepare",
+          "ok": true,
+          "detail": "/mnt/data-2/asu/CSE598/repro-agent/work/capsule-3269870__hard",
+          "duration_s": 0.01
+        },
+        {
+          "name": "plan",
+          "ok": true,
+          "detail": "pip install tensorflow numpy pandas && cd code && python nn.py && python predict.py",
+          "duration_s": 1.51
+        },
+        {
+          "name": "execute",
+          "ok": false,
+          "detail": "exit=1 timed_out=False",
+          "duration_s": 29.49
+        },
+        {
+          "name": "extract",
+          "ok": true,
+          "detail": "3 answers",
+          "duration_s": 1.67
+        },
+        {
+          "name": "score",
+          "ok": true,
+          "detail": "{\"correct_written_answers\": 0, \"correct_vision_answers\": 0, \"total_written_questions\": 2, \"total_vision_questions\": 1}",
+          "duration_s": 0.0
+        }
+      ]
+    }
+  ]
+}

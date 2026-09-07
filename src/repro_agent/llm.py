@@ -1,6 +1,6 @@
 """Provider-agnostic LLM completion via litellm.
 
-Constraints (see CONTRACTS.md): `complete()` makes exactly one call with no
+Constraints: `complete()` makes exactly one call with no
 application-level retries, since a retry here would invalidate the
 single-pass baseline; and the module performs no network access at import
 time and imports cleanly with no API key set.

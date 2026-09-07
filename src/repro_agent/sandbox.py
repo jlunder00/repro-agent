@@ -21,6 +21,13 @@ DEFAULT_IMAGE = "python:3.11-slim"
 
 _MAX_OUTPUT_CHARS = 20000
 
+# Prepended to every command. Creates the R user library (install.packages
+# only uses R_LIBS_USER if the directory exists) and puts pip's --user bin
+# directory on PATH so installed console scripts resolve.
+_USER_ENV_PRELUDE = (
+    "mkdir -p /tmp/Rlib && export PATH=/tmp/.local/bin:$PATH && "
+)
+
 
 @dataclass
 class ExecResult:
@@ -56,12 +63,19 @@ def run_in_container(command: str, work_dir: Path, *, image: str = DEFAULT_IMAGE
         # root-owned files (e.g. __pycache__) in the bind-mounted work dir,
         # and the next prepare_tier() rmtree then fails with PermissionError.
         "--user", f"{os.getuid()}:{os.getgid()}",
+        # That uid has no entry inside the image, so HOME would resolve to
+        # "/" and neither pip nor R could install anything (EACCES on
+        # /.local and on the system site-library). Give the process a
+        # writable home and per-user library paths instead.
+        "-e", "HOME=/tmp",
+        "-e", "PIP_USER=1",
+        "-e", "R_LIBS_USER=/tmp/Rlib",
         "-v", f"{Path(work_dir).resolve()}:/workspace",
         "-w", "/workspace",
     ]
     if not network:
         argv += ["--network", "none"]
-    argv += [image, "bash", "-lc", command]
+    argv += [image, "bash", "-lc", _USER_ENV_PRELUDE + command]
 
     started = time.time()
     timed_out = False

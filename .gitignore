@@ -1,5 +1,3 @@
-!results/.gitkeep
-!results/baseline_*.json
 *.pyc
 .env
 .venv/
@@ -14,3 +12,7 @@ proposal/*.synctex.gz
 proposal/pg-*.png
 results/*.json
 work/
+proposal/*.bbl
+proposal/*.blg
+!results/.gitkeep
+!results/baseline_*_all.json
