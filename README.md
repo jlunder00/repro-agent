@@ -31,42 +31,58 @@ cp .env.example .env      # then add ONE api key (see below)
 export $(grep -v '^#' .env | xargs)
 
 # List what would run, without running it (no API key or Docker needed):
-python run_baseline.py --list --subset small --limit 5
+python run_baseline.py --list --subset all --limit 45 --split test
 
-# Easy tier: answers are read from the capsule's results/ directory.
+# One capsule, easy tier: answers are read from the capsule's results/ directory.
 python run_baseline.py --capsule capsule-9052293 --tier easy
 
-# Hard tier: the pipeline must install dependencies and run the code itself.
+# One capsule, hard tier: the pipeline must install dependencies and run the code.
 python run_baseline.py --capsule capsule-9052293 --tier hard
+
+# A full split at one tier (repeat with --split train and --tier hard):
+python run_baseline.py --subset all --limit 45 --split test --tier easy
 ```
 
-Results are written to `results/baseline_<tier>_<split>.json`.
+Results are written to `results/baseline_<tier>_<split>.json` (override with
+`--out`). The committed runs are `results/baseline_<tier>_<split>_all.json`.
 
 ## Measured baseline results
 
-Two Python capsules (`capsule-9052293`, `capsule-6003668`), `claude-sonnet-5`:
+All 90 CORE-Bench capsules (45 test + 45 train, Python and R), `claude-sonnet-5`,
+one run per task, figures attached as images at the easy tier:
 
-| Tier | Task accuracy | Per-question | $/task | s/task | Failure stage |
-|---|---|---|---|---|---|
-| easy | **2/2 = 100%** | 2/2 | $0.0034 | 3.0 | — |
-| hard | **0/2 = 0%** | 0/2 | $0.0049 | 9.7 | execution (2/2) |
+| Tier | Tasks | Written questions | Vision questions | All questions | $/task | s/task | Execute stage |
+|---|---|---|---|---|---|---|---|
+| easy | 43/90 = 47.8% | 63/98 = 64.3% | 38/83 = 45.8% | 101/181 = 55.8% | $0.0178 | 4.2 | not run |
+| hard | 0/90 = 0.0% | 0/98 | 0/83 | 0/181 = 0.0% | $0.0116 | 22.0 | succeeded 0/90 |
 
-Both hard-tier failures occurred at the execution stage, none at planning or
-answer extraction.
+Totals: $1.61 for the easy sweep (152 images sent), $1.04 for the hard sweep.
+
+Easy tier by split and language: test Python 15/22, test R 7/23, train Python
+17/27, train R 4/18. Hard tier: 0 in every split and language.
+
+No hard-tier run aborted: extraction still ran against the failed output and
+returned `null`, which is why `aborted_at` is empty while `stage_failures.execute`
+is 90. The results JSON reports the two separately.
+
+Task accuracy is all-or-nothing, so per-question accuracy is reported alongside
+it.
+
+Vision questions were unanswerable before image input was added: the model
+scored 7/54 on them by guessing from result text, versus 38/83 with images.
 
 ### Example failure
 
-For `capsule-9052293` the single planning call proposed
-`pip install openpyxl pandas && python code/script.py`. It failed, and with no
-retry the pipeline reported `null`. The capsule reproduces after three
-sequential fixes, each visible only in the traceback of the previous attempt:
+For `capsule-9052293` the planning call proposed
+`pip install openpyxl pandas && cd code && python script.py`. It failed, and
+with no retry the pipeline reported `null`. The capsule reproduces after two
+sequential fixes, the second visible only in the traceback left by the first:
 
-1. `ModuleNotFoundError: xlrd` → install `xlrd`
-2. `FileNotFoundError` → the script uses paths relative to `code/`, so `cd code` first
-3. `XLRDError: Excel xlsx file; not supported` → `xlrd` 2.x dropped `.xlsx`
-   support, so pin `xlrd==1.2.0`
+1. `ModuleNotFoundError: xlrd` -> install `xlrd`
+2. `XLRDError: Excel xlsx file; not supported` -> `xlrd` 2.x dropped `.xlsx`
+   support, so pin `xlrd==1.2.0` - an older release of what was just installed
 
-With all three, the capsule reproduces `0.844703753651819` exactly.
+With both, the capsule reproduces `0.844703753651819` exactly.
 
 ## Requirements
 
@@ -148,7 +164,7 @@ CONTRACTS.md                 fixed module interfaces
 src/repro_agent/
     dataset.py               CORE-Bench task loading and subset selection
     capsules.py              capsule download, extraction, per-tier preparation
-    llm.py                   provider-agnostic LLM access (litellm)
+    llm.py                   provider-agnostic LLM access (litellm), image input
     sandbox.py               single-shot Docker execution
     baseline.py              the single-pass pipeline
     scoring.py               vendored CORE-Bench scorer (MIT, attributed)
@@ -160,12 +176,18 @@ third_party/                 upstream licence and attribution
 
 ## Choosing what to run
 
-Capsules range from 0.1 MB to 2.4 GB. Two thirds of the test split are under
-26 MB. The default `--subset small` restricts to Python, single-question,
-non-figure tasks.
+`--subset all` selects every capsule in a split (45 per split; 22 Python and
+23 R in test, 27 Python and 18 R in train). `--subset python` keeps only Python
+capsules. `--subset small` selects 5 single-question tasks for smoke tests and
+is too small to serve as an evaluation set. `--limit` caps the count; use
+`--limit 45` for a full split.
+
+Capsules range from 0.1 MB to 2.4 GB. Size is a download concern, not an
+eligibility criterion. GPU-flagged capsules (`"gpu"` in `REPRODUCING.md`) are
+not filtered out; they run on CPU.
 
 ```bash
-python run_baseline.py --list --subset small --limit 10   # sizes shown, nothing downloaded
+python run_baseline.py --list --subset all --limit 45 --split test   # sizes shown, nothing downloaded
 ```
 
 Downloaded capsules are cached in `capsules/` (git-ignored) and reused across
@@ -173,10 +195,21 @@ tiers.
 
 ## Known limitations
 
-- **R capsules are out of scope.** Roughly half of CORE-Bench is R; this baseline
-  targets Python only.
-- **GPU and multi-GB capsules are excluded** from the default subset.
-- **Vision/figure questions** (keys containing `fig`) are excluded.
+- **Figure cap.** At most 6 figures are attached per capsule, chosen by sorted
+  filename. 13 capsules have more than 6, so a question about a figure outside
+  that set stays unanswerable.
+- **Result truncation.** Result files are concatenated in directory order up to
+  a character budget, so an answer late in a long log can be truncated away.
+- **One run per task.** The model is sampled without a fixed temperature, so
+  repeated runs are needed before any comparison of arms.
+- **All-or-nothing task scoring.** Per-question accuracy is reported alongside
+  task accuracy.
+- **The base image is a fixed lookup**: `python:3.11-slim` for Python,
+  `r-base:4.4.1` for R. The lookup exists so an R capsule is not run without an
+  interpreter, which would measure the image choice rather than the plan. Even
+  with the correct interpreter, R hard-tier execution succeeded 0/41. Image
+  choice should become a recorded per-run variable.
+- **No GPU execution.** GPU-flagged capsules run on CPU.
 - **Dependency rot.** Much of this code is years old and may no longer install
   cleanly on a modern base image.
 - **`medium` tier is unimplemented** (needs Docker-in-Docker).

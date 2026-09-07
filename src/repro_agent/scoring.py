@@ -87,24 +87,31 @@ def eval_result_json(
         for key in numeric_keys
     }
 
-    for key, value in reported.items():
-        is_correct = False
-        if key in numeric_keys:
-            lower, upper = intervals[key]
-            try:
-                is_correct = bool(lower <= float(value) <= upper)
-            except (TypeError, ValueError):
-                is_correct = False
-        elif key in list_keys:
-            is_correct = value == first_run[key]
-        elif key in string_keys:
-            is_correct = str(value).lower() == str(first_run[key]).lower()
-
-        if is_correct:
-            if "fig" in key:
-                correct_vision += 1
+    # Upstream wraps this entire loop in one try/except, so the first key that
+    # raises stops grading for every remaining key. That matters in practice:
+    # the answer prompt permits ``null``, and ``None <= float`` raises
+    # TypeError, which upstream treats as "score nothing further". Catching
+    # per key instead would credit later answers that the official grader
+    # never reaches, inflating per-question accuracy on multi-question tasks.
+    try:
+        for key, value in reported.items():
+            if key in numeric_keys:
+                lower, upper = intervals[key]
+                is_correct = lower <= value <= upper
+            elif key in list_keys:
+                is_correct = value == first_run[key]
+            elif key in string_keys:
+                is_correct = str(value).lower() == str(first_run[key]).lower()
             else:
-                correct_written += 1
+                continue
+
+            if is_correct:
+                if "fig" in key:
+                    correct_vision += 1
+                else:
+                    correct_written += 1
+    except Exception:  # noqa: BLE001 - matches upstream's abort-on-error grading
+        pass
 
     return {
         "correct_written_answers": correct_written,

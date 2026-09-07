@@ -28,12 +28,23 @@ logger = logging.getLogger(__name__)
 # feeds the failure-mode breakdown.
 STAGES = ("prepare", "plan", "execute", "extract", "score")
 
+# Base image per capsule language. This is a fixed lookup, not a decision the
+# pipeline makes at run time: running an R capsule under python:3.11-slim would
+# fail for want of an interpreter, which measures the image choice rather than
+# the plan. Making the image adaptive is left to the capstone system.
+IMAGES_BY_LANGUAGE = {"Python": "python:3.11-slim", "R": "r-base:4.4.1"}
+DEFAULT_IMAGE = "python:3.11-slim"
+
 MAX_README_CHARS = 8000
 MAX_TREE_ENTRIES = 200
 MAX_RESULT_CHARS = 12000
+MAX_FIGURES = llm.MAX_IMAGES
 
-# Extensions excluded from the model's context. Figure questions are out of
-# scope, so image files are never needed.
+# Figure files attached to the easy-tier extraction call as images.
+_FIGURE_SUFFIXES = {".png", ".jpg", ".jpeg", ".gif", ".webp"}
+
+# Extensions excluded from the text evidence. Figures are passed separately
+# as images by select_result_images on the easy tier.
 _BINARY_SUFFIXES = {
     ".png", ".jpg", ".jpeg", ".gif", ".bmp", ".tif", ".tiff", ".pdf", ".eps",
     ".svg", ".pkl", ".pickle", ".npy", ".npz", ".h5", ".hdf5", ".pt", ".pth",
@@ -64,7 +75,9 @@ ANSWER_SYSTEM = (
     "code. Answer each question exactly. Respond ONLY with a JSON object whose "
     "keys are the exact question strings given to you and whose values are the "
     "answers. Use bare numbers for numeric answers, with no units or percent "
-    "signs. If a value cannot be determined, use null."
+    "signs. Questions whose text begins with \"fig\" refer to the attached "
+    "figure images; answer them from the figures. If a value cannot be "
+    "determined, use null."
 )
 
 
@@ -90,6 +103,8 @@ class RunResult:
     duration_s: float = 0.0
     failed_stage: str | None = None
     error: str | None = None
+    image: str | None = None
+    n_images: int = 0
 
     def to_dict(self) -> dict[str, Any]:
         return {
@@ -102,6 +117,8 @@ class RunResult:
             "duration_s": round(self.duration_s, 2),
             "failed_stage": self.failed_stage,
             "error": self.error,
+            "image": self.image,
+            "n_images": self.n_images,
             "stages": [
                 {"name": s.name, "ok": s.ok, "detail": s.detail,
                  "duration_s": round(s.duration_s, 2)}
@@ -193,6 +210,27 @@ def select_result_files(results_dir: Path, questions: list[str],
     return "\n\n".join(chunks) if chunks else "(results directory is empty)"
 
 
+def select_result_images(results_dir: Path, limit: int = MAX_FIGURES) -> list[Path]:
+    """Return up to ``limit`` figure files under ``results_dir``, sorted by
+    path and deduplicated. Empty when the directory is missing.
+    """
+    if not results_dir.is_dir():
+        return []
+    seen: set[Path] = set()
+    found: list[Path] = []
+    for path in sorted(results_dir.rglob("*")):
+        if not path.is_file() or path.suffix.lower() not in _FIGURE_SUFFIXES:
+            continue
+        resolved = path.resolve()
+        if resolved in seen:
+            continue
+        seen.add(resolved)
+        found.append(path)
+        if len(found) >= limit:
+            break
+    return found
+
+
 def _plan_command(prepared: Path) -> tuple[str, llm.LLMResponse]:
     prompt = (
         f"File listing:\n{_file_tree(prepared)}\n\n"
@@ -206,14 +244,23 @@ def _plan_command(prepared: Path) -> tuple[str, llm.LLMResponse]:
     return command, response
 
 
-def _extract_answers(questions: list[str], evidence: str) -> tuple[dict, llm.LLMResponse]:
+def _extract_answers(questions: list[str], evidence: str,
+                     images: list[Path] | None = None) -> tuple[dict, llm.LLMResponse]:
+    figure_note = ""
+    if images:
+        names = ", ".join(p.name for p in images)
+        figure_note = (
+            f"\n\nAttached figures (in order): {names}. Questions beginning "
+            "with \"fig\" refer to these images."
+        )
     prompt = (
         "Questions to answer:\n"
         + "\n".join(f"- {q}" for q in questions)
-        + f"\n\nProgram output / results:\n{evidence}\n\n"
-        "Return the JSON object mapping each exact question string to its answer."
+        + f"\n\nProgram output / results:\n{evidence}"
+        + figure_note
+        + "\n\nReturn the JSON object mapping each exact question string to its answer."
     )
-    response = llm.complete(prompt, system=ANSWER_SYSTEM, max_tokens=2048)
+    response = llm.complete(prompt, system=ANSWER_SYSTEM, max_tokens=2048, images=images)
     return llm.extract_json(response.text), response
 
 
@@ -243,13 +290,18 @@ def run_task(task: Task, tier: str, *, capsule_root: Path, work_root: Path,
         return result
 
     evidence = ""
+    # Figures are attached only on the easy tier; the hard tier measures
+    # execution and rarely produces figures before failing.
+    figures: list[Path] = []
 
     if tier == "easy":
         # Easy tier: no execution; answers are read from results/.
         t0 = time.time()
         try:
             evidence = select_result_files(prepared / "results", task.questions)
-            record("plan", True, "read results/ (no execution)", t0)
+            figures = select_result_images(prepared / "results")
+            record("plan", True,
+                   f"read results/ (no execution), {len(figures)} figures", t0)
             result.stages.append(StageRecord("execute", True, "skipped by tier", 0.0))
         except Exception as exc:  # noqa: BLE001
             record("plan", False, str(exc), t0)
@@ -271,7 +323,11 @@ def run_task(task: Task, tier: str, *, capsule_root: Path, work_root: Path,
 
         # -- execute (once; a non-zero exit is not retried) ---------------
         t0 = time.time()
-        exec_result: ExecResult = run_in_container(command, prepared, timeout_s=timeout_s)
+        image = IMAGES_BY_LANGUAGE.get(task.language, DEFAULT_IMAGE)
+        exec_result: ExecResult = run_in_container(
+            command, prepared, image=image, timeout_s=timeout_s
+        )
+        result.image = image
         record("execute", exec_result.exit_code == 0,
                f"exit={exec_result.exit_code} timed_out={exec_result.timed_out}", t0)
         evidence = f"[exit code {exec_result.exit_code}]\n" \
@@ -280,8 +336,9 @@ def run_task(task: Task, tier: str, *, capsule_root: Path, work_root: Path,
     # -- extract ---------------------------------------------------------
     t0 = time.time()
     try:
-        report, answer_response = _extract_answers(task.questions, evidence)
+        report, answer_response = _extract_answers(task.questions, evidence, figures)
         result.cost_usd += answer_response.cost_usd or 0.0
+        result.n_images = answer_response.n_images
         result.report = report
         record("extract", True, f"{len(report)} answers", t0)
     except Exception as exc:  # noqa: BLE001

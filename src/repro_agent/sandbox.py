@@ -8,6 +8,7 @@ does not clean up when the client times out first.
 from __future__ import annotations
 
 import logging
+import os
 import subprocess
 import time
 import uuid
@@ -51,6 +52,10 @@ def run_in_container(command: str, work_dir: Path, *, image: str = DEFAULT_IMAGE
     container_name = f"repro-agent-{uuid.uuid4().hex}"
     argv = [
         "docker", "run", "--rm", "--name", container_name,
+        # Run as the invoking user. Rootful Docker otherwise leaves
+        # root-owned files (e.g. __pycache__) in the bind-mounted work dir,
+        # and the next prepare_tier() rmtree then fails with PermissionError.
+        "--user", f"{os.getuid()}:{os.getgid()}",
         "-v", f"{Path(work_dir).resolve()}:/workspace",
         "-w", "/workspace",
     ]

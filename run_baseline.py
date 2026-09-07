@@ -13,6 +13,7 @@ from __future__ import annotations
 import argparse
 import json
 import logging
+import shutil
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
@@ -46,6 +47,9 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--work-dir", type=Path, default=DEFAULT_WORK_DIR)
     p.add_argument("--out", type=Path, default=None,
                    help="Where to write the results JSON.")
+    p.add_argument("--keep-work", action="store_true",
+                   help="Keep each task's prepared working copy. Off by default: "
+                        "a full split can be tens of GB once every capsule is copied.")
     p.add_argument("--list", action="store_true",
                    help="List the selected tasks and exit without running.")
     p.add_argument("-v", "--verbose", action="store_true")
@@ -105,6 +109,14 @@ def main(argv: list[str] | None = None) -> int:
             timeout_s=args.timeout,
         )
         runs.append(result)
+
+        # Reclaim the prepared copy unless asked to keep it. Capsules are
+        # cached separately in --capsule-dir, so this costs nothing but a
+        # re-copy if the task is run again.
+        if not args.keep_work:
+            shutil.rmtree(args.work_dir / f"{task.capsule_id}__{args.tier}",
+                          ignore_errors=True)
+
         status = "CORRECT" if result.task_correct else "incorrect"
         where = f" (failed at: {result.failed_stage})" if result.failed_stage else ""
         print(f"    -> {status}{where}  {result.duration_s:.1f}s  "
@@ -120,7 +132,16 @@ def main(argv: list[str] | None = None) -> int:
         "task_accuracy": n_correct / len(runs),
         "total_cost_usd": round(sum(r.cost_usd for r in runs), 4),
         "total_duration_s": round(sum(r.duration_s for r in runs), 1),
-        "failure_stages": {
+        # Two different things, kept separate on purpose. A stage can fail
+        # without aborting the run: a non-zero exit from the container is
+        # recorded and the pipeline still attempts extraction on whatever
+        # output exists. Only "aborted_at" means the run stopped there.
+        "stage_failures": {
+            stage: sum(1 for r in runs
+                       for s in r.stages if s.name == stage and not s.ok)
+            for stage in baseline.STAGES
+        },
+        "aborted_at": {
             stage: sum(1 for r in runs if r.failed_stage == stage)
             for stage in baseline.STAGES
         },

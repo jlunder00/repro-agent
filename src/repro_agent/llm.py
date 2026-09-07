@@ -8,15 +8,33 @@ time and imports cleanly with no API key set.
 
 from __future__ import annotations
 
+import base64
+import io
 import json
 import logging
 import os
 import re
 from dataclasses import dataclass
+from pathlib import Path
 
 import litellm
 
 logger = logging.getLogger(__name__)
+
+# Image attachment limits. MAX_IMAGE_EDGE matches the largest edge the
+# Anthropic API accepts without server-side downscaling; MAX_IMAGE_BYTES stays
+# under the API's per-image cap with margin for base64 expansion.
+MAX_IMAGES = 6
+MAX_IMAGE_EDGE = 1568
+MAX_IMAGE_BYTES = 3_500_000
+
+_IMAGE_MIME = {
+    ".png": "image/png",
+    ".jpg": "image/jpeg",
+    ".jpeg": "image/jpeg",
+    ".gif": "image/gif",
+    ".webp": "image/webp",
+}
 
 # First env var found (in this order) wins.
 DEFAULT_MODELS = {
@@ -57,23 +75,84 @@ class LLMResponse:
     prompt_tokens: int
     completion_tokens: int
     cost_usd: float | None
+    n_images: int = 0
+
+
+def _encode_image(path: Path) -> str | None:
+    """Return a ``data:<mime>;base64,...`` URL for one image, or None to skip it.
+
+    Downscales so the longest edge is at most MAX_IMAGE_EDGE and re-encodes
+    (PNG stays PNG; everything else becomes JPEG, with RGBA/P flattened to
+    RGB). If the PNG is still over MAX_IMAGE_BYTES it is re-saved as JPEG.
+    Any Pillow failure logs a warning and returns None; it never raises.
+    """
+    mime = _IMAGE_MIME.get(path.suffix.lower())
+    if mime is None:
+        return None
+    try:
+        from PIL import Image
+
+        with Image.open(path) as im:
+            im.load()
+            scale = MAX_IMAGE_EDGE / max(im.size)
+            if scale < 1:
+                im = im.resize(
+                    (max(1, round(im.width * scale)), max(1, round(im.height * scale)))
+                )
+            keep_png = mime == "image/png"
+            buf = io.BytesIO()
+            if keep_png:
+                im.save(buf, format="PNG", optimize=True)
+                if buf.tell() > MAX_IMAGE_BYTES:
+                    keep_png = False
+                    buf = io.BytesIO()
+            if not keep_png:
+                if im.mode not in ("RGB", "L"):
+                    im = im.convert("RGB")
+                im.save(buf, format="JPEG", quality=85)
+                mime = "image/jpeg"
+    except Exception:  # noqa: BLE001 - a bad image must not abort the call
+        logger.warning("skipping image %s: Pillow could not process it", path, exc_info=True)
+        return None
+    data = base64.b64encode(buf.getvalue()).decode("ascii")
+    return f"data:{mime};base64,{data}"
 
 
 def complete(prompt: str, *, system: str | None = None, model: str | None = None,
-             max_tokens: int = 2048, temperature: float | None = None) -> LLMResponse:
+             max_tokens: int = 2048, temperature: float | None = None,
+             images: list[Path] | None = None) -> LLMResponse:
     """One completion via litellm, with no retry logic. cost_usd comes from
     litellm.completion_cost when available, else None.
 
     ``temperature`` is omitted from the request when None: newer Anthropic
     models reject the parameter ("`temperature` is deprecated for this
     model"), so a default of 0.0 would make every call a 400.
+
+    ``images`` attaches figure files after the prompt as OpenAI-style
+    ``image_url`` blocks, which litellm translates for each provider. At most
+    MAX_IMAGES are sent (the first after sorting); unsupported or unreadable
+    files are skipped. With no images the user content stays a plain string.
     """
     resolved_model = model or resolve_model()
 
-    messages = []
+    image_urls: list[str] = []
+    if images:
+        for path in sorted(images)[:MAX_IMAGES]:
+            url = _encode_image(Path(path))
+            if url is not None:
+                image_urls.append(url)
+
+    messages: list[dict[str, object]] = []
     if system:
         messages.append({"role": "system", "content": system})
-    messages.append({"role": "user", "content": prompt})
+    if image_urls:
+        content: list[dict[str, object]] = [{"type": "text", "text": prompt}]
+        content.extend(
+            {"type": "image_url", "image_url": {"url": url}} for url in image_urls
+        )
+        messages.append({"role": "user", "content": content})
+    else:
+        messages.append({"role": "user", "content": prompt})
 
     kwargs: dict[str, object] = {}
     if temperature is not None:
@@ -84,6 +163,11 @@ def complete(prompt: str, *, system: str | None = None, model: str | None = None
             model=resolved_model,
             messages=messages,
             max_tokens=max_tokens,
+            # litellm adds no retries of its own on the Anthropic path, but on
+            # the OpenAI path it constructs openai.OpenAI(max_retries=2), which
+            # would silently make up to three attempts per call on 429/5xx.
+            # The baseline's single-pass claim has to hold on every provider.
+            max_retries=0,
             **kwargs,
         )
     except Exception as exc:  # noqa: BLE001 - transport errors surface as LLMError
@@ -106,6 +190,7 @@ def complete(prompt: str, *, system: str | None = None, model: str | None = None
         prompt_tokens=prompt_tokens,
         completion_tokens=completion_tokens,
         cost_usd=cost_usd,
+        n_images=len(image_urls),
     )
 
 
