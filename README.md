@@ -54,16 +54,12 @@ one run per task, figures attached as images at the easy tier:
 | Tier | Tasks | Written questions | Vision questions | All questions | $/task | s/task | Execute stage |
 |---|---|---|---|---|---|---|---|
 | easy | 43/90 = 47.8% | 63/98 = 64.3% | 38/83 = 45.8% | 101/181 = 55.8% | $0.0178 | 4.2 | not run |
-| hard | 0/90 = 0.0% | 0/98 | 0/83 | 0/181 = 0.0% | $0.0116 | 22.0 | succeeded 0/90 |
+| hard | 0/90 | 0/98 | 0/83 | 0/181 | $0.0116 | 22.0 | succeeded 0/90 |
 
 Totals: $1.61 for the easy sweep (152 images sent), $1.04 for the hard sweep.
 
 Easy tier by split and language: test Python 15/22, test R 7/23, train Python
-17/27, train R 4/18. Hard tier: 0 in every split and language.
-
-No hard-tier run aborted: extraction still ran against the failed output and
-returned `null`, which is why `aborted_at` is empty while `stage_failures.execute`
-is 90. The results JSON reports the two separately.
+17/27, train R 4/18.
 
 Task accuracy is all-or-nothing, so per-question accuracy is reported alongside
 it.
